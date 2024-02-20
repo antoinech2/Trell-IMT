@@ -1,6 +1,6 @@
 import enum
 
-from database import db
+from src.database.database import db
 
 
 class UserType(enum.Enum):
@@ -41,10 +41,26 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     type = db.Column(db.Enum(UserType), nullable=False)
     password = db.Column(db.String(), nullable=False)
+    authenticated = db.Column(db.Boolean, default=False)
     language = db.Column(db.Enum(Language))
     boards = db.relationship('Board', secondary=BoardUsers, backref='boards')
     tasks = db.relationship('Task', secondary=UserTask, backref='tasks')
 
+    def is_active(self):
+        """True, as all users are active."""
+        return True
+
+    def get_id(self):
+        """Return the email address to satisfy Flask-Login's requirements."""
+        return self.email
+
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        return self.authenticated
+
+    def is_anonymous(self):
+        """False, as anonymous users aren't supported."""
+        return False
 
 class Board(db.Model):
     __tablename__: str = 'board'
