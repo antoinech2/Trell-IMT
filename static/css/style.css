@@ -18,6 +18,49 @@
     justify-content: center;
 }
 
+#task {
+    background: white;
+    border-radius: 16px;
+    border: 2px solid black;
+}
 
+.task__header {
+    border-bottom: 2px solid #00B8DE;
+    background: #99CC33;
+    overflow: hidden;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task__title {
+    display: flex;
+    text-overflow: clip;
+}
+
+.description {
+    border-bottom: 2px solid #00B8DE;
+}
+
+.task__description {
+    overflow-wrap: break-word;
+}
+
+#user-image {
+    background: #00B8DE;
+    display: flex;
+    list-style-type: none;
+}
+
+.small-image {
+  border: 1px white;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
 

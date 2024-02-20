@@ -7,6 +7,11 @@ import flask
 
 app = flask.Flask(__name__)
 
+title = "Task"
+users = ["./static/img/logo.jpg", "./static/img/logo.jpg", "./static/img/logo.jpg"]
+description = "descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -41,6 +46,11 @@ def sign_in_view():
 @app.route('/sign_up')
 def sign_up_view():
     return flask.render_template("sign_up.html.jinja2")
+
+@app.route('/task')
+
+def task_view():
+    return flask.render_template("task.html.jinja2", title=title, description = description , users = users )
 
 
 if __name__ == '__main__':
