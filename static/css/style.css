@@ -25,7 +25,7 @@
 }
 
 .task__header {
-    border-bottom: 2px solid #00B8DE;
+    border-bottom: 2px solid black;
     background: #99CC33;
     overflow: hidden;
     border-top-right-radius: 16px;
@@ -41,11 +41,18 @@
 }
 
 .description {
-    border-bottom: 2px solid #00B8DE;
+    border-bottom: 2px solid black;
 }
 
 .task__description {
     overflow-wrap: break-word;
+}
+
+.working-team {
+    background: #00B8DE;
+    overflow: hidden;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
 }
 
 #user-image {
