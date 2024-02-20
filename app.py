@@ -1,7 +1,8 @@
 from flask import Flask
 from src.database.database import db, init_database
+import flask
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -15,6 +16,11 @@ with app.test_request_context():  # (2) bloc exécuté à l'initialisation de Fl
 @app.route('/')
 def hello_world():  # put application's code here
     return 'Hello World!'
+
+@app.route('/register_login')
+def static_resources_view():
+    return flask.render_template("register_login.html.jinja2")
+
 
 
 if __name__ == '__main__':
