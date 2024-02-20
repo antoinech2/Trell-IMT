@@ -1,0 +1,29 @@
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #f5f5f5;
+}
+
+.logo-site, .logo-connexion img {
+    height: 50px;
+}
+
+.navigation-site ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation-site a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.logo-connexion img {
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}

@@ -1,4 +1,5 @@
 from flask_login import login_required
+import flask
 
 from app import app
 from src.database.models import *
@@ -18,3 +19,7 @@ def fail_pss():  # put application's code here
 @app.route('/unknowned')
 def fail_email():  # put application's code here
     return 'compte existe pas squalala!'
+
+@app.route('/home')
+def home_view():
+    return flask.render_template("home.html.jinja2", username = "Moa", user_logo = "./static/img/logo_user.jpg")
