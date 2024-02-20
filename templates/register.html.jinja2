@@ -1,17 +1,90 @@
 <!doctype html>
 <html lang="fr">
-  <head>
+<head>
     <meta charset="utf-8">
 
     <title> Log in </title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}"/>
-  </head>
+</head>
 
 <body>
+<div class="cont_authentification">
+    <div id="authentification">
+        <img class="logo" src="{{ url_for("static", filename="img/logo.jpg") }}"/>
+        <div class="row mb-4 justify-content-center">
+            <div class="col-5">
+                <h1>Sign up</h1>
+            </div>
+        </div>
+        <form>
+            <div class="row mb-4">
+                <label class="col-4 col-for-label">First Name</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="first_name" placeholder="first name">
+                </div>
+            </div>
 
-    Register
+            <div class="row mb-4">
+                <label class="col-4 col-for-label">Last Name</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" name="last_name" placeholder="last name">
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <label class="col-4 col-for-label">Email</label>
+                <div class="col-8">
+                    <input type="email" class="form-control" name="email" placeholder="email">
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <label class="col-4 col-for-label">Password</label>
+                <div class="col-8">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <label class="col-4 col-for-label">Confirm password</label>
+                <div class="col-8">
+                    <input type="password" class="form-control" name="confirmpassword" placeholder="confirm password">
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <label class="col-4 col-for-label">User Type</label>
+                <div class="col-8">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="UserType" id="developer" checked>
+                        <label class="form-check-label" for="developer">
+                            Developer
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="UserType" id="project_manager">
+                        <label class="form-check-label" for="project_manager">
+                            Project Manager
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4 justify-content-end">
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary "> Sign up</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
 
 </body>
 
