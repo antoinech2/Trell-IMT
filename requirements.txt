@@ -1,4 +1,4 @@
 flask
-Flask-Login
+flask-Login
 flask-sqlalchemy
 bcrypt

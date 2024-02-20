@@ -21,10 +21,12 @@
             <h5>Description</h5>
             <p class="task__description">{{ description }}</p>
         </div>
+        <div class="working-team">
           <ul id = "user-image">
             {% for user in users %}
               <li><img src="{{ user }}" alt="Description de l'image 1" class="small-image"></li>
             {% endfor %}
           </ul>
+        </div>
     </div>
 </body>
