@@ -1,0 +1,12 @@
+import flask
+from app import app
+
+
+title = "Task"
+users = ["./static/img/logo.jpg", "./static/img/logo.jpg", "./static/img/logo.jpg"]
+description = "descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+
+
+@app.route('/task')
+def task_view():
+    return flask.render_template("task.html.jinja2", title=title, description=description, users=users)
