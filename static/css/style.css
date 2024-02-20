@@ -17,3 +17,21 @@
     display: flex;
     justify-content: center;
 }
+
+.success {
+            max-width: 400px; /* Ajustez la largeur maximale selon vos besoins */
+            margin: auto;
+            margin-top:1%;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+.icon-green-large{
+    color:green;
+    font-size:100px;
+
+
+}

@@ -31,5 +31,6 @@ import src.routes.sign_up
 import src.routes.logout
 import src.routes.task
 
+
 if __name__ == '__main__':
     app.run()
