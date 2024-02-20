@@ -18,13 +18,13 @@
         <nav class="navigation-site">
             <ul>
                 <li><a href="/home">Home</a></li>
-                <li><a href="/project">Project</a></li>
-                <li><a href="/new_project">New project</a></li>
+                <li><a href="{{user_project}}">Project</a></li>
+                <li><a href="{{user_new_project}}">New project</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </nav>
-        <a href="/connexion" class="logo-connexion">
-            <img src={{ user_logo }} alt="Connexion utilisateur">
+        <a href="{{user_profile}}" class="logo-connexion">
+            <img src="{{ user_logo }}" alt="Connexion utilisateur">
         </a>
     </header>
 </body>
