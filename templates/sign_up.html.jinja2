@@ -6,39 +6,39 @@
                 <h1>Sign up</h1>
             </div>
         </div>
-        <form>
+        <form action="{{ url_for("sign_up_view") }}" method="post">
             <div class="row mb-4">
                 <label class="col-4 col-for-label">First Name</label>
                 <div class="col-8">
-                    <input type="text" class="form-control" name="first_name" placeholder="first name">
+                    <input type="text" class="form-control" name="first_name" placeholder="first name" required>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <label class="col-4 col-for-label">Last Name</label>
                 <div class="col-8">
-                    <input type="text" class="form-control" name="last_name" placeholder="last name">
+                    <input type="text" class="form-control" name="last_name" placeholder="last name" required>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <label class="col-4 col-for-label">Email</label>
                 <div class="col-8">
-                    <input type="email" class="form-control" name="email" placeholder="email">
+                    <input type="email" class="form-control" name="email" placeholder="email" required>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <label class="col-4 col-for-label">Password</label>
                 <div class="col-8">
-                    <input type="password" class="form-control" name="password" placeholder="password">
+                    <input type="password" class="form-control" name="password" placeholder="password" required>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <label class="col-4 col-for-label">Confirm password</label>
                 <div class="col-8">
-                    <input type="password" class="form-control" name="confirmpassword" placeholder="confirm password">
+                    <input type="password" class="form-control" name="confirmpassword" placeholder="confirm password" required>
                 </div>
             </div>
 
@@ -67,4 +67,6 @@
                 </div>
             </div>
         </form>
+
+    <a href="{{ url_for("sign_in_view") }}"> If you have already an account, sign in here </a>
 {% endblock %}

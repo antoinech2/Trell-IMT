@@ -7,18 +7,18 @@
             </div>
         </div>
 
-        <form>
+        <form action="{{ url_for("sign_in_view") }}" method="post">
             <div class="row mb-4">
                 <label class="col-4 col-for-label">Email</label>
                 <div class="col-8">
-                    <input type="email" class="form-control" name="email" placeholder="email">
+                    <input type="email" class="form-control" name="email" placeholder="email" required>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <label class="col-4 col-for-label">Password</label>
                 <div class="col-8">
-                    <input type="password" class="form-control" name="password" placeholder="password">
+                    <input type="password" class="form-control" name="password" placeholder="password" required>
                 </div>
             </div>
             <div class="row mb-4 justify-content-end">
