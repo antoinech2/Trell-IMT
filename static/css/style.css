@@ -1,18 +1,16 @@
 .logo {
-    width: 400px;
+    width: 300px;
 }
 
 .cont_authentification {
             height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin: 0;
+            margin: 1%;
         }
 
 #authentification {
 
-            margin-top: -10%;
         }
 
 
