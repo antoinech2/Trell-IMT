@@ -1,8 +1,8 @@
 {% extends "log.html.jinja2" %}
 {% set title = "Sign In" %}
 {% block body %}
-<div class="row mb-4 justify-content-center">
-            <div class="col-5">
+<div class="row mb-4">
+            <div class="col-12 center_sign">
                 <h1>Sign in</h1>
             </div>
         </div>
@@ -21,12 +21,14 @@
                     <input type="password" class="form-control" name="password" placeholder="password" required>
                 </div>
             </div>
+
+            <a href="{{ url_for("sign_up_view") }}"> If you don't have an account, please register now </a>
             <div class="row mb-4 justify-content-end">
-                <div class="col-4">
+                <div class="col-3">
                     <button type="submit" class="btn btn-primary "> Sign in</button>
                 </div>
             </div>
         </form>
-        <a href="{{ url_for("sign_up_view") }}"> If you don't have an account, please register now </a>
+
 
 {% endblock %}

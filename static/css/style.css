@@ -10,8 +10,13 @@
         }
 
 #authentification {
-
+        width : 50%;
         }
+
+.center_sign{
+    display: flex;
+    justify-content: center;
+}
 
 
 
