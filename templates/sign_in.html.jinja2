@@ -1,0 +1,32 @@
+{% extends "log.html.jinja2" %}
+{% set title = "Sign In" %}
+{% block body %}
+<div class="row mb-4 justify-content-center">
+            <div class="col-5">
+                <h1>Sign in</h1>
+            </div>
+        </div>
+
+        <form>
+            <div class="row mb-4">
+                <label class="col-4 col-for-label">Email</label>
+                <div class="col-8">
+                    <input type="email" class="form-control" name="email" placeholder="email">
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <label class="col-4 col-for-label">Password</label>
+                <div class="col-8">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+            </div>
+            <div class="row mb-4 justify-content-end">
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary "> Sign in</button>
+                </div>
+            </div>
+        </form>
+        <a href="{{ url_for("sign_up_view") }}"> If you don't have an account, please register now </a>
+
+{% endblock %}

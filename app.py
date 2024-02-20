@@ -17,13 +17,13 @@ with app.test_request_context():  # (2) bloc exécuté à l'initialisation de Fl
 def hello_world():  # put application's code here
     return 'Hello World!'
 
-@app.route('/register_login')
-def register_login_view():
-    return flask.render_template("register_login.html.jinja2")
+@app.route('/sign_in')
+def sign_in_view():
+    return flask.render_template("sign_in.html.jinja2")
 
-@app.route('/register')
-def register_view():
-    return flask.render_template("register.html.jinja2")
+@app.route('/sign_up')
+def sign_up_view():
+    return flask.render_template("sign_up.html.jinja2")
 
 
 if __name__ == '__main__':
