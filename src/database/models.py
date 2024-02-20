@@ -43,8 +43,8 @@ class User(db.Model):
     password = db.Column(db.String(), nullable=False)
     authenticated = db.Column(db.Boolean, default=False)
     language = db.Column(db.Enum(Language))
-    boards = db.relationship('Board', secondary=BoardUsers, backref='boards')
-    tasks = db.relationship('Task', secondary=UserTask, backref='tasks')
+    boards = db.relationship('Board', secondary=BoardUsers, backref='user')
+    tasks = db.relationship('Task', secondary=UserTask, backref='user')
 
     def is_active(self):
         """True, as all users are active."""
@@ -67,7 +67,7 @@ class Board(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(), nullable=False)
     description = db.Column(db.String())
-    users = db.relationship('User', secondary=BoardUsers, backref='users')
+    users = db.relationship('User', secondary=BoardUsers, backref='board')
 
 
 class Category(db.Model):
@@ -87,7 +87,7 @@ class Task(db.Model):
     date_expires = db.Column(db.DateTime, nullable=True)
     priority = db.Column(db.Integer, nullable=True)
     etiquettes = db.relationship('Etiquette', backref='etiquettes', secondary=EtiquetteTask)
-    users = db.relationship('User', secondary=UserTask, backref='users')
+    users = db.relationship('User', secondary=UserTask, backref='task')
 
 
 class Etiquette(db.Model):
