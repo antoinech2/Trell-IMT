@@ -40,15 +40,6 @@ def hello_world():  # put application's code here
     return 'Hello World!'
 
 
-@app.route('/fail')
-def fail_pss():  # put application's code here
-    return 'mauvais mdp!'
-
-
-@app.route('/unknowned')
-def fail_email():  # put application's code here
-    return 'compte existe pas squalala!'
-
 @app.route('/home')
 def home_view():
     return flask.render_template("header.html.jinja2",
