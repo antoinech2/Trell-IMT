@@ -27,6 +27,12 @@ def validate_sign_up_form(form):
     if not form:
         result = False
         return result, errors
+
+    if User.query.filter_by(email=form.get("email")).count() > 0:
+        result = False
+        errors.append("Email already registered")
+
+
     if form.get("confirmpassword") != form.get("password"):
         result = False
         errors.append("Password confirmation does not match with original password")
