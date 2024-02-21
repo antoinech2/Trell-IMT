@@ -24,28 +24,38 @@ def sign_up_view():
 def validate_sign_up_form(form):
     result = True
     errors = []
+
+    # Check for form sending
     if not form:
         result = False
         return result, errors
 
+    # Check that user does not already exist (unique email)
     if User.query.filter_by(email=form.get("email")).count() > 0:
         result = False
         errors.append("Email already registered")
 
-
+    # Check for password confirmation
     if form.get("confirmpassword") != form.get("password"):
         result = False
         errors.append("Password confirmation does not match with original password")
+
+    # Check for password length
     if len(form.get("password")) < 7:
         result = False
         errors.append("Password must be at least 7 characters long")
+
+    # Check for password containing numbers
     if not any(char.isdigit() for char in form.get("password")):
         result = False
         errors.append("Password must contain at least one number")
+
+    # Check for password containing uppercase letters
     if not any(char.isupper() for char in form.get("password")):
         result = False
         errors.append("Password must contain at least one uppercase letter")
 
+    # Check for password containing special characters
     special_chars = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
     if not special_chars.search(form.get("password")):
         result = False
