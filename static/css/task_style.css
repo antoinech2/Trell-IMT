@@ -60,11 +60,19 @@
     border-radius : 5%;
     padding: 1%;
     margin:1%;
-    width: 300px;
-
-    flex-shrink: 0;
+    width: 20%;
+    max-height: 85vh;
 
 }
 
+.category-title{
+    color:white;
+}
+
+.category-content{
+    overflow-y: auto;
+    flex-shrink: 0;
+    max-height: 90%;
+}
 
 
