@@ -72,7 +72,13 @@
 .category-content{
     overflow-y: auto;
     flex-shrink: 0;
-    max-height: 90%;
+    max-height: 88%;
 }
+
+.category-add{
+    color:white;
+    margin-top:3%;
+}
+
 
 
