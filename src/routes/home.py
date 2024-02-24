@@ -45,7 +45,7 @@ def home_view():
     return flask.render_template("header.html.jinja2",
                                  user = current_user,
                                  user_logo = "./static/img/logo_user.jpg",
-                                 page_template = "task.html.jinja2")
+                                 page_template = "home_page.html.jinja2")
 
 @app.route('/contact')
 def contact_view():
