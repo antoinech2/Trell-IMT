@@ -30,6 +30,7 @@ import src.routes.home
 import src.routes.sign_up
 import src.routes.logout
 import src.routes.task
+import src.routes.board
 
 
 if __name__ == '__main__':
