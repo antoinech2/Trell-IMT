@@ -51,7 +51,8 @@
 }
 .categories-container {
     display: flex;
-    overflow-x: auto; /* Ajoute une barre de défilement horizontale si nécessaire */
+    overflow-x: auto;
+
 }
 
 .category{
@@ -59,7 +60,10 @@
     border-radius : 5%;
     padding: 1%;
     margin:1%;
-    width: 300px; /* Ajustez la largeur de chaque catégorie selon vos préférences */
+    width: 300px;
+
+    flex-shrink: 0;
+
 }
 
 
