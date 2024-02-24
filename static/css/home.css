@@ -27,6 +27,9 @@
     border-radius: 50%;
     object-fit: cover;
 }
+.logo-connexion {
+    text-decoration: none;
+}
 
 .logout-logo {
     color : black;
@@ -34,5 +37,5 @@
 }
 
 .margin-logo-logout {
-    margin-right: 30px;
+    margin-right: 25px;
 }
