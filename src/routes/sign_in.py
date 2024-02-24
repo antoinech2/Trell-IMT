@@ -20,7 +20,7 @@ def sign_in_view():
         user.authenticated = True
         db.session.add(user)
         db.session.commit()
-        login_user(user, remember=True if form.get("remember") == "1" else False)
+        login_user(user, remember=True if form.get("remember") == "true" else False)
         return redirect("/home")
     return flask.render_template("sign_in.html.jinja2", errors=errors, form=form)
 
