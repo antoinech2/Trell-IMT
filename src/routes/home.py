@@ -53,3 +53,8 @@ def contact_view():
                                  user = current_user,
                                  user_logo = "./static/img/logo_user.jpg",
                                  page_template = "contact.html.jinja2")
+
+@app.route('/test')
+def board_dev():
+    return flask.render_template('board_developpeur.html.jinja2', user=current_user,
+    user_logo = "./static/img/logo_user.jpg")

@@ -33,5 +33,6 @@ import src.routes.task
 import src.routes.board
 
 
+
 if __name__ == '__main__':
     app.run()
