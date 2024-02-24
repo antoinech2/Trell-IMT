@@ -14,4 +14,4 @@ def logout():
     db.session.add(user)
     db.session.commit()
     logout_user()
-    return redirect("/sign_in")
+    return redirect("/")

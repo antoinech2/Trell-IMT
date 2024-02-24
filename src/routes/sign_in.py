@@ -6,6 +6,9 @@ from flask_login import login_user
 from app import app
 from src.database.models import *
 
+@app.route('/sign', methods=['GET', 'POST'])
+def sign_view():
+    return flask.render_template('sign.html.jinja2')
 
 @app.route('/sign_in', methods=["GET", "POST"])
 def sign_in_view():
@@ -17,7 +20,7 @@ def sign_in_view():
         user.authenticated = True
         db.session.add(user)
         db.session.commit()
-        login_user(user, remember=True if form.get("remember") == "1" else False)
+        login_user(user, remember=True if form.get("remember") == "true" else False)
         return redirect("/home")
     return flask.render_template("sign_in.html.jinja2", errors=errors, form=form)
 
