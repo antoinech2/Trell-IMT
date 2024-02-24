@@ -27,3 +27,12 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.logout-logo {
+    color : black;
+    font-size : 25px;
+}
+
+.margin-logo-logout {
+    margin-right: 30px;
+}
