@@ -1,0 +1,24 @@
+{% include 'header.html.jinja2' %}
+
+<div class="categories-container">
+
+    {% for category in tasks_data %}
+
+        <div class="category">
+            <p class="category-title"> {{ category.name }} </p>
+            <div class="category-content">
+                {% for task in category.tasks %}
+                    {% with title=task.name, description=task.description %}
+                        {% include "task.html.jinja2" %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
+            <div>
+                <button class="category-add btn btn-outline-light"> + Add a task</button>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+</div>
