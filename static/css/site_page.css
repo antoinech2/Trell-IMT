@@ -28,7 +28,10 @@ nav a {
 .page_title {
     text-align: center;
     padding: 50px 20px;
-    background-color: #e7f1d4;
+    background-image: url('/static/img/logo.jpg');
+    background-size: cover; /* Ceci s'assure que l'image de fond couvre toute la zone disponible */
+    background-position: center; /* Ceci centre l'image de fond */
+    background-repeat: no-repeat; /* Ceci empêche l'image de fond de se répéter */
 }
 
 footer {
