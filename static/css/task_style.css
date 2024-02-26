@@ -78,8 +78,16 @@
     max-height: 88%;
 }
 
-.category-add{
+.task-add{
     color:white;
+}
+
+.add-container{
+    padding: 1%;
+    margin-top:2%;
+}
+.category-add{
+
 }
 
 
