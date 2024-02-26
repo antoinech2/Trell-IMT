@@ -8,6 +8,9 @@ from src.database.models import *
 def hello_world():  # put application's code here
     return flask.render_template("site_page.html.jinja2")
 
+@app.route('/test')
+def test():  # put application's code here
+    return flask.render_template("components/add_task.html.jinja2", user = current_user)
 
 @app.route('/home')
 @login_required

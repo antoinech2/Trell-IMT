@@ -1,0 +1,13 @@
+
+<link rel="stylesheet" href="{{ url_for("static", filename="css/popup_form.css") }}"/>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ url_for("static", filename="js/add_task.js") }}"></script>
+
+<div class="messagepop" id="new_task_popup">
+    Add task to category <span id="add_task_category"></span>
+    <form method="post" id="new_task" action="/new_task">
+        <p><label for="title">Task title</label><input type="text" size="30" name="title" id="title" /></p>
+        <p><label for="body">Message</label><textarea rows="6" name="description" id="body" cols="35"></textarea></p>
+        <p><input type="submit" value="Add task" name="commit" id="message_submit"/> <a class="close" href="/">Cancel</a></p>
+    </form>
+</div>
