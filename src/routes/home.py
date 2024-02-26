@@ -6,7 +6,7 @@ from src.database.models import *
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return 'Page d''accueil'
+    return flask.render_template("site_page.html.jinja2")
 
 
 @app.route('/home')
