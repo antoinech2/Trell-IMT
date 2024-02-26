@@ -1,26 +1,35 @@
 {% include 'header.html.jinja2' %}
 {% include 'components/add_task.html.jinja2' %}
+{% with board_id=board.id %}
+    {% include "components/add_category.html.jinja2" %}
+{% endwith %}
 
-<div class="categories-container">
+<div id="board" data-id= {{ board.id }}>
+    Board <span id="board_name">{{ board.name }}</span>
+    {{ board.description }}
+    <div class="categories-container">
 
-    {% for category in tasks_data %}
+        {% for category in tasks_data %}
 
-        <div class="category">
-            <p class="category-title"> {{ category.name }} </p>
-            <div class="category-content">
-                {% for task in category.tasks %}
-                    {% with title=task.name, description=task.description %}
-                        {% include "task.html.jinja2" %}
-                    {% endwith %}
-                {% endfor %}
+            <div class="category">
+                <p class="category-title"> {{ category.name }} </p>
+                <div class="category-content">
+                    {% for task in category.tasks %}
+                        {% with title=task.name, description=task.description %}
+                            {% include "task.html.jinja2" %}
+                        {% endwith %}
+                    {% endfor %}
+                </div>
+                <div>
+                    <button class="task-add btn btn-outline-light new_task" data-category_id= {{ category.id }}> + Add a
+                        task
+                    </button>
+                </div>
             </div>
-            <div>
-                <button class="task-add btn btn-outline-light new_task" data-category_id = {{ category.id }}> + Add a task</button>
-            </div>
+
+        {% endfor %}
+        <div class="add-container">
+            <button class="category-add btn btn-outline-secondary new_category"> + Add a category</button>
         </div>
-
-    {% endfor %}
-<div class="add-container">
-<button class="category-add btn btn-outline-secondary"> + Add a category </button>
-</div>
+    </div>
 </div>

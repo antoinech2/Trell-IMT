@@ -1,0 +1,13 @@
+
+<link rel="stylesheet" href="{{ url_for("static", filename="css/popup_form.css") }}"/>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ url_for("static", filename="js/add_category.js") }}"></script>
+
+<div class="messagepop" id="new_category_popup">
+    Add category to board <span id="add_category_board"></span>
+    <form method="post" id="new_category" action="/new_category?board_id={{ board_id }}">
+        <p><label for="title">Task title</label><input type="text" size="30" name="title" id="title" /></p>
+        <p><label for="body">Message</label><textarea rows="6" name="description" id="body" cols="35"></textarea></p>
+        <p><input type="submit" value="Add category" name="commit" id="message_submit"/> <a class="close" href="/">Cancel</a></p>
+    </form>
+</div>

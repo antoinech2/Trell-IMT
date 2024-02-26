@@ -32,7 +32,7 @@ import src.routes.logout
 import src.routes.task
 import src.routes.board
 import src.form.new_task
-
+import src.form.new_category
 
 if __name__ == '__main__':
     app.run()
