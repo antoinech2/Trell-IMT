@@ -1,0 +1,39 @@
+/* styles.css */
+body, h1, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f3f3f3;
+    padding: 10px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.signup-button {
+    color: #fff;
+    background-color: #22ae60;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.page_title {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #e7f1d4;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
