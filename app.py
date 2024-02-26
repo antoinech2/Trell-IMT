@@ -31,7 +31,7 @@ import src.routes.sign_up
 import src.routes.logout
 import src.routes.task
 import src.routes.board
-
+import src.form.new_task
 
 
 if __name__ == '__main__':

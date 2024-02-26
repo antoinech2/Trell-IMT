@@ -12,7 +12,7 @@ $(function () {
                 form.addClass('opened');
                 form.slideFadeToggle();
             }
-            form.attr("action", `/new_task?category_id=${$(this).data("category_id")}`)
+            form.find("form").attr("action", `/new_task?category_id=${$(this).data("category_id")}`)
             form.data("category_id", $(this).data("category_id"))
             category_name.text($(this).parents(".category").find(".category-title").text())
 
