@@ -5,8 +5,12 @@
 {% endwith %}
 
 <div id="board" data-id= {{ board.id }}>
+    <div class="board-title">
     Board <span id="board_name">{{ board.name }}</span>
-    {{ board.description }}
+    {% if board.description %}
+        <span id="board_description">{{ board.description }}</span>
+        {% endif %}
+    </div>
     <div class="categories-container">
 
         {% for category in tasks_data %}

@@ -28,7 +28,7 @@ html,body{
 }
 
 .description {
-    border-bottom: 2px solid black;
+    margin-left:0.5cm;
 }
 
 .task__description {
@@ -38,6 +38,7 @@ html,body{
 .working-team {
     background: #00B8DE;
     overflow: hidden;
+    border-top: 2px solid black;
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
 }
@@ -59,10 +60,10 @@ html,body{
 
 .categories-container {
     display: flex;
-    height:calc(100vh - 90px);
+    height: calc(100vh - 1.5cm);
     overflow-x: auto;
-    padding-left : 1%;
-    padding-bottom : 0.5%;
+    padding-left: 1%;
+    padding-bottom: 0.5%;
 
 }
 
@@ -70,7 +71,7 @@ html,body{
     background-color: #333333;
     border-radius : 30px;
     margin:0.5%;
-    padding:1%;
+    padding:1% ;
     width: 23%;
     height:auto;
     flex-shrink: 0;
@@ -100,8 +101,22 @@ html,body{
     padding: 1%;
     margin-top:2%;
 }
+
 .category-add{
 
+}
+
+.board-title{
+    padding-left: 7%;
+    background-color: lightgrey;
+}
+#board_name{
+    font-weight:bold;
+    margin-right: 1cm;
+}
+
+#board_description{
+    font-size:small;
 }
 
 
