@@ -3,5 +3,37 @@
 
 <link rel="stylesheet" href="{{ url_for("static", filename="css/project_creator.css") }}"/>
 
-<div>Bonjour ceci est une div</div>
+<div>
+     <form action="{{ url_for("create_project") }}" method="post">
+        <div class="big_container">
+            <div class="form_shape">
+                <h1>Create a new project</h1>
+                <div class="row">
+                    <label class="col-4 col-for-label">Project Name</label>
+                    <div class="col-8">
+                        <input type="text" class="form-name_project" name="project_name" placeholder="Project name" value="{{ form.project_name }}" required size="20">
+                    </div>
+                </div>
+                <h3>Add a description</h3>
+                <textarea rows="6" name="description" id="description" cols="100"></textarea>
+                <h3>Add catégories</h3>
+                <div class="categories">
+                    <div class="category">A new category</div>
+                    <div class="category">An other category</div>
+                </div>
+                <div class="add-category">
+                    <input type="text" class="form-name_category" name="category_name" placeholder="Catégory name" value="{{ form.project_name }}" size="20">
+                    <button class="category-add btn btn-outline-secondary"> + Add a category</button>
+                </div>
+                <h3>Add collaborators</h3>
+                <a href="{{ url_for("home_view") }}"> Cancel </a>
+                <div class="row mb-4 justify-content-end">
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-primary "> Create project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </form>
+</div>
 </htlm>

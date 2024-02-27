@@ -1,0 +1,34 @@
+.big_container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+}
+
+.form_shape{
+    width : 60%;
+    align-content: center;
+}
+
+h1{
+    margin: 20px;
+}
+
+.form-name_project{
+    display: flex;
+}
+
+h3{
+    margin : 20px
+}
+
+.categories{
+    margin: 10px;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.category{
+    margin: 3px;
+}
+
