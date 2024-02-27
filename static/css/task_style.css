@@ -12,7 +12,7 @@ html,body{
 }
 
 .task__header {
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     background: #99CC33;
     overflow: hidden;
     border-top-right-radius: 16px;
@@ -38,7 +38,7 @@ html,body{
 .working-team {
     background: #00B8DE;
     overflow: hidden;
-    border-top: 2px solid black;
+    border-top: 1px solid black;
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
 }
@@ -69,7 +69,7 @@ html,body{
 
 .category{
     background-color: #333333;
-    border-radius : 30px;
+    border-radius : 20px;
     margin:0.5%;
     padding:1% ;
     width: 23%;
@@ -98,11 +98,16 @@ html,body{
 }
 
 .add-container{
-    padding: 1%;
-    margin-top:2%;
+    margin:0.5%;
+    padding:1% ;
+    width: 23%;
+    flex-shrink: 0;
+
+
 }
 
 .category-add{
+    width:100%;
 
 }
 
