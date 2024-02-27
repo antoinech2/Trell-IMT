@@ -126,6 +126,12 @@ html,body{
     font-weight:normal;
 }
 
+.description-title{
+    font-size:small;
+    font-weight:normal;
+    color:white;
+}
+
 .head-category{
     position:relative
 }
