@@ -1,58 +1,53 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Page Contact de Trell'IMT</title>
-    <link rel="stylesheet" href="style.css"> <!-- Assurez-vous d'inclure votre propre fichier CSS pour le style -->
-</head>
-<body>
-    <header>
-        <h1>Page Contact de Trell'IMT</h1>
-    </header>
+{% include 'header.html.jinja2' %}
+<section>
+    <p>Bienvenue sur la page de contact de Trell'IMT, votre outil dédié à l'organisation de projets conçu avec passion
+        par trois étudiants d'IMT Atlantique. Trell'IMT vise à simplifier la gestion de vos projets grâce à une
+        interface intuitive et des fonctionnalités sur mesure adaptées à vos besoins. Notre engagement est de vous
+        fournir une solution efficace qui accompagne vos projets du début à la fin.</p>
+</section>
 
-    <section>
-        <p>Bienvenue sur la page de contact de Trell'IMT, votre outil dédié à l'organisation de projets conçu avec passion par trois étudiants d'IMT Atlantique. Trell'IMT vise à simplifier la gestion de vos projets grâce à une interface intuitive et des fonctionnalités sur mesure adaptées à vos besoins. Notre engagement est de vous fournir une solution efficace qui accompagne vos projets du début à la fin.</p>
-    </section>
+<section>
+    <h2>Nos Fondateurs</h2>
+    <div>
+        <h3>Antoine Cheucle</h3>
+        <p>Étudiant en informatique à IMT Atlantique, Antoine est passionné par le développement de solutions web
+            innovantes. Il est le cerveau derrière l'architecture technique de Trell'IMT.</p>
+        <p>📧 <a href="mailto:antoine.cheucle@imt-atlantique.net">antoine.cheucle@imt-atlantique.net</a></p>
+    </div>
+    <div>
+        <h3>Emmanuelle Sojka</h3>
+        <p>Spécialiste en design d'interface utilisateur, Emmanuelle s'assure que l'expérience utilisateur de Trell'IMT
+            soit à la fois agréable et fonctionnelle.</p>
+        <p>📧 <a href="mailto:emmanuelle.sojka@imt-atlantique.net">emmanuelle.sojka@imt-atlantique.net</a></p>
+    </div>
+    <div>
+        <h3>Nathan Claeys</h3>
+        <p>Expert en gestion de projet, Nathan a conçu la méthodologie de Trell'IMT pour optimiser le suivi et la
+            réalisation de vos projets.</p>
+        <p>📧 <a href="mailto:nathan.claeys@imt-atlantique.net">nathan.claeys@imt-atlantique.net</a></p>
+    </div>
+</section>
 
-    <section>
-        <h2>Nos Fondateurs</h2>
-        <div>
-            <h3>Antoine Cheucle</h3>
-            <p>Étudiant en informatique à IMT Atlantique, Antoine est passionné par le développement de solutions web innovantes. Il est le cerveau derrière l'architecture technique de Trell'IMT.</p>
-            <p>📧 <a href="mailto:antoine.cheucle@imt-atlantique.net">antoine.cheucle@imt-atlantique.net</a></p>
-        </div>
-        <div>
-            <h3>Emmanuelle Sojka</h3>
-            <p>Spécialiste en design d'interface utilisateur, Emmanuelle s'assure que l'expérience utilisateur de Trell'IMT soit à la fois agréable et fonctionnelle.</p>
-            <p>📧 <a href="mailto:emmanuelle.sojka@imt-atlantique.net">emmanuelle.sojka@imt-atlantique.net</a></p>
-        </div>
-        <div>
-            <h3>Nathan Claeys</h3>
-            <p>Expert en gestion de projet, Nathan a conçu la méthodologie de Trell'IMT pour optimiser le suivi et la réalisation de vos projets.</p>
-            <p>📧 <a href="mailto:nathan.claeys@imt-atlantique.net">nathan.claeys@imt-atlantique.net</a></p>
-        </div>
-    </section>
+<section>
+    <h2>Nous Contacter</h2>
+    <p>Pour toute question, suggestion ou demande de support, n'hésitez pas à nous contacter. Nous sommes là pour vous
+        aider à tirer le meilleur parti de Trell'IMT et à réussir vos projets avec efficacité.</p>
+    <ul>
+        <li>Support Technique : <a href="mailto:support@trellimt.net">support@trellimt.net</a></li>
+        <li>Suggestions et Feedback : <a href="mailto:feedback@trellimt.net">feedback@trellimt.net</a></li>
+        <li>Partenariats et Médias : <a href="mailto:media@trellimt.net">media@trellimt.net</a></li>
+    </ul>
+</section>
 
-    <section>
-        <h2>Nous Contacter</h2>
-        <p>Pour toute question, suggestion ou demande de support, n'hésitez pas à nous contacter. Nous sommes là pour vous aider à tirer le meilleur parti de Trell'IMT et à réussir vos projets avec efficacité.</p>
-        <ul>
-            <li>Support Technique : <a href="mailto:support@trellimt.net">support@trellimt.net</a></li>
-            <li>Suggestions et Feedback : <a href="mailto:feedback@trellimt.net">feedback@trellimt.net</a></li>
-            <li>Partenariats et Médias : <a href="mailto:media@trellimt.net">media@trellimt.net</a></li>
-        </ul>
-    </section>
+<section>
+    <h2>Suivez-nous</h2>
+    <p>Restez connecté avec Trell'IMT et ne manquez aucune mise à jour ou nouveauté :</p>
+    <p>Twitter : <a href="https://twitter.com/TrellIMT">@TrellIMT</a></p>
+    <p>LinkedIn : <a href="https://www.linkedin.com/company/trellimt">Trell'IMT</a></p>
+</section>
 
-    <section>
-        <h2>Suivez-nous</h2>
-        <p>Restez connecté avec Trell'IMT et ne manquez aucune mise à jour ou nouveauté :</p>
-        <p>Twitter : <a href="https://twitter.com/TrellIMT">@TrellIMT</a></p>
-        <p>LinkedIn : <a href="https://www.linkedin.com/company/trellimt">Trell'IMT</a></p>
-    </section>
-
-    <footer>
-        <p>Nous vous remercions pour votre confiance et sommes impatients de vous accompagner dans la réussite de vos projets.</p>
-        <p>L'équipe Trell'IMT.</p>
-    </footer>
-</body>
-</html>
+<footer>
+    <p>Nous vous remercions pour votre confiance et sommes impatients de vous accompagner dans la réussite de vos
+        projets.</p>
+    <p>L'équipe Trell'IMT.</p>
+</footer>
