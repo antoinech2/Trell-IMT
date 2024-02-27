@@ -61,7 +61,8 @@ html,body{
     display: flex;
     height:calc(100vh - 90px);
     overflow-x: auto;
-    padding : 2%;
+    padding-left : 1%;
+    padding-bottom : 0.5%;
 
 }
 
@@ -70,9 +71,11 @@ html,body{
     border-radius : 30px;
     margin:0.5%;
     padding:1%;
-    width: 20%;
+    width: 10cm;
     height:auto;
     flex-shrink: 0;
+    display:flex;
+    flex-flow: column;
 
 }
 
@@ -89,6 +92,8 @@ html,body{
 
 .task-add{
     color:white;
+    flex: 0 1 40px;
+    margin-top: 2%;
 }
 
 .add-container{
