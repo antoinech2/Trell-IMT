@@ -10,6 +10,17 @@
         {% if board.description %}
             <span class="description">{{ board.description }}</span>
         {% endif %}
+    <div class="dropdown drop-right">
+                        <button class="btn btn-outline- dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" >Edit board</a></li>
+                            <li><a class="dropdown-item">Delete board</a></li>
+
+                        </ul>
+                    </div>
     </div>
     <div class="categories-container">
 

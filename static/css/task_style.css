@@ -113,8 +113,10 @@ html,body{
 }
 
 .board-title{
+    position:relative;
     padding-left: 7%;
     background-color: lightgrey;
+    height:1cm;
 }
 #board_name{
     font-weight:bold;
