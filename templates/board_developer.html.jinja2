@@ -1,5 +1,5 @@
 {% include 'components/header.html.jinja2' %}
-{% include 'components/add_task.html.jinja2' %}
+{% include 'components/task_form.html.jinja2' %}
 {% with board_id=board.id %}
     {% include "components/add_category.html.jinja2" %}
 {% endwith %}
@@ -19,9 +19,11 @@
                 <p class="category-title"> {{ category.name }} </p>
                 <div class="category-content">
                     {% for task in category.tasks %}
-                        {% with title=task.name, description=task.description %}
-                            {% include "components/task.html.jinja2" %}
-                        {% endwith %}
+                        <div class="task" id="{{ task.id }}">
+                            {% with title=task.name, description=task.description %}
+                                {% include "components/task.html.jinja2" %}
+                            {% endwith %}
+                        </div>
                     {% endfor %}
                 </div>
                 <div>

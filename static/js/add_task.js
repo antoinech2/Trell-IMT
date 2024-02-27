@@ -1,6 +1,6 @@
 $(function () {
-    let form = $('#new_task_popup')
-    let category_name = $('#add_task_category')
+    let form = $('#task_popup')
+    let category_name = $('#form-label')
     $('.new_task').on('click', function () {
 
         if ($(this).data("category_id") === form.data("category_id")) {
@@ -14,8 +14,8 @@ $(function () {
             }
             form.find("form").attr("action", `/new_task?category_id=${$(this).data("category_id")}`)
             form.data("category_id", $(this).data("category_id"))
-            category_name.text($(this).parents(".category").find(".category-title").text())
-
+            category_name.text("Add to category" + $(this).parents(".category").find(".category-title").text())
+            $("#form_submit").text("Edit task")
         }
         return false;
     });

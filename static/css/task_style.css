@@ -5,7 +5,7 @@ html,body{
     flex-flow: column;
 }
 
-#task {
+.task {
     background: white;
     border-radius: 16px;
     border: 2px solid black;

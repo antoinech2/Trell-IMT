@@ -13,20 +13,20 @@
 </head>
 
 <body>
-    <div id = "task", class="col-12 ">
-        <div class="task__header">
-            <h5 class="task__title">{{ title }}</h5>
-        </div>
-        <div class="description">
-            <h6>Description</h6>
-            <p class="task__description">{{ description }}</p>
-        </div>
-        <div class="working-team">
-          <ul id = "user-image">
-            {% for user in users %}
-              <li><img src="{{ user }}" alt="Description de l'image 1" class="small-image"></li>
-            {% endfor %}
-          </ul>
-        </div>
+<div class="col-12">
+    <div class="task__header">
+        <h5 class="task__title">{{ title }}</h5>
     </div>
+    <div class="description">
+        <h6>Description</h6>
+        <p class="task__description">{{ description }}</p>
+    </div>
+    <div class="working-team">
+        <ul id="user-image">
+            {% for user in users %}
+                <li><img src="{{ user }}" alt="Description de l'image 1" class="small-image"></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 </body>

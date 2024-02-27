@@ -33,6 +33,7 @@ import src.routes.task
 import src.routes.board
 import src.form.new_task
 import src.form.new_category
+import src.form.edit_task
 
 if __name__ == '__main__':
     app.run()
