@@ -43,3 +43,11 @@ label {
 .link{
   padding:1%;
 }
+#form-label{
+  margin-right:2cm;
+}
+#delete_task{
+  position:absolute;
+  top:1%;
+  right:1%;
+}

@@ -22,7 +22,7 @@ nav a{
     padding: 10px 0px;
 }
 
-nav a:hover{
+.template_choice:hover{
     color: orange;
     border-bottom: 2px solid gold;
 }
