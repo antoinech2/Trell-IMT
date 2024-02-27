@@ -15,6 +15,8 @@ $(function () {
             form.data("task_id", $(this).attr("id"))
             let html_form = form.find("form")
             html_form.attr("action", `/edit_task?task_id=${$(this).attr("id")}`)
+            $('#delete_task').attr("action", `/delete_task?task_id=${$(this).attr("id")}`)
+
             let task_name = $(this).find(".task__title").text()
             let task_description = $(this).find(".task__description").text()
             let category_name = $(this).parents(".category").find(".category-title").text()
