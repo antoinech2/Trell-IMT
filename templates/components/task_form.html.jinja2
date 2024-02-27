@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="{{ url_for("static", filename="css/popup_form.css") }}"/>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -8,8 +7,18 @@
 <div class="messagepop" id="task_popup">
     <h5 id="form-label"></h5>
     <form method="post" id="new_task" action="/new_task">
-        <div><i class="bi bi-card-checklist"></i> <label for="title" > Task title </label><input type="text" class="form-control" size="30" name="title" id="title" /></div>
-        <div> <i class="bi bi-file-earmark-richtext"></i> <label for="body"> Description </label><textarea class="form-control" rows="6" name="description" id="description" cols="35"></textarea></div>
-        <div class="link"><a class="close btn btn-outline-danger" href="/">Cancel</a> <input type="submit" class="btn btn-outline-success button-right" value="Add task" name="commit" id="form_submit"/></div>
+        <div><i class="bi bi-card-checklist"></i> <label for="title"> Task title </label><input type="text"
+                                                                                                class="form-control"
+                                                                                                size="30" name="title"
+                                                                                                id="title"/></div>
+        <div><i class="bi bi-file-earmark-richtext"></i> <label for="body"> Description </label><textarea
+                class="form-control" rows="6" name="description" id="description" cols="35"></textarea></div>
+        <div class="link"><a class="close btn btn-outline-danger" href="/">Cancel</a>
+
+            <input type="submit" class="btn btn-outline-success button-right" value="Add task" name="commit"
+                   id="form_submit"/></div>
+    </form>
+    <form id="delete_task" action="/delete_task" method="post">
+        <input type="submit" name="delete" value="Delete"/>
     </form>
 </div>
