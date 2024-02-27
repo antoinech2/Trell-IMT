@@ -4,10 +4,10 @@
 <script src="{{ url_for("static", filename="js/add_category.js") }}"></script>
 
 <div class="messagepop" id="new_category_popup">
-    Add category to board <span id="add_category_board"></span>
+    <h5> Add category to board <span id="add_category_board"></span> </h5>
     <form method="post" id="new_category" action="/new_category?board_id={{ board_id }}">
-        <p><label for="title">Task title</label><input type="text" size="30" name="title" id="title" /></p>
-        <p><label for="body">Message</label><textarea rows="6" name="description" id="body" cols="35"></textarea></p>
-        <p><input type="submit" value="Add category" name="commit" id="message_submit"/> <a class="close_category_form" href="/">Cancel</a></p>
+        <div> <i class="bi bi-card-checklist"></i> <label for="title"> Category title </label><input class="form-control" type="text" size="30" name="title" id="title" /></div>
+        <div> <i class="bi bi-file-earmark-richtext"></i> <label for="body" >  Description </label><textarea class="form-control" rows="6" name="description" id="body" cols="35"></textarea></div>
+        <div class="link"><a class="close_category_form btn btn-outline-danger" href="/">Cancel</a><input type="submit" class="btn btn-outline-success button-right" value="Add task" name="commit" id="form_submit"/> </div>
     </form>
 </div>

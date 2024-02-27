@@ -24,7 +24,7 @@
             margin-top:1%;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             text-align: center;
         }
@@ -32,6 +32,13 @@
 .icon-green-large{
     color:green;
     font-size:100px;
+}
 
-
+.error-container{
+    background-color: #f38080;
+    border: solid 1px red;
+    border-radius:10px;
+    padding-left: 0.5cm;
+    padding-top:0.2cm;
+    margin-bottom : 0.5cm;
 }
