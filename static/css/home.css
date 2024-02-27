@@ -2,18 +2,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 50px;
+    padding-left: 50px;
     background-color: #f5f5f5;
+    max-height: 1cm;
 }
 
 .logo-site, .logo-connexion img {
-    height: 50px;
+    height: 30px;
 }
 
 .navigation-site ul {
+
     list-style: none;
     display: flex;
     gap: 20px;
+    margin-top:0.5cm;
 }
 
 .navigation-site a {
@@ -24,11 +27,11 @@
     width: 100%;
     margin: 0 auto;
     position: sticky;
-    top: 0px;
+    top: 0;
 }
 
 .logo-connexion img {
-    width: 50px;
+    width: 30px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -38,7 +41,7 @@
 
 .logout-logo {
     color : black;
-    font-size : 25px;
+    font-size : 20px;
 }
 
 .margin-logo-logout {
