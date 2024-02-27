@@ -26,12 +26,9 @@
             <h6>Continue a recent project or find another one</h6>
         </div>
         <div class="selection_menu">
-            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 1</button>
-            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 2</button>
-            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 3</button>
-            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 4</button>
-            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 5</button>
-            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Bebou project</button>
+            {% for board in boards %}
+                <button onclick="window.location.href='/board/{{ board.id }}'" class="access_project_button col-xl-3 col-sm-6 col-12" >{{ board.name }}</button>
+            {% endfor %}
         </div>
     </div>
 </div>

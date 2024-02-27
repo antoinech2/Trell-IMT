@@ -14,7 +14,7 @@ def hello_world():  # put application's code here
 @login_required
 def home_view():
     return flask.render_template("home_page.html.jinja2",
-                                 user=current_user)
+                                 user=current_user, boards = current_user.boards)
 
 
 @app.route('/contact')
