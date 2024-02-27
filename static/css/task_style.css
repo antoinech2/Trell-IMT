@@ -83,6 +83,7 @@ html,body{
 .category-title{
     color:white;
     max-height: 5%;
+    font-weight: bold;
 }
 
 .category-content{
@@ -120,9 +121,21 @@ html,body{
     margin-right: 1cm;
 }
 
-#board_description{
+.description{
     font-size:small;
+    font-weight:normal;
 }
 
+.head-category{
+    position:relative
+}
+.drop-right{
+    position:absolute;
+    top:0;
+    right:0;
+
+
+
+}
 
 

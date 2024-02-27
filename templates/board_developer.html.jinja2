@@ -8,7 +8,7 @@
     <div class="board-title">
     Board <span id="board_name">{{ board.name }}</span>
     {% if board.description %}
-        <span id="board_description">{{ board.description }}</span>
+        <span class="description">{{ board.description }}</span>
         {% endif %}
     </div>
     <div class="categories-container">
@@ -16,7 +16,22 @@
         {% for category in tasks_data %}
 
             <div class="category ">
-                <p class="category-title"> {{ category.name }} </p>
+            <div class="head-category">
+                <p class="category-title"> {{ category.name }}
+                    {% if category.description %}
+        <span class="description">{{ category.description }}</span>
+        {% endif %}
+            </p>
+                <div class="dropdown drop-right">
+  <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Actions
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" >Edit category</a></li>
+    <li><a class="dropdown-item" >Delete category</a></li>
+  </ul>
+</div>
+            </div>
                 <div class="category-content">
                     {% for task in category.tasks %}
                         <div class="task" id="{{ task.id }}">
