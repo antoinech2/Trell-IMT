@@ -8,14 +8,18 @@
         </div>
     <!-- TODO : improve errors display -->
 
+
     {% if errors %}
-        Errors:
+        <div class="error-container">
+        The following errors prevent us from accessing your request :
         <ul>
             {% for error in errors %}
                 <li>{{ error }}</li>
             {% endfor %}
         </ul>
+        </div>
     {% endif %}
+
 
         <form action="{{ url_for("sign_in_view") }}" method="post">
             <div class="row mb-4">

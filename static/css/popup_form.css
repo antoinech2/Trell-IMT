@@ -10,7 +10,12 @@ a.selected {
   cursor:default;
   display:none;
   margin-top: 15px;
-  position:absolute;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
   text-align:left;
   width:394px;
   z-index:50;
@@ -28,4 +33,13 @@ label {
   border-bottom: 1px solid #EFEFEF;
   margin: 8px 0;
   padding-bottom: 8px;
+}
+
+.button-right{
+  position: absolute;
+  right: 0.8cm;
+}
+
+.link{
+  padding:1%;
 }
