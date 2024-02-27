@@ -19,24 +19,45 @@ nav a {
 
 .signup-button {
     color: #fff;
-    background-color: #22ae60;
+    background-color: #99CC33;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
 }
 
 .page_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 50px 20px;
-    background-image: url('/static/img/logo.jpg');
-    background-size: cover; /* Ceci s'assure que l'image de fond couvre toute la zone disponible */
-    background-position: center; /* Ceci centre l'image de fond */
-    background-repeat: no-repeat; /* Ceci empêche l'image de fond de se répéter */
+    padding: 0px;
+    gap: 20px;
+    background-image: url('/static/img/logo_site_page.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
+.page_title h1 {
+    color : white;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+.page_title p {
+    color : white;
+    font-size: 1.15em;
+    margin-bottom: 1em;
+}
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 20px 0;
+}
+
+#big_page_title{
+
 }
