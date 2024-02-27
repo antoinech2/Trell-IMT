@@ -15,14 +15,14 @@ nav ul::after{
     clear: both;
 }
 
-nav b{
+nav a{
     display: block;
     text-decoration: none;
     color: black;
     padding: 10px 0px;
 }
 
-nav b:hover{
+nav a:hover{
     color: orange;
     border-bottom: 2px solid gold;
 }
@@ -46,17 +46,17 @@ nav > ul li:hover .under{
     text-align: left;
 }
 
-.under b{
+.under a{
     padding: 10px;
     border-bottom: none;
 
 }
 
-.under b:hover{
+.under a:hover{
     border-bottom: none;
 }
 
-.roll > b::after{
+.roll > a::after{
     content:" ▼";
     font-size: 12px;
 }
