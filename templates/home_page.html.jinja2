@@ -1,3 +1,4 @@
+<htlm>
 {% include 'components/header.html.jinja2' %}
 
 <link rel="stylesheet" href="{{ url_for("static", filename="css/home_page.css") }}"/>
@@ -18,6 +19,25 @@
                     </ul>
                 </nav>
             </div>
+            <div class="selection_menu">
+                <button class="access_project_button col-xl-3 col-sm-6 col-12" >Classic template</button>
+                <button class="access_project_button col-xl-3 col-sm-6 col-12" >Special template</button>
+            </div>
+        </div>
+    </div>
+    <div class="access my projects">
+        <h2>Access to an existing project</h2>
+        <div class="find_menu">
+            <h6>Continue a recent project or find another one</h6>
+        </div>
+        <div class="selection_menu">
+            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 1</button>
+            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 2</button>
+            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 3</button>
+            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 4</button>
+            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Project 5</button>
+            <button class="access_project_button col-xl-3 col-sm-6 col-12" >Bebou project</button>
         </div>
     </div>
 </div>
+</htlm>
