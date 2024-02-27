@@ -32,3 +32,9 @@ h3{
     margin: 3px;
 }
 
+.remove-category{
+    margin-left: 15px;
+    padding : 2px;
+    border-radius: 25%;
+    background-color: #f38080;
+}

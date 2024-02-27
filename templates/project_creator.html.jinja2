@@ -1,5 +1,6 @@
 <htlm>
 {% include 'components/header.html.jinja2' %}
+<script src="../static/js/create_project.js"></script>
 
 <link rel="stylesheet" href="{{ url_for("static", filename="css/project_creator.css") }}"/>
 
@@ -17,13 +18,13 @@
                 <h3>Add a description</h3>
                 <textarea rows="6" name="description" id="description" cols="100"></textarea>
                 <h3>Add catégories</h3>
-                <div class="categories">
-                    <div class="category">A new category</div>
-                    <div class="category">An other category</div>
+                <div class="categories" id="categories">
+                    <div class="category">A new category <span class="remove-category">X</span></div>
+                    <div class="category">An other category <span class="remove-category">X</span></div>
                 </div>
                 <div class="add-category">
-                    <input type="text" class="form-name_category" name="category_name" placeholder="Catégory name" value="{{ form.project_name }}" size="20">
-                    <button class="category-add btn btn-outline-secondary"> + Add a category</button>
+                    <input type="text" class="form-name_category" name="category_name" placeholder="Category name" size="20">
+                    <button type="button" class="category-add btn btn-outline-secondary">+ Add a category</button>
                 </div>
                 <h3>Add collaborators</h3>
                 <a href="{{ url_for("home_view") }}"> Cancel </a>
