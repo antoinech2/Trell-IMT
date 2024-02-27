@@ -9,4 +9,4 @@ description = "descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
 
 @app.route('/task')
 def task_view():
-    return flask.render_template("task.html.jinja2", title=title, description=description, users=users)
+    return flask.render_template("components/task.html.jinja2", title=title, description=description, users=users)

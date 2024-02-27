@@ -1,3 +1,10 @@
+html,body{
+    height:100%;
+    margin:0;
+    display: flex;
+    flex-flow: column;
+}
+
 #task {
     background: white;
     border-radius: 16px;
@@ -49,20 +56,26 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
 .categories-container {
     display: flex;
+    height:calc(100vh - 90px);
     overflow-x: auto;
+    padding-left : 1%;
+    padding-bottom : 0.5%;
 
 }
 
 .category{
     background-color: #333333;
-    border-radius : 5%;
-    padding: 1%;
-    margin:2%;
-    width: 30vh;
-    max-height: 85vh;
+    border-radius : 30px;
+    margin:0.5%;
+    padding:1%;
+    width: 10cm;
+    height:auto;
     flex-shrink: 0;
+    display:flex;
+    flex-flow: column;
 
 }
 
@@ -73,11 +86,14 @@
 
 .category-content{
     overflow-y: auto;
-    max-height: 88%;
+    max-height: 85%;
+
 }
 
 .task-add{
     color:white;
+    flex: 0 1 40px;
+    margin-top: 2%;
 }
 
 .add-container{

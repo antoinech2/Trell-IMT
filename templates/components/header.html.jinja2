@@ -17,7 +17,7 @@
 
 <body>
     <header class="site-header">
-        <img src="./static/img/logo.jpg" alt="Logo du site" class="logo-site">
+        <a href="/"><img src="{{ url_for("static", filename="img/logo.jpg") }}" alt="Logo du site" class="logo-site"></a>
         <nav class="navigation-site">
             <ul>
                 <li><a href="/home">Home</a></li>
@@ -30,7 +30,7 @@
         <div class="col-2">
 
         <a href="/profile" class="logo-connexion margin-logo-logout">
-            <img src="{{ user_logo }}" alt="Connexion">
+            <img src="{{ url_for("static", filename="img/logo_user.jpg") }}" alt="Connexion">
         </a>
         <a href="/logout" data-toggle="tooltip" title="Logout" class="bi bi-box-arrow-right logout-logo"></a>
 

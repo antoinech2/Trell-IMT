@@ -9,15 +9,13 @@ $(function () {
         } else {
             form.addClass('opened');
             form.slideFadeToggle();
-            //form.find("form").attr("action", `/new_task?category_id=${$(this).data("category_id")}`)
-            //form.data("category_id", $(this).data("category_id"))
             board_name.text($("#board_name").text())
 
         }
         return false;
     });
 
-    $('.close').on('click', function () {
+    $('.close_category_form').on('click', function () {
         form.removeClass('opened')
         form.slideFadeToggle()
         return false;
