@@ -10,15 +10,27 @@
         <div><i class="bi bi-card-checklist"></i> <label for="title"> Task title </label><input type="text"
                                                                                                 class="form-control"
                                                                                                 size="30" name="title"
-                                                                                                id="title"/></div>
+                                                                                                id="title" required/>
+        </div>
         <div><i class="bi bi-file-earmark-richtext"></i> <label for="body"> Description </label><textarea
-                class="form-control" rows="6" name="description" id="description" cols="35"></textarea></div>
+                class="form-control" rows="3" name="description" id="description" cols="35"></textarea></div>
+
+
+
+
+        <div><label for="end"> End date:</label>
+
+            <input type="datetime-local" class="form-control"  id="end" name="task-end"/>
+        </div>
+
         <div class="link"><a class="close btn btn-outline-danger" href="/">Cancel</a>
 
             <input type="submit" class="btn btn-outline-success button-right" value="Add task" name="commit"
                    id="form_submit"/></div>
     </form>
     <form id="delete_task" action="/delete_task" method="post">
-        <input type="submit" name="delete" value="Delete"/>
+        <button type="submit" name="delete" class="btn btn-danger">
+            <i class="bi bi-trash3"></i> Delete
+        </button>
     </form>
 </div>
