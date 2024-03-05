@@ -29,8 +29,9 @@
                 <textarea rows="6" name="description" id="description" cols="100"></textarea>
                 <h3>Add catégories</h3>
                 <div class="categories" id="categories">
-                    <div class="category">A new category <span class="remove-category">X</span></div>
-                    <div class="category">An other category <span class="remove-category">X</span></div>
+                    {%  for category in template_list_category %}
+                        <div class="category">{{ category}} <span class="remove-category">X</span></div>
+                    {% endfor %}
                 </div>
                 <div class="add-category">
                     <input type="text" class="form-name_category" name="category_name" placeholder="Category name" size="20">
