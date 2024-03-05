@@ -19,7 +19,7 @@ $(function () {
             $("#form_submit").text("Add task")
             html_form.find("#title").attr("value", "")
             html_form.find("#description").text("")
-
+            html_form.find("#expires_on").attr("value", "")
         }
         return false;
     });
