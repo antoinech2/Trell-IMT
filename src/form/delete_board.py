@@ -14,6 +14,7 @@ def delete_board_form():
     board_id = request.args.get('board_id')
     if form and board_id:
         board = Board.query.filter_by(id=board_id).first()
+        board.users = []
         db.session.delete(board)
         db.session.commit()
 
