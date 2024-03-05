@@ -12,7 +12,7 @@ def new_project_form():
     valid_form, errors = validate_sign_up_form(form)
     if valid_form:
         categories = form.get('category_list').split("|")
-        new_project = Board(name=form.get('project_name'),description=form.get('project_description'))
+        new_project = Board(name=form.get('project_name'),description=form.get('description'))
         db.session.add(new_project)
         db.session.commit()
         for category in categories:
