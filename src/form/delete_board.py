@@ -15,7 +15,8 @@ def delete_board_form():
     if form and board_id:
         board = Board.query.filter_by(id=board_id).first()
         board.users = []
+        db.session.commit()
         db.session.delete(board)
         db.session.commit()
 
-    return redirect(request.referrer)
+    return redirect("/home")
