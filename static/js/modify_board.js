@@ -23,11 +23,11 @@ $(function () {
         return false;
     });
 
-    /*$('.close').on('click', function () {
+    $('.close_board_form').on('click', function () {
         form.removeClass('opened')
         form.slideFadeToggle()
         return false;
-    });*/
+    });
 });
 
 $.fn.slideFadeToggle = function (easing, callback) {
