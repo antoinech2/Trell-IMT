@@ -27,7 +27,18 @@
         </div>
         <div class="selection_menu">
             {% for board in boards %}
-                <button onclick="window.location.href='/board/{{ board.id }}'" class="access_project_button col-xl-3 col-sm-6 col-12" >{{ board.name }}</button>
+                <button onclick="window.location.href='/board/{{ board.id }}'" class="access_project_button col-xl-3 col-sm-6 col-12" >
+                    <div class="card">
+                        <div class="card_header">
+                            {{ board.name }}
+                        </div>
+                        <div class="card_body">
+                            {% if board.description %}
+                                {{ board.description }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </button>
             {% endfor %}
         </div>
     </div>
