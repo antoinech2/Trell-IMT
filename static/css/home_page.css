@@ -56,6 +56,10 @@ nav > ul li:hover .under{
     border-bottom: none;
 }
 
+.roll{
+    border: 1px solid black;
+}
+
 .roll > a::after{
     content:" ▼";
     font-size: 12px;
