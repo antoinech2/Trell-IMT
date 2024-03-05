@@ -24,7 +24,8 @@ $(function () {
             html_form.find("#title").attr("value", task_name)
             html_form.find("#description").text(task_description)
             html_form.find("#expires_on").attr("value", $(this).data("date_expires"))
-            $("#form_submit").attr("value", "Edit task")
+            $("#task_form_submit").attr("value", "Edit task")
+            $("#delete_task").show()
         }
         return false;
     });

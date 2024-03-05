@@ -16,10 +16,11 @@ $(function () {
             html_form.attr("action", `/new_task?category_id=${$(this).data("category_id")}`)
             form.data("category_id", $(this).data("category_id"))
             category_name.text("Add task to category " + $(this).parents(".category").find(".category-title").text())
-            $("#form_submit").text("Add task")
+            $("#task_form_submit").attr("value", "Add task")
             html_form.find("#title").attr("value", "")
             html_form.find("#description").text("")
             html_form.find("#expires_on").attr("value", "")
+            $("#delete_task").hide()
         }
         return false;
     });
@@ -27,6 +28,8 @@ $(function () {
     $('.close').on('click', function () {
         form.removeClass('opened')
         form.slideFadeToggle()
+        form.removeData("category_id")
+        form.removeData("task_id")
         return false;
     });
 });
