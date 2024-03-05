@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="{{ url_for("static", filename="css/popup_form.css") }}"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ url_for("static", filename="js/delete_board.js") }}"></script>
+
+<div class="messagepop" id="warning_popup">
+    <h5 id="warning-form-label"> </h5>
+    <form method="post" id="delete_board" action="/delete_board?board_id={{ board.id }}">
+        <div class="link"><a class="close_warning_form btn btn-outline-danger" href="/">Cancel</a><input type="submit"
+                                                                                                          class="btn btn-outline-success button-right"
+                                                                                                          value="Delete"
+                                                                                                          name="commit"
+                                                                                                         />
+        </div>
+    </form>
+</div>
