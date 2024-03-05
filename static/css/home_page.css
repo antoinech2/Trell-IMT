@@ -92,3 +92,49 @@ h2 {
 h6 {
     margin : 20px;
 }
+
+.access_project_button {
+    display: block;
+    width : 20%;
+    text-align: left;
+    background-color: white;
+    border : 2px solid #00B8DE;
+     overflow: hidden;
+    height: 125px;
+    cursor: pointer;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin: 15px;
+}
+
+.card {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: start;
+    background-color: white;
+    border : 1px white;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.card_header {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    word-wrap: break-word;
+    border-bottom: 2px solid black;
+}
+
+.card_body {
+    font-size: 1em;
+    color: #666;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
