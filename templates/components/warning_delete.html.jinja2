@@ -6,11 +6,9 @@
 <div class="messagepop" id="warning_popup">
     <h5 id="warning-form-label"> </h5>
     <form method="post" id="delete_board" action="/delete_board?board_id={{ board.id }}">
-        <div class="link"><a class="close_warning_form btn btn-outline-danger" href="/">Cancel</a><input type="submit"
-                                                                                                          class="btn btn-outline-success button-right"
-                                                                                                          value="Delete"
-                                                                                                          name="commit"
-                                                                                                         />
+        <div class="link"><a class="close_warning_form btn btn-outline-danger" href="/">Cancel</a><button type="submit" name="delete" class="btn btn-danger button-right">
+            <i class="bi bi-trash3"></i> Delete
+        </button>
         </div>
     </form>
 </div>
