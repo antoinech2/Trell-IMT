@@ -21,6 +21,11 @@
         <h6>Description</h6>
         <p class="task__description">{{ description }}</p>
     </div>
+<div class="progress-container">
+<div class="progress" role="progressbar" aria-label="task_progression" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-success" style="width: 25%">25%</div>
+</div>
+</div>
     <div class="working-team">
         <ul id="user-image">
             {% for user in users %}

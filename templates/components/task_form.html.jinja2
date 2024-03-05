@@ -16,12 +16,31 @@
                 class="form-control" rows="3" name="description" id="description" cols="35"></textarea></div>
 
 
-
-
         <div><label for="end"> End date:</label>
 
-            <input type="datetime-local" class="form-control"  id="end" name="task-end"/>
+            <input type="datetime-local" class="form-control" id="end" name="task-end"/>
         </div>
+        <p>
+        <div class="progress-container">
+            Tasks progression :
+            <div class="progress" role="progressbar" aria-label="task_progression" aria-valuenow="25" aria-valuemin="0"
+                 aria-valuemax="100">
+                <div class="progress-bar bg-success" style="width: 25%">25%</div>
+            </div>
+        </div>
+        <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="subTask1">
+  <label class="form-check-label" for="subTask1">
+    Sub-task 1
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="subTask2">
+  <label class="form-check-label" for="subTask2">
+    Sub-task 2
+  </label>
+</div>
+        </p>
 
         <div class="link"><a class="close btn btn-outline-danger" href="/">Cancel</a>
 
