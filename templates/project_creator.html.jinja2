@@ -1,52 +1,56 @@
-<htlm>
-{% include 'components/header.html.jinja2' %}
-<script src="../static/js/create_project.js"></script>
-
-<link rel="stylesheet" href="{{ url_for("static", filename="css/project_creator.css") }}"/>
-
-<div>
-     <form action="{{ url_for("new_project_form") }}" method="post">
-        <div class="big_container">
-            <div class="form_shape">
-                <h1>Create a new project</h1>
-                {% if errors %}
-                    <div class="error-container">
-                        The following errors prevent us from accessing your request :
-                        <ul>
-                            {% for error in errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                <div class="row">
-                    <label class="col-4 col-for-label">Project Name</label>
-                    <div class="col-8">
-                        <input type="text" class="form-name_project" name="project_name" placeholder="Project name" value="{{ form.project_name }}" required size="20">
-                    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'components/header.html.jinja2' %}
+    <script src="../static/js/create_project.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/project_creator.css') }}"/>
+</head>
+<body>
+    <div class="container">
+        <form action="{{ url_for('new_project_form') }}" method="post" class="project-form">
+            <div class="form-header">
+                <h1>Create a New Project</h1>
+            </div>
+            {% if errors %}
+                <div class="error-container">
+                    The following errors prevent us from accessing your request:
+                    <ul>
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                <h3>Add a description</h3>
-                <textarea rows="6" name="description" id="description" cols="100"></textarea>
-                <h3>Add catégories</h3>
+            {% endif %}
+            <div class="form-section">
+                <label for="project_name">Project Name</label>
+                <input type="text" id="project_name" name="project_name" placeholder="Enter project name" value="{{ form.project_name }}" required>
+            </div>
+            <div class="form-section">
+                <h3>Add a Description</h3>
+                <textarea rows="6" name="description" id="description" placeholder="Describe your project"></textarea>
+            </div>
+            <div class="form-section">
+                <h3>Add Categories</h3>
                 <div class="categories" id="categories">
-                    {%  for category in template_list_category %}
-                        <div class="category">{{ category}} <span class="remove-category">X</span></div>
+                    {% for category in template_list_category %}
+                        <div class="category">{{ category }} <span class="remove-category">X</span></div>
                     {% endfor %}
                 </div>
                 <div class="add-category">
-                    <input type="text" class="form-name_category" name="category_name" placeholder="Category name" size="20">
-                    <button type="button" class="category-add btn btn-outline-secondary">+ Add a category</button>
-                </div>
-                <input type="hidden" name="category_list" id="category_list" value="">
-                <h3>Add collaborators</h3>
-                <a href="{{ url_for("home_view") }}"> Cancel </a>
-                <div class="row mb-4 justify-content-end">
-                    <div class="col-3">
-                        <button type="submit" class="btn btn-primary "> Create project</button>
-                    </div>
+                    <input type="text" id="category_name" class="form-name_category" name="category_name" placeholder="Category name">
+                    <button type="button" class="category-add btn">+ Add a Category</button>
                 </div>
             </div>
-        </div>
-     </form>
-</div>
-</htlm>
+            <input type="hidden" name="category_list" id="category_list" value="">
+            <div class="form-section">
+                <h3>Add Collaborators</h3>
+                <!-- Collaborators input section would go here -->
+            </div>
+            <div class="form-footer">
+                <a href="{{ url_for('home_view') }}" class="btn cancel">Cancel</a>
+                <button type="submit" class="btn create">Create Project</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
