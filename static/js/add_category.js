@@ -1,16 +1,23 @@
 $(function () {
-    let form = $('#new_category_popup')
-    let board_name = $('#add_category_board')
+    let form = $('#category_popup')
+    let text_label = $('#category-form-label')
+    let board_name = $('#board_name').text()
+    let board_id = $('#board').data("id")
     $('.new_category').on('click', function () {
 
         if (form.hasClass('opened')) {
             form.removeClass('opened')
             form.slideFadeToggle()
         } else {
+            let html_form = form.find("form")
+            html_form.attr("action", `/new_category?board_id=${board_id}`)
             form.addClass('opened');
             form.slideFadeToggle();
-            board_name.text($("#board_name").text())
-
+            $("#category-form-label").text($("#board_name").text())
+            text_label.text("Add new category in board " + board_name)
+            html_form.find("#category_form_title").attr("value", "")
+            html_form.find("#category_form_description").text("")
+            $("#category_form_submit").attr("value", "Add category")
         }
         return false;
     });

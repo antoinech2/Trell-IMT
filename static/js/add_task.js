@@ -12,10 +12,14 @@ $(function () {
                 form.addClass('opened');
                 form.slideFadeToggle();
             }
-            form.find("form").attr("action", `/new_task?category_id=${$(this).data("category_id")}`)
+            let html_form = form.find("form")
+            html_form.attr("action", `/new_task?category_id=${$(this).data("category_id")}`)
             form.data("category_id", $(this).data("category_id"))
             category_name.text("Add task to category " + $(this).parents(".category").find(".category-title").text())
             $("#form_submit").text("Add task")
+            html_form.find("#title").attr("value", "")
+            html_form.find("#description").text("")
+
         }
         return false;
     });
