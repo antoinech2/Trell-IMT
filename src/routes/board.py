@@ -34,7 +34,6 @@ def board(board_id):
                     days, seconds = delta_date.days, delta_date.seconds
                 hours = (days * 24 + seconds) // 3600
                 minutes = (abs(seconds) % 3600) // 60
-                print(delta_date)
                 if abs(days) > 0:
                     message_data = "{} days".format(abs(days))
                 elif abs(hours) > 0:
