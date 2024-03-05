@@ -13,7 +13,7 @@ $(function () {
                 form.slideFadeToggle();
             }
             form.data("board_id", $(this).data("board_id"))
-
+            let html_form = form.find("form")
             let board_name = $("#board_name").text()
             let board_description = $("#board_description").text()
             text_label.text("Edit board " + board_name )
