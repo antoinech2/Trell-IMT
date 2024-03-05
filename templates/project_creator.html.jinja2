@@ -9,6 +9,16 @@
         <div class="big_container">
             <div class="form_shape">
                 <h1>Create a new project</h1>
+                {% if errors %}
+                    <div class="error-container">
+                        The following errors prevent us from accessing your request :
+                        <ul>
+                            {% for error in errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
                 <div class="row">
                     <label class="col-4 col-for-label">Project Name</label>
                     <div class="col-8">
@@ -26,6 +36,7 @@
                     <input type="text" class="form-name_category" name="category_name" placeholder="Category name" size="20">
                     <button type="button" class="category-add btn btn-outline-secondary">+ Add a category</button>
                 </div>
+                <input type="hidden" name="category_list" id="category_list" value="">
                 <h3>Add collaborators</h3>
                 <a href="{{ url_for("home_view") }}"> Cancel </a>
                 <div class="row mb-4 justify-content-end">

@@ -6,13 +6,6 @@ from flask_login import login_required, current_user
 
 from src.database.models import Board, Category, Task
 
-@app.route('/create_project')
-@login_required
-def create_project():
-    form = flask.request.form
-    return flask.render_template("project_creator.html.jinja2",user = current_user,form = form)
-
-
 @app.route('/board/<board_id>')
 @login_required
 def board(board_id):

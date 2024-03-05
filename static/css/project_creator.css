@@ -38,3 +38,12 @@ h3{
     border-radius: 25%;
     background-color: #f38080;
 }
+
+.error-container{
+    background-color: #f38080;
+    border: solid 1px red;
+    border-radius:10px;
+    padding-left: 0.5cm;
+    padding-top:0.2cm;
+    margin-bottom : 0.5cm;
+}

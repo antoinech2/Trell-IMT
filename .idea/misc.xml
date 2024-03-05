@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Trell-IMT" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (Trell-IMT)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="flaskProject1" project-jdk-type="Python SDK" />
 </project>
