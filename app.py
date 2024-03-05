@@ -31,6 +31,7 @@ import src.routes.sign_up
 import src.routes.logout
 import src.routes.task
 import src.routes.board
+import src.routes.create_project
 
 import src.form.new_task
 import src.form.new_category
