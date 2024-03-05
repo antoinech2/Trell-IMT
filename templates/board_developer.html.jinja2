@@ -1,7 +1,7 @@
 {% include 'components/header.html.jinja2' %}
 {% include 'components/task_form.html.jinja2' %}
 {% with board_id=board.id %}
-    {% include "components/add_category.html.jinja2" %}
+    {% include "components/category_form.html.jinja2" %}
 {% endwith %}
 
 <div id="board" data-id= {{ board.id }}>
@@ -26,7 +26,7 @@
 
         {% for category in tasks_data %}
 
-            <div class="category ">
+            <div class="category" data-category_id={{ category.id }}>
                 <div class="head-category">
                     <p><span class="category-title">{{ category.name }}</span>
                         {% if category.description %}
@@ -40,7 +40,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item new_task" data-category_id={{ category.id }}>Add task</a></li>
-                            <li><a class="dropdown-item">Edit category</a></li>
+                            <li><a class="dropdown-item edit_category" data-category_id={{ category.id }}>Edit category</a></li>
                             <form action="/delete_category?category_id={{ category.id }}" method="POST">
                                 <li><a class="dropdown-item"><button type="submit" name="delete" value="Delete">Delete category</button></a></li>
                             </form>
