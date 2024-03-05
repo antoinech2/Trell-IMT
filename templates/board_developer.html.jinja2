@@ -39,10 +39,12 @@
                             Actions
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item new_task" data-category_id={{ category.id }}>Add task</a></li>
-                            <li><a class="dropdown-item">Edit category</a></li>
+                            <li><a class="dropdown-item new_task btn" data-category_id={{ category.id }}>Add task</a></li>
+                            <li><a class="dropdown-item btn" >Edit category</a></li>
                             <form action="/delete_category?category_id={{ category.id }}" method="POST">
-                                <li><a class="dropdown-item"><button type="submit" name="delete" value="Delete">Delete category</button></a></li>
+                                <li>
+                                <input type="submit" class="btn btn-danger dropdown-item" value="Delete" name="delete"
+                   id="form_submit"/> </li>
                             </form>
                         </ul>
                     </div>
