@@ -1,24 +1,23 @@
 <link rel="stylesheet" href="{{ url_for("static", filename="css/popup_form.css") }}"/>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="{{ url_for("static", filename="js/add_category.js") }}"></script>
-<script src="{{ url_for("static", filename="js/modify_category.js") }}"></script>
+<script src="{{ url_for("static", filename="js/modify_board.js") }}"></script>
 
-<div class="messagepop" id="category_popup">
-    <h5 id="category-form-label"> Add category to board</h5>
-    <form method="post" id="new_category" action="">
-        <div><i class="bi bi-card-checklist"></i> <label for="title"> Category title </label><input class="form-control"
+<div class="messagepop" id="board_popup">
+    <h5 id="board-form-label"> Edit board </h5>
+    <form method="post" id="edit_board" action="/edit_board?board_id={{ board_id }}">
+        <div><i class="bi bi-card-checklist"></i> <label for="title"> Board title </label><input class="form-control"
                                                                                                     type="text"
                                                                                                     size="30"
                                                                                                     name="title"
-                                                                                                    id="category_form_title"
+                                                                                                    id="board_form_title"
                                                                                                     required/></div>
         <div><i class="bi bi-file-earmark-richtext"></i> <label for="body"> Description </label><textarea
-                class="form-control" rows="6" name="description" id="category_form_description" cols="35"></textarea></div>
+                class="form-control" rows="6" name="description" id="board_form_description" cols="35"></textarea></div>
         <div class="link"><a class="close_category_form btn btn-outline-danger" href="/">Cancel</a><input type="submit"
                                                                                                           class="btn btn-outline-success button-right"
-                                                                                                          value="Add task"
+                                                                                                          value="Edit board"
                                                                                                           name="commit"
-                                                                                                          id="category_form_submit"/>
+                                                                                                          id="board_form_submit"/>
         </div>
     </form>
 </div>

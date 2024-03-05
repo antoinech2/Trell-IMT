@@ -2,6 +2,7 @@
 {% include 'components/task_form.html.jinja2' %}
 {% with board_id=board.id %}
     {% include "components/category_form.html.jinja2" %}
+    {% include "components/board_form.html.jinja2" %}
 {% endwith %}
 
 <div id="board" data-id= {{ board.id }}>
@@ -16,8 +17,12 @@
                             Actions
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" >Edit board</a></li>
-                            <li><a class="dropdown-item">Delete board</a></li>
+                            <li><a class="dropdown-item edit_board" data-board_id={{ board.id }} >Edit board</a></li>
+                            <form action="/delete_board?board_id={{ board.id }}" method="POST">
+                                <li>
+                                <input type="submit" class="btn btn-danger dropdown-item" value="Delete" name="delete"
+                   id="form_submit"/> </li>
+                            </form>
 
                         </ul>
                     </div>
@@ -51,7 +56,7 @@
                 </div>
                 <div class="category-content">
                     {% for task in category.tasks %}
-                        <div class="task" id="{{ task.id }}">
+                        <div class="task" id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
                             {% with title=task.name, description=task.description %}
                                 {% include "components/task.html.jinja2" %}
                             {% endwith %}

@@ -20,7 +20,10 @@ def board(board_id):
         tasks_data[-1]['tasks'] = []
         tasks = Task.query.filter_by(category_id=category.id).all()
         for task in tasks:
-            tasks_data[-1]['tasks'].append(task.__dict__)
+            task_dict = task.__dict__
+            if task_dict["date_expires"]:
+                task_dict["date_expires"] = task_dict["date_expires"].strftime("%Y-%m-%dT%H:%M")
+            tasks_data[-1]['tasks'].append(task_dict)
     return flask.render_template("board_developer.html.jinja2", tasks_data=tasks_data, user = current_user, board = board)
 
 

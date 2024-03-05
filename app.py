@@ -39,6 +39,8 @@ import src.form.edit_task
 import src.form.delete_task
 import src.form.delete_category
 import src.form.edit_category
+import src.form.edit_board
+import src.form.delete_board
 
 if __name__ == '__main__':
     app.run()
