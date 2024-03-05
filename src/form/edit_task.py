@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import flask
 from flask import request, redirect
 from flask_login import login_required
@@ -16,6 +18,8 @@ def edit_task_form():
         task = Task.query.filter_by(id=task_id).first()
         task.name = form.get('title')
         task.description = form.get('description')
+        if form.get('task-end'):
+            task.date_expires = datetime.strptime(form.get('task-end'), "%Y-%m-%dT%H:%M")
         db.session.add(task)
         db.session.commit()
 
