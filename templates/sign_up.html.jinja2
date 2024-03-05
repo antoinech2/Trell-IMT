@@ -6,16 +6,15 @@
             <h1>Sign up</h1>
         </div>
     </div>
-    <!-- TODO : improve errors display -->
 
     {% if errors %}
         <div class="error-container">
-        The following errors prevent us from accessing your request :
-        <ul>
-            {% for error in errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
+            The following errors prevent us from accessing your request :
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
         </div>
     {% endif %}
 
@@ -23,21 +22,24 @@
         <div class="row mb-4">
             <label class="col-4 col-for-label">First Name</label>
             <div class="col-8">
-                <input type="text" class="form-control" name="first_name" placeholder="first name" value="{{ form.first_name }}" required>
+                <input type="text" class="form-control" name="first_name" placeholder="first name"
+                       value="{{ form.first_name }}" required>
             </div>
         </div>
 
         <div class="row mb-4">
             <label class="col-4 col-for-label">Last Name</label>
             <div class="col-8">
-                <input type="text" class="form-control" name="last_name" placeholder="last name" value="{{ form.last_name }}" required>
+                <input type="text" class="form-control" name="last_name" placeholder="last name"
+                       value="{{ form.last_name }}" required>
             </div>
         </div>
 
         <div class="row mb-4">
             <label class="col-4 col-for-label">Email</label>
             <div class="col-8">
-                <input type="email" class="form-control" name="email" placeholder="email" value="{{ form.email }}" required>
+                <input type="email" class="form-control" name="email" placeholder="email" value="{{ form.email }}"
+                       required>
             </div>
         </div>
 

@@ -1,53 +1,52 @@
 {% extends "log.html.jinja2" %}
 {% set title = "Sign In" %}
 {% block body %}
-<div class="row mb-4">
-            <div class="col-12 center_sign">
-                <h1>Sign in</h1>
-            </div>
+    <div class="row mb-4">
+        <div class="col-12 center_sign">
+            <h1>Sign in</h1>
         </div>
-    <!-- TODO : improve errors display -->
-
+    </div>
 
     {% if errors %}
         <div class="error-container">
-        The following errors prevent us from accessing your request :
-        <ul>
-            {% for error in errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
+            The following errors prevent us from accessing your request :
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
         </div>
     {% endif %}
 
 
-        <form action="{{ url_for("sign_in_view") }}" method="post">
-            <div class="row mb-4">
-                <label class="col-4 col-for-label">Email</label>
-                <div class="col-8">
-                    <input type="email" class="form-control" name="email" placeholder="email" value="{{ form.email }}"required>
-                </div>
+    <form action="{{ url_for("sign_in_view") }}" method="post">
+        <div class="row mb-4">
+            <label class="col-4 col-for-label">Email</label>
+            <div class="col-8">
+                <input type="email" class="form-control" name="email" placeholder="email" value="{{ form.email }}"
+                       required>
             </div>
+        </div>
 
-            <div class="row mb-4">
-                <label class="col-4 col-for-label">Password</label>
-                <div class="col-8">
-                    <input type="password" class="form-control" name="password" placeholder="password" required>
-                </div>
+        <div class="row mb-4">
+            <label class="col-4 col-for-label">Password</label>
+            <div class="col-8">
+                <input type="password" class="form-control" name="password" placeholder="password" required>
             </div>
+        </div>
 
-            <div class="row mb-4">
-                    <input type="checkbox" id="rememberCheckbox" name="remember" checked value="true">
-                <label for="rememberCheckbox">Remember me ?</label>
-            </div>
+        <div class="row mb-4">
+            <input type="checkbox" id="rememberCheckbox" name="remember" checked value="true">
+            <label for="rememberCheckbox">Remember me ?</label>
+        </div>
 
-            <a href="{{ url_for("sign_up_view") }}"> If you don't have an account, please register now </a>
-            <div class="row mb-4 justify-content-end">
-                <div class="col-3">
-                    <button type="submit" class="btn btn-primary "> Sign in</button>
-                </div>
+        <a href="{{ url_for("sign_up_view") }}"> If you don't have an account, please register now </a>
+        <div class="row mb-4 justify-content-end">
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary "> Sign in</button>
             </div>
-        </form>
+        </div>
+    </form>
 
 
 {% endblock %}
