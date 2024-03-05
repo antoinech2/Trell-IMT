@@ -57,7 +57,7 @@
                 <div class="category-content">
                     {% for task in category.tasks %}
                         <div class="task" id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
-                            {% with title=task.name, description=task.description %}
+                            {% with title=task.name, description=task.description, expires=task.expires_message%}
                                 {% include "components/task.html.jinja2" %}
                             {% endwith %}
                         </div>
