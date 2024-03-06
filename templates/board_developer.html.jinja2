@@ -30,11 +30,13 @@
 
             <div class="category" data-category_id={{ category.id }}>
                 <div class="head-category">
-                    <p><span class="category-title">{{ category.name }}</span>
+
+                    <p class="container-title-description-category"><span class="category-title">{{ category.name }}</span>
                         {% if category.description %}
                             <span class="description-title">{{ category.description }}</span>
                         {% endif %}
                     </p>
+
                     <div class="dropdown drop-right">
                         <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">

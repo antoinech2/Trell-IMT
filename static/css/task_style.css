@@ -72,7 +72,7 @@ html,body{
     border-radius : 20px;
     margin:0.5%;
     padding:1% ;
-    width: 23%;
+    width: 8cm;
     height:auto;
     flex-shrink: 0;
     display:flex;
@@ -80,10 +80,15 @@ html,body{
 
 }
 
+.container-title-description-category{
+    margin-right:3cm;
+    overflow: hidden;
+}
+
 .category-title{
     color:white;
-    max-height: 5%;
     font-weight: bold;
+
 }
 
 .category-content{
