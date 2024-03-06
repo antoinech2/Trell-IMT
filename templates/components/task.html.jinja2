@@ -22,7 +22,7 @@
             <div class="progress" role="progressbar" aria-label="task_progression"
                  aria-valuenow="{{ task.progress }}" aria-valuemin="0"
                  aria-valuemax="100">
-                <div class="progress-bar bg-success" style="width: 25%">{{ task.progress }}%</div>
+                <div class="progress-bar bg-success" style="width: {{ task.progress }}%">{{ task.progress }}%</div>
             </div>
         </div>
     {% endif %}
