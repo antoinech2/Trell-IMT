@@ -3,14 +3,13 @@
 {% with board_id=board.id %}
     {% include "components/category_form.html.jinja2" %}
     {% include "components/board_form.html.jinja2" %}
-    {% include "components/warning_delete.html.jinja2" %}
 {% endwith %}
 
 <div id="board" data-id= {{ board.id }}>
     <div class="board-title">
         Board <span id="board_name">{{ board.name }}</span>
         {% if board.description %}
-            <span id="board_description" class="description">{{ board.description }}</span>
+            <span class="description">{{ board.description }}</span>
         {% endif %}
     <div class="dropdown drop-right">
                         <button class="btn btn-outline- dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -20,8 +19,12 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item new_category btn" >Add category</a></li>
                             <li><a class="dropdown-item edit_board btn" data-board_id={{ board.id }} >Edit board</a></li>
-                            <li><a class="dropdown-item delete_board btn" data-board_id={{ board.id }} >Delete board</a></li>
-
+                            <li>
+                                <form action="/delete_board?board_id={{ board.id }}" method="POST">
+                                    <input type="submit" class="btn btn-danger dropdown-item" value="Delete" name="delete"
+                   id="form_submit"/>
+                                </form>
+                            </li>
                         </ul>
                     </div>
     </div>
@@ -54,7 +57,7 @@
                 </div>
                 <div class="category-content">
                     {% for task in category.tasks %}
-                        <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
+                        <div class="task" id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
                             {% with title=task.name, description=task.description, expires=task.expires_message, has_expired=task.has_expired%}
                                 {% include "components/task.html.jinja2" %}
                             {% endwith %}
@@ -74,5 +77,3 @@
         </div>
     </div>
 </div>
-</body>
-</html>
