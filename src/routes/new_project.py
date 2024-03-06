@@ -15,6 +15,8 @@ def new_project_form():
 
     if valid_form:
         categories = form.get('category_list').split("|")
+        if len(categories) == 1 and categories[0] == "":
+            categories = []
         new_project = Board(name=form.get('project_name'),description=form.get('description'))
         db.session.add(new_project)
         db.session.commit()
