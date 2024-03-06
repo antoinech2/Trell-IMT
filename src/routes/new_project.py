@@ -24,7 +24,7 @@ def new_project_form():
         current_user.boards.append(new_project)
         db.session.add(current_user)
         db.session.commit()
-        return flask.render_template('create_project_success.html.jinja2', board_id=new_project.id)
+        return flask.render_template('create_project_success.html.jinja2', user = current_user, board_id=new_project.id)
     else:
         # to handle the template
         board_template = request.args.get('template')
