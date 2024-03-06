@@ -8,6 +8,7 @@ from flask_login import login_required, current_user
 
 from src.database.models import Board, Category, Task
 
+
 @app.route('/board/<board_id>')
 @login_required
 def board(board_id):
@@ -48,7 +49,4 @@ def board(board_id):
                     task_dict["has_expired"] = False
                 task_dict["date_expires"] = task_dict["date_expires"].strftime("%Y-%m-%dT%H:%M")
             tasks_data[-1]['tasks'].append(task_dict)
-    return flask.render_template("board_developer.html.jinja2", tasks_data=tasks_data, user = current_user, board = board)
-
-
-
+    return flask.render_template("board_developer.html.jinja2", tasks_data=tasks_data, user=current_user, board=board)

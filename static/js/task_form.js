@@ -1,11 +1,12 @@
 $(function () {
     let form = $('#task_popup')
+    let subtask = new SubTasksControl()
     $('.task').on('click', function () {
         if (form.hasClass('opened') && $(this).data("task_id") === form.data("task_id")) {
             closeForm()
         } else {
             form.data("task_id", $(this).data("task_id"))
-            return handleTaskForm($(this), false)
+            return handleTaskForm($(this), false, subtask)
         }
     });
     $('.new_task').on('click', function () {
@@ -13,17 +14,16 @@ $(function () {
             closeForm()
         } else {
             form.data("category_id", $(this).data("category_id"))
-            return handleTaskForm($(this), true)
+            return handleTaskForm($(this), true, subtask)
         }
     });
     $('.close').on('click', function () {
         return closeForm()
     });
-    let subtask = new SubTasksControl()
     form.find("form").submit(function (e) {
-        let args = form.data("task_id") ? ("?task_id="+form.data("task_id")) : ""
+        let args = form.data("task_id") ? ("?task_id=" + form.data("task_id")) : ""
         try {
-            fetch("/update_subtasks"+args, {
+            fetch("/update_subtasks" + args, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -84,6 +84,10 @@ SubTasksControl.prototype.getValue = function () {
     return this.subtasks
 }
 
+SubTasksControl.prototype.setValue = function (value) {
+    this.subtasks = value
+}
+
 function closeForm() {
     let form = $('#task_popup')
     form.slideFadeToggle()
@@ -93,7 +97,7 @@ function closeForm() {
     return false;
 }
 
-function handleTaskForm(button, new_form) {
+function handleTaskForm(button, new_form, subtask) {
     let form = $('#task_popup')
     let text_label = $('#task_form_label')
     let html_form = form.find("form")
@@ -103,6 +107,8 @@ function handleTaskForm(button, new_form) {
         form.addClass('opened');
         form.slideFadeToggle();
     }
+
+    subtask.setValue({})
 
     if (new_form) {
         $("#delete_task").hide()
@@ -128,6 +134,20 @@ function handleTaskForm(button, new_form) {
 
         $("#task_form_submit").attr("value", "Edit task")
         text_label.text("Edit task " + task_name + " in category " + category_name)
+
+        try {
+            fetch(`/get_subtasks?task_id=${form.data("task_id")}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(r => r.json()).then(r => {
+                subtask.setValue(r)
+                subtask.updateList()
+            });
+        } catch (e) {
+            console.error(e);
+        }
 
     }
 

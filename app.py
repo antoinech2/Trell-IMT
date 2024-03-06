@@ -23,6 +23,7 @@ salt = bcrypt.gensalt()
 # Local imports
 import src.helper.login
 import src.helper.logout
+import src.helper.subtask
 
 # Routes
 import src.routes.sign_in
