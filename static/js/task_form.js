@@ -1,25 +1,88 @@
 $(function () {
     let form = $('#task_popup')
     $('.task').on('click', function () {
-        if ($(this).data("task_id") === form.data("task_id")) {
+        if (form.hasClass('opened') && $(this).data("task_id") === form.data("task_id")) {
             closeForm()
         } else {
             form.data("task_id", $(this).data("task_id"))
-            return taskForm($(this), false)
+            return handleTaskForm($(this), false)
         }
     });
     $('.new_task').on('click', function () {
-        if ($(this).data("category_id") === form.data("category_id")) {
+        if (form.hasClass('opened') && $(this).data("category_id") === form.data("category_id")) {
             closeForm()
         } else {
             form.data("category_id", $(this).data("category_id"))
-            return taskForm($(this), true)
+            return handleTaskForm($(this), true)
         }
     });
     $('.close').on('click', function () {
         return closeForm()
     });
+    let subtask = new SubTasksControl()
+    form.find("form").submit(function (e) {
+        //e.preventDefault();
+        try {
+            fetch("/update_subtasks", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(subtask.getValue.apply(subtask)),
+
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    })
 });
+
+function SubTasksControl() {
+    this.initialize.apply(this)
+}
+
+SubTasksControl.prototype.initialize = function (host, component) {
+    let thisControl = this
+    this.subtasks = {}
+
+    $('#add_subtask').on('click', function () {
+        const subtaskName = $('#new_subtask_input').val().trim()
+        $('#new_subtask_input').val("")
+        if (subtaskName) {
+            thisControl.subtasks[subtaskName] = false;
+            thisControl.updateList.apply(thisControl)
+        }
+        //console.log(thisControl.subtasks)
+    });
+}
+
+SubTasksControl.prototype.updateList = function () {
+    let thisControl = this
+    let index = 1
+    $("#sub_task_list_form").empty()
+    for (let name in thisControl.subtasks) {
+        let newSubtask = $('<div class="form-check subtask"><input class="form-check-input subtask_input" form="unlink" type="checkbox" value="" id="subtask' + index + '"><label class="form-check-label subtask_name" for="subtask' + index + '"></label><span class="remove_subtask">X</span></div>')
+        newSubtask.find("label").text(name)
+        newSubtask.find("input").attr("checked", this.subtasks[name])
+        index++;
+        $("#sub_task_list_form").append(newSubtask)
+    }
+    $('.remove_subtask').on('click', function () {
+        const subtaskName = $(this).parents('.subtask').find('label').text()
+        if (subtaskName) {
+            delete thisControl.subtasks[subtaskName]
+            thisControl.updateList.apply(thisControl)
+        }
+    });
+    $('.subtask_input').on("change", function () {
+        const subtaskName = $(this).parents('.subtask').find('label').text()
+        thisControl.subtasks[subtaskName] = this.checked
+    })
+}
+
+SubTasksControl.prototype.getValue = function () {
+    return this.subtasks
+}
 
 function closeForm() {
     let form = $('#task_popup')
@@ -30,7 +93,7 @@ function closeForm() {
     return false;
 }
 
-function taskForm(button, new_form) {
+function handleTaskForm(button, new_form) {
     let form = $('#task_popup')
     let text_label = $('#task_form_label')
     let html_form = form.find("form")

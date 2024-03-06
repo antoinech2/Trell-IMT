@@ -15,24 +15,24 @@
 
             <input type="datetime-local" class="form-control" id="task_form_expires_on" name="task-end"/>
         </div>
-        <div class="progress-container">
-            Tasks progression :
-            <div class="progress" role="progressbar" aria-label="task_progression" aria-valuenow="25" aria-valuemin="0"
-                 aria-valuemax="100">
-                <div class="progress-bar bg-success" style="width: 25%">25%</div>
+        <div>
+            <div class="progress-container">
+                Tasks progression :
+                <div class="progress" role="progressbar" aria-label="task_progression" aria-valuenow="25"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                    <div class="progress-bar bg-success" style="width: 25%">25%</div>
+                </div>
             </div>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="subTask1">
-            <label class="form-check-label" for="subTask1">
-                Sub-task 1
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="subTask2">
-            <label class="form-check-label" for="subTask2">
-                Sub-task 2
-            </label>
+            <div id="sub_task_list_form">
+            </div>
+            <div>
+                <input id="new_subtask_input" name="new_subtask_input" type="text" form="none" placeholder="Subtask">
+                <label class="form-check-label" for="new_subtask_input">
+                    New sub-task
+                </label>
+                <button type="button" id="add_subtask" class="btn">+ Add a subtask</button>
+            </div>
         </div>
         <div>
             <input type="search" id="search_user" name="search_user">
