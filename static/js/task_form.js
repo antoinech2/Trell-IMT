@@ -52,8 +52,9 @@ SubTasksControl.prototype.initialize = function (host, component) {
             thisControl.subtasks[subtaskName] = false;
             thisControl.updateList.apply(thisControl)
         }
-        //console.log(thisControl.subtasks)
     });
+
+    thisControl.updateProgress()
 }
 
 SubTasksControl.prototype.updateList = function () {
@@ -86,8 +87,8 @@ SubTasksControl.prototype.updateProgress = function () {
     let done_tasks = Object.values(this.subtasks).filter(e => e == "1").length
     let not_done_tasks = Object.values(this.subtasks).filter(e => e == "0").length
     let progress = done_tasks + not_done_tasks > 0 ? Math.round(done_tasks / (done_tasks + not_done_tasks) * 100) : 0
-    $('.progress-bar.bg-success').text(progress + "%")
-    $('.progress-bar.bg-success').attr("style", `width: ${progress}%`)
+    $('#task_progress_form').text(progress + "%")
+    $('#task_progress_form').attr("style", `width: ${progress}%`)
 }
 
 SubTasksControl.prototype.getValue = function () {
@@ -130,6 +131,7 @@ function handleTaskForm(button, new_form, subtask) {
 
         $("#task_form_submit").attr("value", "Add task")
         text_label.text("Add task to category " + category_name)
+        subtask.updateList()
     } else {
         $('#delete_task').attr("action", `/delete_task?task_id=${button.attr("id")}`)
         $("#delete_task").show()
@@ -160,7 +162,6 @@ function handleTaskForm(button, new_form, subtask) {
         }
 
     }
-
     return false;
 }
 
