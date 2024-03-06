@@ -77,7 +77,17 @@ SubTasksControl.prototype.updateList = function () {
     $('.subtask_input').on("change", function () {
         const subtaskName = $(this).parents('.subtask').find('label').text()
         thisControl.subtasks[subtaskName] = this.checked
+        thisControl.updateProgress()
     })
+    thisControl.updateProgress()
+}
+
+SubTasksControl.prototype.updateProgress = function () {
+    let done_tasks = Object.values(this.subtasks).filter(e => e == "1").length
+    let not_done_tasks = Object.values(this.subtasks).filter(e => e == "0").length
+    let progress = done_tasks + not_done_tasks > 0 ? Math.round(done_tasks / (done_tasks + not_done_tasks) * 100) : 0
+    $('.progress-bar.bg-success').text(progress + "%")
+    $('.progress-bar.bg-success').attr("style", `width: ${progress}%`)
 }
 
 SubTasksControl.prototype.getValue = function () {
