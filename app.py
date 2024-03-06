@@ -1,6 +1,5 @@
 import bcrypt
 import flask
-from flask_login import LoginManager
 
 # Database import
 from src.database.database import init_database
@@ -22,14 +21,13 @@ with app.test_request_context():  # (2) bloc exécuté à l'initialisation de Fl
 salt = bcrypt.gensalt()
 
 # Local imports
-import src.login
+import src.helper.login
+import src.helper.logout
 
 # Routes
 import src.routes.sign_in
 import src.routes.home
 import src.routes.sign_up
-import src.routes.logout
-import src.routes.task
 import src.routes.board
 import src.routes.new_project
 
