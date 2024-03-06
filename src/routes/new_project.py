@@ -30,9 +30,10 @@ def new_project_form():
     else:
         # to handle the template
         board_template = request.args.get('template')
-        with open('data/new_board_template.json', 'r') as f:
-            data = json.load(f)
-        list = data[board_template]
+        if board_template:
+            with open('data/new_board_template.json', 'r') as f:
+                data = json.load(f)
+        list = data[board_template] if board_template else []
         return flask.render_template("project_creator.html.jinja2", user = current_user, form = form, errors = errors, template_list_category = list)
 
 
