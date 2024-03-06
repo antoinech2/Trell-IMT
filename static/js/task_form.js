@@ -21,9 +21,9 @@ $(function () {
     });
     let subtask = new SubTasksControl()
     form.find("form").submit(function (e) {
-        //e.preventDefault();
+        let args = form.data("task_id") ? ("?task_id="+form.data("task_id")) : ""
         try {
-            fetch("/update_subtasks", {
+            fetch("/update_subtasks"+args, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
