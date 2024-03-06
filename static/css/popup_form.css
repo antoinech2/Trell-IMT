@@ -4,14 +4,19 @@ a.selected {
   z-index:100;
 }
 
+.container-popup{
+  display:flex;
+}
+
 .messagepop {
   background-color:#FFFFFF;
   border:1px solid #999999;
   cursor:default;
-  display:none;
   margin-top: 15px;
   position:fixed;
   top: 50%;
+  max-height: 90%;
+  display:none;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 15px;
@@ -20,6 +25,7 @@ a.selected {
   width:394px;
   z-index:50;
   padding: 25px 25px 20px;
+  overflow-y: auto;
 }
 
 label {
