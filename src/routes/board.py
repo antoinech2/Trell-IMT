@@ -6,7 +6,7 @@ from flask import abort
 from app import app
 from flask_login import login_required, current_user
 
-from src.database.models import Board, Category, Task
+from src.database.models import Board, Category, Task, Step
 
 
 @app.route('/board/<board_id>')
@@ -25,6 +25,12 @@ def board(board_id):
         tasks = Task.query.filter_by(category_id=category.id).all()
         for task in tasks:
             task_dict = task.__dict__
+
+            subtasks_done = Step.query.filter_by(task_id=task_dict["id"], status="1").count()
+            subtasks_not_done = Step.query.filter_by(task_id=task_dict["id"], status="0").count()
+            if subtasks_done + subtasks_not_done > 0:
+                task_dict['progress'] = round(subtasks_done / (subtasks_done + subtasks_not_done) * 100)
+
             if task_dict["date_expires"]:
                 expired = False
                 delta_date = task_dict["date_expires"] - datetime.now()
