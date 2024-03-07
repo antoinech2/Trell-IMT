@@ -111,7 +111,7 @@ function closeForm() {
 function handleTaskForm(button, new_form, subtask) {
     let form = $('#task_popup')
     let text_label = $('#task_form_label')
-    let html_form = form.find("form")
+    let html_form = $("#new_task")
     let category_name = button.parents(".category").find(".category-title").text()
 
     if (!form.hasClass('opened')) {
@@ -133,7 +133,7 @@ function handleTaskForm(button, new_form, subtask) {
         text_label.text("Add task to category " + category_name)
         subtask.updateList()
     } else {
-        $('#delete_task').attr("action", `/delete_task?task_id=${button.attr("id")}`)
+        $('#delete_task').attr("action", `/delete_task?task_id=${form.data("task_id")}`)
         $("#delete_task").show()
         html_form.attr("action", `/edit_task?task_id=${form.data("task_id")}`)
 
