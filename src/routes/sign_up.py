@@ -56,7 +56,7 @@ def validate_sign_up_form(form):
         errors.append("Password must contain at least one uppercase letter")
 
     # Check for password containing special characters
-    special_chars = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+    special_chars = re.compile('[@_!+=#$%^&*()<>?/\|}{~:]')
     if not special_chars.search(form.get("password")):
         result = False
         errors.append("Password must contain at least one special character")
