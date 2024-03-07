@@ -3,10 +3,10 @@
 }
 
 .cont_authentification {
-            height: 100vh;
+            height: 100%;
             display: flex;
             justify-content: center;
-            margin: 1%;
+            padding: 1%;
         }
 
 #authentification {
@@ -41,4 +41,9 @@
     padding-left: 0.5cm;
     padding-top:0.2cm;
     margin-bottom : 0.5cm;
+}
+
+.indication-password{
+    color:grey;
+    font-size: 9pt;
 }
