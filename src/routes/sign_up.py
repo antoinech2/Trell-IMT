@@ -16,7 +16,7 @@ def sign_up_view():
                         first_name=form.get("first_name"), last_name=form.get("last_name"), type=form.get("user_type"))
         db.session.add(new_user)
         db.session.commit()
-        return flask.render_template("sign_up_success.html.jinja2")
+        return flask.render_template("sign_up_success.html.jinja2", user=new_user)
     else:
         return flask.render_template("sign_up.html.jinja2", errors=errors, form=form)
 
