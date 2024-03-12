@@ -55,4 +55,4 @@ def board(board_id):
                     task_dict["has_expired"] = False
                 task_dict["date_expires"] = task_dict["date_expires"].strftime("%Y-%m-%dT%H:%M")
             tasks_data[-1]['tasks'].append(task_dict)
-    return flask.render_template("board_developer.html.jinja2", tasks_data=tasks_data, user=current_user, board=board)
+    return flask.render_template("project_manager/board_manager.html.jinja2", tasks_data=tasks_data, user=current_user, board=board)

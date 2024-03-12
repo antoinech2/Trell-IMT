@@ -26,7 +26,7 @@ def new_project_form():
         current_user.boards.append(new_project)
         db.session.add(current_user)
         db.session.commit()
-        return flask.render_template('create_project_success.html.jinja2', user = current_user, board_id=new_project.id)
+        return flask.render_template('project_manager/project_creator_success.html.jinja2', user = current_user, board_id=new_project.id)
     else:
         # to handle the template
         board_template = request.args.get('template')
@@ -34,7 +34,7 @@ def new_project_form():
             with open('data/new_board_template.json', 'r') as f:
                 data = json.load(f)
         list = data[board_template] if board_template else []
-        return flask.render_template("project_creator.html.jinja2", user = current_user, form = form, errors = errors, template_list_category = list)
+        return flask.render_template("project_manager/project_creator.html.jinja2", user = current_user, form = form, errors = errors, template_list_category = list)
 
 
 def validate_sign_up_form(form):

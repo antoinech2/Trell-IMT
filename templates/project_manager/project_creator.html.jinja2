@@ -1,5 +1,5 @@
 {% include 'components/super_header.html.jinja2' %}
-<script src="../static/js/create_project.js"></script>
+<script src="../../static/js/project_creator.js"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/project_creator.css') }}"/>
 <div class="container">
     <form action="{{ url_for('new_project_form') }}" method="post" class="project-form">

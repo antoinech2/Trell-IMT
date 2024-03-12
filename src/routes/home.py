@@ -13,7 +13,7 @@ def hello_world():  # put application's code here
 @app.route('/home')
 @login_required
 def home_view():
-    return flask.render_template("home_page.html.jinja2",
+    return flask.render_template("project_manager/project_manager_page.html.jinja2",
                                  user=current_user, boards = current_user.boards)
 
 
