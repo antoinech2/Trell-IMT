@@ -93,8 +93,9 @@ class Task(db.Model):
 class Etiquette(db.Model):
     __tablename__: str = 'etiquette'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    label = db.Column(db.String(), nullable=True)
-    description = db.Column(db.String())
+    type = db.Column(db.String(), nullable=False)
+    label = db.Column(db.String(), nullable=False)
+    description = db.Column(db.String(), nullable=True)
     tasks = db.relationship('Task', backref='tasks', secondary=EtiquetteTask)
 
 
