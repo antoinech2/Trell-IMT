@@ -76,6 +76,7 @@ function handleTaskForm(button, new_form, subtask, etiquette) {
 
     subtask.setValue({})
     etiquette.setValue([])
+    $("#etiquettes_list_form").empty()
 
     if (new_form) {
         $("#delete_task").hide()
