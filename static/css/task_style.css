@@ -60,7 +60,7 @@ html,body{
 
 .categories-container {
     display: flex;
-    height: calc(100vh - 1.5cm);
+    height: calc(100vh - 2cm);
     overflow-x: auto;
     padding-left: 1%;
     padding-bottom: 0.5%;
