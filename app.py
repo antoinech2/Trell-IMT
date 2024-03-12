@@ -1,6 +1,9 @@
 import bcrypt
 import flask
+from flask_migrate import Migrate
+from sqlalchemy import event
 
+from src.database.data_init import insert_initial_values
 # Database import
 from src.database.database import init_database
 from src.database.models import *
@@ -14,6 +17,10 @@ app.secret_key = "TrellIMTAdmin47935"
 
 # Database initialisation
 db.init_app(app)  # (1) flask prend en compte la base de donnee
+migrate = Migrate(app, db)
+
+event.listen(Etiquette.__table__, "after_create", insert_initial_values)
+
 with app.test_request_context():  # (2) bloc exécuté à l'initialisation de Flask
     init_database()
 

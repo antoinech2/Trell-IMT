@@ -147,8 +147,6 @@ html,body{
     top:0;
     right:0;
 
-
-
 }
 
 .progress-container{
@@ -165,5 +163,9 @@ html,body{
 
 .time_ok{
     color:green;
+}
+
+.task_done{
+    font-size:10pt;
 }
 
