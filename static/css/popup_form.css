@@ -57,3 +57,14 @@ label {
   top:1%;
   right:1%;
 }
+
+.icon{
+  margin-right:0.5cm;
+}
+
+.remove_subtask{
+  font-size:10pt;
+  margin-left: 1%; /* Ajoutez la marge à gauche selon vos besoins */
+  padding:1.5%;
+
+}
