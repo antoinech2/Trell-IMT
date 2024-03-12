@@ -1,6 +1,6 @@
 {% include 'components/header.html.jinja2' %}
 <link rel="stylesheet" href="{{ url_for("static", filename="css/dev.css") }}"/>
-<form class="search-bar" action="{{ url_for('board_developer') }}" method="post" class="find_bar_form">
+<form class="search-bar" action="{{ url_for('board_developer') }}" method="post">
     <div class="field">
         <label for="project_name">Project name:</label>
         <input list="projects" id="project_name" name="project_name" />
