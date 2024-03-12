@@ -13,7 +13,9 @@
                 </div>
             {% endif %}
             {% if not task.has_expired %}
+                <div class="col-9">
                 <i class="bi bi-calendar2-check time_ok"></i><span> {{ task.expires_message }}</span>
+                </div>
             {% endif %}
         {% endif %}
         {% if task.subtasks_total %}
@@ -21,7 +23,7 @@
                     class="task_done">{{ task.subtasks_done }}/{{ task.subtasks_total }} </span></div>
         {% endif %}
     </div>
-    {% if task.progress!=None %}
+    {% if "progress" in task %}
         <div class="progress-container">
             <div class="progress" role="progressbar" aria-label="task_progression"
                  aria-valuenow="{{ task.progress }}" aria-valuemin="0"
