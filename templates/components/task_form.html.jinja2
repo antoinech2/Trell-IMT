@@ -73,56 +73,38 @@
             <hr/>
             <div class="row mb-3 mt-3">
                 <div class="dropdown ">
-                        <button class="btn btn-outline- dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                            Add etiquettes
-                        </button>
-                        <ul class="dropdown-menu">
+                    <button class="btn btn-outline dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        Add etiquettes
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% for type, etiquettes in etiquette.items() %}
                             <li>
-                                <a class="dropdown-item btn" >
-                                Priority &raquo;
+                                <a class="dropdown-item btn">
+                                    {{ type.capitalize() }} &raquo;
                                 </a>
                                 <ul class="dropdown-menu dropdown-submenu">
-                                    <li>
-                                        <a class="dropdown-item btn" >
-                                Priority 1
-                                </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item btn" >
-                                Priority 2
-                                </a>
-                                    </li>
+                                    {% for sub_etiquette in etiquettes %}
+                                        <li>
+                                            <a class="dropdown-item btn">
+                                                {{ sub_etiquette.label}}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </li>
-                            <li>
-                                <a class="dropdown-item btn"  >
-                                    Status &raquo;
-                                </a>
-                                <ul class="dropdown-menu dropdown-submenu">
-                                    <li>
-                                        <a class="dropdown-item btn" >
-                                Satus 1
-                                </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item btn" >
-                                Status 2
-                                </a>
-                                    </li>
-                                </ul>
-                            </li>
+                        {% endfor %}
 
-                        </ul>
-                    </div>
+                    </ul>
+                </div>
             </div>
 
 
-                <div class="link">
-                    <a class="close btn btn-outline-danger" href="/">Cancel</a>
-                    <input type="submit" class="btn btn-outline-success button-right" value="Add task" name="commit"
-                           id="task_form_submit"/>
-                </div>
+            <div class="link">
+                <a class="close btn btn-outline-danger" href="/">Cancel</a>
+                <input type="submit" class="btn btn-outline-success button-right" value="Add task" name="commit"
+                       id="task_form_submit"/>
+            </div>
         </form>
         <form id="delete_task" action="/delete_task" method="post">
             <button type="submit" name="delete" class="btn btn-danger">
