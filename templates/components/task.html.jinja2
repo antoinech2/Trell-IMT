@@ -21,7 +21,7 @@
                     class="task_done">{{ task.subtasks_done }}/{{ task.subtasks_total }} </span></div>
         {% endif %}
     </div>
-    {% if task.progress %}
+    {% if task.progress!=None %}
         <div class="progress-container">
             <div class="progress" role="progressbar" aria-label="task_progression"
                  aria-valuenow="{{ task.progress }}" aria-valuemin="0"

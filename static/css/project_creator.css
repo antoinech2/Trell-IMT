@@ -9,9 +9,12 @@ body, html {
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100%;
-    padding: 2rem;
+    padding: 1%;
+}
+
+.sub-container{
+    height:100%;
 }
 
 .project-form {

@@ -1,0 +1,75 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --border-radius: 0.25rem;
+    --padding: 0.5rem;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.search-bar {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: var(--padding);
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar .field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 150px;
+}
+
+.search-bar input,
+.search-bar select {
+    padding: var(--padding);
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    color: var(--secondary-color);
+}
+
+.search-bar button {
+    cursor: pointer;
+    padding: var(--padding);
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+.search-bar label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* for smaller screen */
+@media (max-width: 768px) {
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar .field,
+    .search-bar button {
+        width: 100%;
+        min-width: auto;
+    }
+}

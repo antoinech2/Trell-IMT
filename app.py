@@ -38,6 +38,7 @@ import src.routes.home
 import src.routes.sign_up
 import src.routes.board
 import src.routes.new_project
+import src.routes.board_dev
 
 import src.form.new_task
 import src.form.new_category
