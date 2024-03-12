@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (categoryName) {
             //create nex div for category
             const categoryDiv = document.createElement('div');
-            categoryDiv.className = 'category';
+            categoryDiv.className = 'category badge rounded-pill text-bg-primary';
             categoryDiv.innerHTML = `${categoryName} <span class="remove-category">X</span>`;
             //add this new div to the categories
             document.querySelector('#categories').appendChild(categoryDiv);

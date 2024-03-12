@@ -76,14 +76,6 @@ input[type="text"], textarea {
     margin-bottom: 1rem;
 }
 
-.category {
-    background: #e9ecef;
-    border-radius: 16px;
-    padding: 0.25rem 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
 
 .remove-category {
     display: inline-block;
