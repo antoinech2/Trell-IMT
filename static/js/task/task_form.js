@@ -45,7 +45,7 @@ $(function () {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(subtask.getValue.apply(subtask)),
+                body: JSON.stringify(etiquette.getValue()),
 
             });
         } catch (e) {
@@ -112,6 +112,25 @@ function handleTaskForm(button, new_form, subtask, etiquette) {
             }).then(r => r.json()).then(r => {
                 subtask.setValue(r)
                 subtask.updateList()
+            });
+        } catch (e) {
+            console.error(e);
+        }
+
+        try {
+            fetch(`/get_etiquettes?task_id=${form.data("task_id")}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(r => r.json()).then(r => {
+                let etiquette_list = []
+                for (let etiquette_task of r){
+                    etiquette.addEtiquette(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
+                    etiquette_list.push(etiquette_task.id)
+                }
+                etiquette.setValue(etiquette_list)
+
             });
         } catch (e) {
             console.error(e);
