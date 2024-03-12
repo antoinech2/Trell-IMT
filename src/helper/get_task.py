@@ -1,10 +1,12 @@
 from datetime import datetime
 
-from src.database.models import Step
+from src.database.models import Step, Etiquette
 
 
 def get_task(task):
     task_dict = task.__dict__
+
+    task_dict['etiquettes'] = [etiquette.__dict__ for etiquette in task.etiquettes]
 
     subtasks_done = Step.query.filter_by(task_id=task_dict["id"], status="1").count()
     subtasks_not_done = Step.query.filter_by(task_id=task_dict["id"], status="0").count()
