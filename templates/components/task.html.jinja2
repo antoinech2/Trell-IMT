@@ -5,16 +5,20 @@
     <div class="description">
         <p class="task__description">{{ task.description }}</p>
     </div>
-    <div class="expire_container">
+    <div class="expire_container row">
         {% if task.expires_message %}
             {% if task.has_expired %}
-                <div class="late">
+                <div class="late col-9">
                     <i class="bi bi-calendar2-x late"></i> {{ task.expires_message }}
                 </div>
             {% endif %}
             {% if not task.has_expired %}
                 <i class="bi bi-calendar2-check time_ok"></i><span> {{ task.expires_message }}</span>
             {% endif %}
+        {% endif %}
+        {% if task.subtasks_total %}
+            <div class="col-3"><i class="bi bi-clipboard-check"></i> <span
+                    class="task_done">{{ task.subtasks_done }}/{{ task.subtasks_total }} </span></div>
         {% endif %}
     </div>
     {% if task.progress %}
@@ -24,6 +28,7 @@
                  aria-valuemax="100">
                 <div class="progress-bar bg-success" style="width: {{ task.progress }}%">{{ task.progress }}%</div>
             </div>
+
         </div>
     {% endif %}
     <div class="working-team">

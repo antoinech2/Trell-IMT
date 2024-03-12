@@ -28,8 +28,17 @@
             <hr/>
             <div class="row mb-3 mt-3">
                 <div class="progress-container">
-                    <i class="bi bi-bar-chart"></i>
-                    <span>Tasks progression:</span>
+<div class="row">
+                    <div class="col-8">
+                        <i class="bi bi-bar-chart"></i>
+                        <span> Tasks progression:</span>
+                    </div>
+                    <div class="col-3">
+                        <i class="bi bi-clipboard-check"></i>
+                        <span id="task_done"></span>
+                        </div>
+
+                        </div>
                     <div class="progress" role="progressbar" aria-label="task_progression" aria-valuenow="25"
                          aria-valuemin="0" aria-valuemax="100">
                         <div id="task_progress_form" class="progress-bar bg-success" style="width: 25%">25%</div>
