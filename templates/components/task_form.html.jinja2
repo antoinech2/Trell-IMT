@@ -81,7 +81,7 @@
                         {% for type, etiquettes in etiquette.items() %}
                             <li>
                                 <a class="dropdown-item btn">
-                                    {{ type.capitalize() }} &raquo;
+                                    {{ type.capitalize() }} <span class="right-sign">></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-submenu">
                                     {% for sub_etiquette in etiquettes %}
