@@ -31,6 +31,7 @@ salt = bcrypt.gensalt()
 import src.helper.login
 import src.helper.logout
 import src.helper.subtask
+import src.helper.etiquette
 
 # Routes
 import src.routes.sign_in
@@ -49,6 +50,7 @@ import src.form.edit_category
 import src.form.edit_board
 import src.form.delete_board
 import src.form.update_subtasks
+import src.form.update_etiquettes
 
 if __name__ == '__main__':
     app.run()

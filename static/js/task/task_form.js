@@ -1,14 +1,17 @@
 import {SubTasksControl} from "./subtask.js"
+import {EtiquetteControl} from "./etiquette.js"
+
 
 $(function () {
     let form = $('#task_popup')
     let subtask = new SubTasksControl()
+    let etiquette = new EtiquetteControl()
     $('.task').on('click', function () {
         if (form.hasClass('opened') && $(this).data("task_id") === form.data("task_id")) {
             closeForm()
         } else {
             form.data("task_id", $(this).data("task_id"))
-            return handleTaskForm($(this), false, subtask)
+            return handleTaskForm($(this), false, subtask, etiquette)
         }
     });
     $('.new_task').on('click', function () {
@@ -16,7 +19,7 @@ $(function () {
             closeForm()
         } else {
             form.data("category_id", $(this).data("category_id"))
-            return handleTaskForm($(this), true, subtask)
+            return handleTaskForm($(this), true, subtask, etiquette)
         }
     });
     $('.close').on('click', function () {
@@ -36,6 +39,18 @@ $(function () {
         } catch (e) {
             console.error(e);
         }
+        try {
+            fetch("/update_etiquettes" + args, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(etiquette.getValue()),
+
+            });
+        } catch (e) {
+            console.error(e);
+        }
     })
 });
 
@@ -48,7 +63,7 @@ function closeForm() {
     return false;
 }
 
-function handleTaskForm(button, new_form, subtask) {
+function handleTaskForm(button, new_form, subtask, etiquette) {
     let form = $('#task_popup')
     let text_label = $('#task_form_label')
     let html_form = $("#new_task")
@@ -60,6 +75,7 @@ function handleTaskForm(button, new_form, subtask) {
     }
 
     subtask.setValue({})
+    etiquette.setValue([])
 
     if (new_form) {
         $("#delete_task").hide()
@@ -96,6 +112,25 @@ function handleTaskForm(button, new_form, subtask) {
             }).then(r => r.json()).then(r => {
                 subtask.setValue(r)
                 subtask.updateList()
+            });
+        } catch (e) {
+            console.error(e);
+        }
+
+        try {
+            fetch(`/get_etiquettes?task_id=${form.data("task_id")}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(r => r.json()).then(r => {
+                let etiquette_list = []
+                for (let etiquette_task of r){
+                    etiquette.addEtiquette(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
+                    etiquette_list.push(etiquette_task.id)
+                }
+                etiquette.setValue(etiquette_list)
+
             });
         } catch (e) {
             console.error(e);

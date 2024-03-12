@@ -23,7 +23,7 @@ def board(board_id):
 
     etiquette_data = {}
     for etiquette_type in db.session.query(Etiquette.type).distinct():
-        etiquette_data[etiquette_type[0]] = [data.__dict__ for data in Etiquette.query.filter_by(type=etiquette_type[0]).all()]
+        etiquette_data[etiquette_type[0]] = {data.__dict__["id"] : data.__dict__ for data in Etiquette.query.filter_by(type=etiquette_type[0]).all()}
 
     tasks_data = []
     categories = Category.query.filter_by(board_id=board_id).all()
