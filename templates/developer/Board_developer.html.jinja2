@@ -46,13 +46,16 @@
 
     <button type="submit">Find</button>
 </form>
-{% for task in tasks_data %}
-    <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
-        {% with task=task%}
-            {% include "components/task.html.jinja2" %}
-        {% endwith %}
-    </div>
-{% endfor %}
-
+<div class="row">
+    {% for task in tasks_data %}
+        <div class="col-xl-3 col-sm-6 col-12">
+            <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
+                {% with task=task%}
+                    {% include "components/task.html.jinja2" %}
+                {% endwith %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
 </body>
 </html>
