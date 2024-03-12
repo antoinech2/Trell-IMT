@@ -73,3 +73,7 @@ body {
         min-width: auto;
     }
 }
+
+.task {
+    margin-top: 20px;
+}
