@@ -30,7 +30,8 @@ def board(board_id):
             subtasks_not_done = Step.query.filter_by(task_id=task_dict["id"], status="0").count()
             if subtasks_done + subtasks_not_done > 0:
                 task_dict['progress'] = round(subtasks_done / (subtasks_done + subtasks_not_done) * 100)
-
+            task_dict['subtasks_done'] = subtasks_done
+            task_dict['subtasks_total'] = subtasks_done + subtasks_not_done
             if task_dict["date_expires"]:
                 expired = False
                 delta_date = task_dict["date_expires"] - datetime.now()
