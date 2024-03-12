@@ -28,17 +28,17 @@
             <hr/>
             <div class="row mb-3 mt-3">
                 <div class="progress-container">
-<div class="row">
-                    <div class="col-8">
-                        <i class="bi bi-bar-chart"></i>
-                        <span> Tasks progression:</span>
-                    </div>
-                    <div class="col-3">
-                        <i class="bi bi-clipboard-check"></i>
-                        <span id="task_done"></span>
+                    <div class="row">
+                        <div class="col-8">
+                            <i class="bi bi-bar-chart"></i>
+                            <span> Tasks progression:</span>
+                        </div>
+                        <div class="col-3">
+                            <i class="bi bi-clipboard-check"></i>
+                            <span id="task_done"></span>
                         </div>
 
-                        </div>
+                    </div>
                     <div class="progress" role="progressbar" aria-label="task_progression" aria-valuenow="25"
                          aria-valuemin="0" aria-valuemax="100">
                         <div id="task_progress_form" class="progress-bar bg-success" style="width: 25%">25%</div>
@@ -81,13 +81,13 @@
                         {% for type, etiquettes in etiquette.items() %}
                             <li>
                                 <a class="dropdown-item btn">
-                                    {{ type.capitalize() }} <span class="right-sign">></span>
+                                    {{ type.capitalize() }} &raquo;
                                 </a>
                                 <ul class="dropdown-menu dropdown-submenu">
-                                    {% for sub_etiquette in etiquettes %}
+                                    {% for sub_etiquette in etiquettes.values() %}
                                         <li>
-                                            <a class="dropdown-item btn">
-                                                {{ sub_etiquette.label}}
+                                            <a class="dropdown-item btn add_etiquette" title="{{ sub_etiquette.description }}" data-etiquette_id="{{ sub_etiquette.id }}" data-etiquette_color="{{ sub_etiquette.color }}" data-etiquette_description="{{ sub_etiquette.description }}">
+                                                {{ sub_etiquette.label }}
                                             </a>
                                         </li>
                                     {% endfor %}
@@ -99,9 +99,9 @@
                 </div>
             </div>
 
-<div class="container-etiquette">
-    <span class="badge rounded-pill" style="background-color:#065378">Primary <span class="remove-badge">X</span> </span>
-</div>
+            <div id="etiquettes_list_form" class="container-etiquette">
+            </div>
+
 
             <div class="link">
                 <a class="close btn btn-outline-danger" href="/">Cancel</a>

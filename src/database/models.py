@@ -96,6 +96,7 @@ class Etiquette(db.Model):
     type = db.Column(db.String(), nullable=False)
     label = db.Column(db.String(), nullable=False)
     description = db.Column(db.String(), nullable=True)
+    color = db.Column(db.String(), nullable=True)
     tasks = db.relationship('Task', backref='tasks', secondary=EtiquetteTask)
 
 
