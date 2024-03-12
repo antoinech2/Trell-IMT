@@ -6,7 +6,8 @@ from flask import abort
 from app import app
 from flask_login import login_required, current_user
 
-from src.database.models import Board, Category, Task, Step
+from src.database.database import db
+from src.database.models import Board, Category, Task, Step, Etiquette
 
 
 @app.route('/board/<board_id>')
@@ -16,6 +17,10 @@ def board(board_id):
     board = Board.query.filter_by(id=board_id).first()
     if not board in current_user.boards:
         abort(401, description="You don't have access to this board.")
+
+    etiquette_data = {}
+    for etiquette_type in db.session.query(Etiquette.type).distinct():
+        etiquette_data[etiquette_type[0]] = [data.__dict__ for data in Etiquette.query.filter_by(type=etiquette_type[0]).all()]
 
     tasks_data = []
     categories = Category.query.filter_by(board_id=board_id).all()
@@ -56,4 +61,4 @@ def board(board_id):
                     task_dict["has_expired"] = False
                 task_dict["date_expires"] = task_dict["date_expires"].strftime("%Y-%m-%dT%H:%M")
             tasks_data[-1]['tasks'].append(task_dict)
-    return flask.render_template("project_manager/board_manager.html.jinja2", tasks_data=tasks_data, user=current_user, board=board)
+    return flask.render_template("project_manager/board_manager.html.jinja2", tasks_data=tasks_data, user=current_user, board=board, etiquette_data = etiquette_data)

@@ -1,5 +1,7 @@
 {% include 'components/header.html.jinja2' %}
-{% include 'components/task_form.html.jinja2' %}
+{% with etiquette=etiquette_data %}
+    {% include 'components/task_form.html.jinja2' %}
+{% endwith %}
 {% with board_id=board.id %}
     {% include "components/category_form.html.jinja2" %}
     {% include "components/board_form.html.jinja2" %}
@@ -12,17 +14,18 @@
         {% if board.description %}
             <span class="description" id="board_description">{{ board.description }}</span>
         {% endif %}
-    <div class="dropdown drop-right">
-                        <button class="btn btn-outline- dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                            Actions
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item new_category btn" >Add category</a></li>
-                            <li><a class="dropdown-item edit_board btn" data-board_id={{ board.id }} >Edit board</a></li>
-                            <li><a class="dropdown-item delete_board btn btn-danger" data-board_id={{ board.id }} >Delete board</a></li>
-                        </ul>
-                    </div>
+        <div class="dropdown drop-right">
+            <button class="btn btn-outline- dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                Actions
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item new_category btn">Add category</a></li>
+                <li><a class="dropdown-item edit_board btn" data-board_id={{ board.id }}>Edit board</a></li>
+                <li><a class="dropdown-item delete_board btn btn-danger" data-board_id={{ board.id }}>Delete board</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="categories-container">
 
@@ -31,7 +34,8 @@
             <div class="category" data-category_id={{ category.id }}>
                 <div class="head-category">
 
-                    <p class="container-title-description-category"><span class="category-title">{{ category.name }}</span>
+                    <p class="container-title-description-category"><span
+                            class="category-title">{{ category.name }}</span>
                         {% if category.description %}
                             <span class="description-title">{{ category.description }}</span>
                         {% endif %}
@@ -42,12 +46,15 @@
                                 aria-expanded="false">
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item new_task btn" data-category_id={{ category.id }}>Add task</a></li>
-                            <li><a class="dropdown-item edit_category btn" data-category_id={{ category.id }}>Edit category</a></li>
+                            <li><a class="dropdown-item new_task btn" data-category_id={{ category.id }}>Add task</a>
+                            </li>
+                            <li><a class="dropdown-item edit_category btn" data-category_id={{ category.id }}>Edit
+                                category</a></li>
                             <form action="/delete_category?category_id={{ category.id }}" method="POST">
                                 <li>
-                                <input type="submit" class="btn btn-danger dropdown-item" value="Delete" name="delete"
-                   id="form_submit"/> </li>
+                                    <input type="submit" class="btn btn-danger dropdown-item" value="Delete"
+                                           name="delete"
+                                           id="form_submit"/></li>
                             </form>
                         </ul>
                     </div>
@@ -55,7 +62,7 @@
                 <div class="category-content">
                     {% for task in category.tasks %}
                         <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
-                            {% with task=task%}
+                            {% with task=task %}
                                 {% include "components/task.html.jinja2" %}
                             {% endwith %}
                         </div>
