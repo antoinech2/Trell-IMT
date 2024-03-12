@@ -91,6 +91,7 @@ SubTasksControl.prototype.updateProgress = function () {
     let not_done_tasks = Object.values(this.subtasks).filter(e => e == "0").length
     let progress = done_tasks + not_done_tasks > 0 ? Math.round(done_tasks / (done_tasks + not_done_tasks) * 100) : 0
     $('#task_progress_form').text(progress + "%")
+    $('#task_done').text(done_tasks+"/"+(done_tasks+not_done_tasks))
     $('#task_progress_form').attr("style", `width: ${progress}%`)
 }
 
