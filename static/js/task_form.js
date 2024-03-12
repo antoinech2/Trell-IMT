@@ -65,7 +65,7 @@ SubTasksControl.prototype.updateList = function () {
         let newSubtask = $('<div class="form-check subtask">' +
             '<input class="form-check-input subtask_input" form="unlink" type="checkbox" value="" id="subtask' + index + '">' +
             '<label class="form-check-label subtask_name d-inline-block" for="subtask' + index + '"></label>' +
-            '<span class="remove_subtask btn btn-danger d-inline-block">X</span></div>')
+            '<span class="remove_subtask btn d-inline-block">X</span> <hr/></div>')
         newSubtask.find("label").text(name)
         newSubtask.find("input").attr("checked", this.subtasks[name])
         index++;
