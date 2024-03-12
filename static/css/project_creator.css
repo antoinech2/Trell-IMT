@@ -10,11 +10,13 @@ body, html {
     display: flex;
     justify-content: center;
     height: 100%;
-    padding: 1%;
+    padding-bottom: 3%;
+
 }
 
 .sub-container{
     height:100%;
+
 }
 
 .project-form {
