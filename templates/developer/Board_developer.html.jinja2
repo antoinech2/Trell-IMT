@@ -1,0 +1,58 @@
+{% include 'components/header.html.jinja2' %}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/dev.css") }}"/>
+<form class="search-bar" action="{{ url_for('board_developer') }}" method="post" class="find_bar_form">
+    <div class="field">
+        <label for="project_name">Project name:</label>
+        <input list="projects" id="project_name" name="project_name" />
+        <datalist id="projects">
+            {% for project in project_name %}
+            <option value="{{ project }}">
+            {% endfor %}
+        </datalist>
+    </div>
+
+    <div class="field">
+        <label for="task_name">Task name:</label>
+        <input list="task" id="task_name" name="task_name" />
+        <datalist id="task">
+            {% for task in task_name %}
+            <option value="{{ task }}">
+            {% endfor %}
+        </datalist>
+    </div>
+
+    <div class="field">
+        <label for="importance">Importance:</label>
+        <select id="importance" name="importance">
+            {% for level in importance %}
+            <option value="{{ level }}">{{ level }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="state">State:</label>
+        <select id="state" name="state">
+            {% for state in states %}
+            <option value="{{ state }}">{{ state }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="field">
+        <label for="task_date">Due to:</label>
+        <input type="date" id="task_date" name="task_date" />
+    </div>
+
+    <button type="submit">Find</button>
+</form>
+{% for task in tasks_data %}
+    <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
+        {% with task=task%}
+            {% include "components/task.html.jinja2" %}
+        {% endwith %}
+    </div>
+{% endfor %}
+
+</body>
+</html>
