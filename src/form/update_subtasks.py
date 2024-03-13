@@ -14,15 +14,15 @@ from src.database.models import Task, Step
 def update_subtasks():
     task_id = request.args.get('task_id')
     subtask_data = request.get_json()
-    if subtask_data:
+    if subtask_data is not None:
         if not task_id:
             task_id = Task.query.order_by(Task.id.desc()).first().id
 
         db.session.query(Step).filter_by(task_id=task_id).delete()
         db.session.commit()
 
-        for subtask, value in subtask_data.items():
-            new_step = Step(task_id=task_id, name=subtask, status=value)
+        for subtask in subtask_data:
+            new_step = Step(task_id=task_id, name=subtask["name"], status=subtask["value"])
             db.session.add(new_step)
         db.session.commit()
     return "Success", 200

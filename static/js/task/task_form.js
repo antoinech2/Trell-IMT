@@ -74,7 +74,7 @@ function handleTaskForm(button, new_form, subtask, etiquette) {
         form.slideFadeToggle();
     }
 
-    subtask.setValue({})
+    subtask.setValue([])
     etiquette.setValue([])
     $("#etiquettes_list_form").empty()
 

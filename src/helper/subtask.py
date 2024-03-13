@@ -14,5 +14,5 @@ from src.database.models import Step
 def get_subtasks():
     task_id = request.args.get('task_id')
     if task_id:
-        steps = {step.name: step.status for step in Step.query.filter_by(task_id=task_id).all()}
+        steps = [{"name": step.name, "value": step.status} for step in Step.query.filter_by(task_id=task_id).all()]
         return steps
