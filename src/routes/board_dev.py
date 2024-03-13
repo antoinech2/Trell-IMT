@@ -1,9 +1,12 @@
+from operator import and_
+
 import flask
+from flask_sqlalchemy import session
 
 from app import app
 from flask_login import login_required, current_user
 
-from src.database.models import Board, Category, Task
+from src.database.models import Board, Category, Task, db
 
 from src.helper.get_task import get_task
 
@@ -38,21 +41,37 @@ def get_tasks_from_form (form):
     else:
         return tasks_data
 
-def get_tasks_from_form2 (form):
-    param = {}
+
+def get_tasks_from_form2(form):
     tasks_data = []
-    print (form.get("project_name"))
+    print(form.get("project_name"))
+
+    conditions = []
     if form.get("project_name"):
-        param["Board.name"] = form.get("project_name")
+        conditions.append(Board.name == form.get("project_name"))
     if form.get("task_name"):
-        param["Task.name"] = form.get("task_name")
+        conditions.append(Task.name == form.get("task_name"))
     if form.get("importance") != "none":
-        param["Task.priority"] = form.get("importance")
-    if form.get("state") != "none" :
-        param["states"] = form.get("state")
+        conditions.append(Task.priority == form.get("importance"))
+    #if form.get("state") != "none":
+    #    conditions.append(Task.state == form.get("state"))
     if form.get("tasks_date"):
-        param["Task.date_expires"] = form.get("tasks_date")
-    tasks = Task.query.join(Category, Category.id == Task.category_id, Board, Category.board_id == Board.id).filter_by(param).all()
+        conditions.append(Task.date_expires == form.get("tasks_date"))
+
+
+    query = db.session.query(Task, Category, Board) \
+        .join(Category, Category.id == Task.category_id) \
+        .join(Board, Category.board_id == Board.id)
+
+    if len(conditions) > 1:
+            query = query.filter(and_(*conditions))
+    else:
+        if len(conditions)==1:
+            query = query.filter(conditions[0])
+        else:
+            query = Task
+    tasks = query.all()
+
     for task in tasks:
         tasks_data.append(get_task(task))
     return tasks_data
