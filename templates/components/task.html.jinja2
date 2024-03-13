@@ -3,6 +3,11 @@
         <h6 class="task__title">{{ task.name }}</h6>
     </div>
     <div class="description">
+    <div class="etiquette">
+        {% for etiquette in task.etiquettes %}
+        <span class="badge rounded-pill" data-bs-toggle="tooltip" title={{etiquette.description}} style="background-color:#{{etiquette.color if etiquette.color else "000000"}}">{{etiquette.label}}</span>
+        {% endfor %}
+    </div>
         <p class="task__description">{{ task.description }}</p>
     </div>
     <div class="expire_container row">
