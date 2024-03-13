@@ -25,34 +25,39 @@ $(function () {
     $('.close').on('click', function () {
         return closeForm()
     });
-    form.find("form").submit(function (e) {
-        let args = form.data("task_id") ? ("?task_id=" + form.data("task_id")) : ""
-        try {
-            fetch("/update_subtasks" + args, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(subtask.getValue.apply(subtask)),
-
-            });
-        } catch (e) {
-            console.error(e);
-        }
-        try {
-            fetch("/update_etiquettes" + args, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(etiquette.getValue()),
-
-            });
-        } catch (e) {
-            console.error(e);
-        }
+    form.find("form").submit(function(e){
+        handleFormSubmit(e, form, subtask, etiquette)
     })
 });
+
+function handleFormSubmit(e, form, subtask, etiquette) {
+    let args = form.data("task_id") ? ("?task_id=" + form.data("task_id")) : ""
+    try {
+        fetch("/update_subtasks" + args, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(subtask.getValue.apply(subtask)),
+
+        });
+    } catch (e) {
+        console.error(e);
+    }
+    try {
+        fetch("/update_etiquettes" + args, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(etiquette.getValue()),
+
+        });
+    } catch (e) {
+        console.error(e);
+    }
+
+}
 
 function closeForm() {
     let form = $('#task_popup')
@@ -104,41 +109,45 @@ function handleTaskForm(button, new_form, subtask, etiquette) {
         $("#task_form_submit").attr("value", "Edit task")
         text_label.text("Edit task " + task_name + " in category " + category_name)
 
-        try {
-            fetch(`/get_subtasks?task_id=${form.data("task_id")}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }).then(r => r.json()).then(r => {
-                subtask.setValue(r)
-                subtask.updateList()
-            });
-        } catch (e) {
-            console.error(e);
-        }
-
-        try {
-            fetch(`/get_etiquettes?task_id=${form.data("task_id")}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }).then(r => r.json()).then(r => {
-                let etiquette_list = []
-                for (let etiquette_task of r){
-                    etiquette.addEtiquette(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
-                    etiquette_list.push(etiquette_task.id)
-                }
-                etiquette.setValue(etiquette_list)
-
-            });
-        } catch (e) {
-            console.error(e);
-        }
-
+        initControllers(form.data("task_id"), subtask, etiquette)
     }
     return false;
+}
+
+function initControllers(task_id, subtask, etiquette) {
+    try {
+        fetch(`/get_subtasks?task_id=${task_id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(r => r.json()).then(r => {
+            subtask.setValue(r)
+            subtask.updateList()
+        });
+    } catch (e) {
+        console.error(e);
+    }
+
+    try {
+        fetch(`/get_etiquettes?task_id=${task_id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(r => r.json()).then(r => {
+            let etiquette_list = []
+            for (let etiquette_task of r) {
+                etiquette.addEtiquette(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
+                etiquette_list.push(etiquette_task.id)
+            }
+            etiquette.setValue(etiquette_list)
+
+        });
+    } catch (e) {
+        console.error(e);
+    }
+
 }
 
 $.fn.slideFadeToggle = function (easing, callback) {
