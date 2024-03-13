@@ -12,7 +12,7 @@ from src.database.models import Task, Step, Etiquette
 def update_etiquettes():
     task_id = request.args.get('task_id')
     subtask_data = request.get_json()
-    if subtask_data:
+    if subtask_data is not None:
         if not task_id:
             task_id = Task.query.order_by(Task.id.desc()).first().id
 
