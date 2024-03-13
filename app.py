@@ -32,6 +32,7 @@ import src.helper.login
 import src.helper.logout
 import src.helper.subtask
 import src.helper.etiquette
+import src.helper.collaborator
 import src.helper.get_users
 
 # Routes
@@ -52,6 +53,7 @@ import src.form.edit_board
 import src.form.delete_board
 import src.form.update_subtasks
 import src.form.update_etiquettes
+import src.form.update_collaborators
 
 if __name__ == '__main__':
     app.run()

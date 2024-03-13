@@ -13,7 +13,7 @@ $(function () {
             closeForm()
         } else {
             form.data("task_id", $(this).data("task_id"))
-            return handleTaskForm($(this), false, subtask, etiquette)
+            return handleTaskForm($(this), false, subtask, etiquette, collaborator)
         }
     });
     $('.new_task').on('click', function () {
@@ -21,18 +21,18 @@ $(function () {
             closeForm()
         } else {
             form.data("category_id", $(this).data("category_id"))
-            return handleTaskForm($(this), true, subtask, etiquette)
+            return handleTaskForm($(this), true, subtask, etiquette, collaborator)
         }
     });
     $('.close').on('click', function () {
         return closeForm()
     });
     form.find("form").submit(function(e){
-        handleFormSubmit(e, form, subtask, etiquette)
+        handleFormSubmit(e, form, subtask, etiquette, collaborator)
     })
 });
 
-function handleFormSubmit(e, form, subtask, etiquette) {
+function handleFormSubmit(e, form, subtask, etiquette, collaborator) {
     let args = form.data("task_id") ? ("?task_id=" + form.data("task_id")) : ""
     try {
         fetch("/update_subtasks" + args, {
@@ -58,6 +58,18 @@ function handleFormSubmit(e, form, subtask, etiquette) {
     } catch (e) {
         console.error(e);
     }
+    try {
+        fetch("/update_collaborators" + args, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(collaborator.getValue()),
+
+        });
+    } catch (e) {
+        console.error(e);
+    }
 
 }
 
@@ -70,7 +82,7 @@ function closeForm() {
     return false;
 }
 
-function handleTaskForm(button, new_form, subtask, etiquette) {
+function handleTaskForm(button, new_form, subtask, etiquette, collaborator) {
     let form = $('#task_popup')
     let text_label = $('#task_form_label')
     let html_form = $("#new_task")
@@ -83,7 +95,10 @@ function handleTaskForm(button, new_form, subtask, etiquette) {
 
     subtask.setValue([])
     etiquette.setValue([])
+    collaborator.setValue([])
+
     $("#etiquettes_list_form").empty()
+    $('#search_user').val("")
 
     if (new_form) {
         $("#delete_task").hide()
@@ -111,12 +126,12 @@ function handleTaskForm(button, new_form, subtask, etiquette) {
         $("#task_form_submit").attr("value", "Edit task")
         text_label.text("Edit task " + task_name + " in category " + category_name)
 
-        initControllers(form.data("task_id"), subtask, etiquette)
+        initControllers(form.data("task_id"), subtask, etiquette, collaborator)
     }
     return false;
 }
 
-function initControllers(task_id, subtask, etiquette) {
+function initControllers(task_id, subtask, etiquette, collaborator) {
     try {
         fetch(`/get_subtasks?task_id=${task_id}`, {
             method: "GET",
@@ -138,13 +153,24 @@ function initControllers(task_id, subtask, etiquette) {
                 "Content-Type": "application/json",
             },
         }).then(r => r.json()).then(r => {
-            let etiquette_list = []
             for (let etiquette_task of r) {
                 etiquette.addEtiquette(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
-                etiquette_list.push(etiquette_task.id)
             }
-            etiquette.setValue(etiquette_list)
+        });
+    } catch (e) {
+        console.error(e);
+    }
 
+    try {
+        fetch(`/get_collaborators?task_id=${task_id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(r => r.json()).then(r => {
+            for (let collab of r) {
+                collaborator.addCollaborator(collab.id)
+            }
         });
     } catch (e) {
         console.error(e);
