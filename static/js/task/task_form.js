@@ -1,11 +1,13 @@
 import {SubTasksControl} from "./subtask.js"
 import {EtiquetteControl} from "./etiquette.js"
+import {CollaboratorControl} from "./collab.js";
 
 
 $(function () {
     let form = $('#task_popup')
     let subtask = new SubTasksControl()
     let etiquette = new EtiquetteControl()
+    let collaborator = new CollaboratorControl()
     $('.task').on('click', function () {
         if (form.hasClass('opened') && $(this).data("task_id") === form.data("task_id")) {
             closeForm()

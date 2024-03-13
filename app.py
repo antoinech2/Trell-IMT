@@ -32,6 +32,7 @@ import src.helper.login
 import src.helper.logout
 import src.helper.subtask
 import src.helper.etiquette
+import src.helper.get_users
 
 # Routes
 import src.routes.sign_in
