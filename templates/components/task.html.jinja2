@@ -40,8 +40,8 @@
     {% endif %}
     <div class="working-team">
         <ul id="user-image">
-            {% for user in users %}
-                <li><img src="{{ user }}" alt="Description de l'image 1" class="small-image"></li>
+            {% for user in task.users %}
+                <li><img src="{{ user.image }}" alt="" class="small-image">{{ user.first_name }} {{ user.last_name[0] }}</li>
             {% endfor %}
         </ul>
     </div>

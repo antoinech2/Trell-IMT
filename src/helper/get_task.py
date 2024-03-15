@@ -7,6 +7,7 @@ def get_task(task):
     task_dict = task.__dict__
 
     task_dict['etiquettes'] = [etiquette.__dict__ for etiquette in task.etiquettes]
+    task_dict['users'] = [user.__dict__ for user in task.users]
 
     subtasks_done = Step.query.filter_by(task_id=task_dict["id"], status="1").count()
     subtasks_not_done = Step.query.filter_by(task_id=task_dict["id"], status="0").count()
