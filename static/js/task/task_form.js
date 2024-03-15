@@ -139,8 +139,9 @@ function initControllers(task_id, subtask, etiquette, collaborator) {
                 "Content-Type": "application/json",
             },
         }).then(r => r.json()).then(r => {
-            subtask.setValue(r)
-            subtask.updateList()
+            for (let task of r) {
+                subtask.add(task)
+            }
         });
     } catch (e) {
         console.error(e);
@@ -154,7 +155,7 @@ function initControllers(task_id, subtask, etiquette, collaborator) {
             },
         }).then(r => r.json()).then(r => {
             for (let etiquette_task of r) {
-                etiquette.addEtiquette(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
+                etiquette.add(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
             }
         });
     } catch (e) {
@@ -169,7 +170,7 @@ function initControllers(task_id, subtask, etiquette, collaborator) {
             },
         }).then(r => r.json()).then(r => {
             for (let collab of r) {
-                collaborator.addCollaborator(collab.id)
+                collaborator.add(collab.id)
             }
         });
     } catch (e) {

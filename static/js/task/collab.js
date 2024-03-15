@@ -40,7 +40,7 @@ CollaboratorControl.prototype.getUserList = async function () {
     }
 }
 
-CollaboratorControl.prototype.addCollaborator = async function (user_id) {
+CollaboratorControl.prototype.add = async function (user_id) {
     let thisControl = this
 
     if (user_id && !(thisControl.collaborators.includes(user_id))) {

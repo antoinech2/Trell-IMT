@@ -11,11 +11,11 @@ EtiquetteControl.prototype.initialize = function (host, component) {
         const etiquette_name = $(this).text()
         const etiquette_color = $(this).data("etiquette_color")
         const etiquette_description = $(this).data("etiquette_description")
-        thisControl.addEtiquette(etiquette_id, etiquette_name, etiquette_color, etiquette_description)
+        thisControl.add(etiquette_id, etiquette_name, etiquette_color, etiquette_description)
     });
 }
 
-EtiquetteControl.prototype.addEtiquette = function (etiquette_id, etiquette_name, etiquette_color, etiquette_description) {
+EtiquetteControl.prototype.add = function (etiquette_id, etiquette_name, etiquette_color, etiquette_description) {
     let thisControl = this
 
     if (etiquette_id && !(thisControl.etiquettes.includes(etiquette_id))) {
