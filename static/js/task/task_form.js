@@ -29,7 +29,7 @@ $(function () {
     $('.close').on('click', function () {
         return closeForm()
     });
-    form.find("form").on("submit", function (e) {
+    $("#new_task").on("submit", function (e) {
         handleFormSubmit(e, form, controllers)
     })
 });
@@ -38,24 +38,22 @@ function handleFormSubmit(e, form, controllers) {
     e.preventDefault()
     let request = e.target.action
     let inputs = e.target.elements
-    if (form.data("task_id")) {
-        let body = {
-            title : inputs["title"].value,
-            description : inputs["description"].value,
-            "task-end" : inputs["task-end"].value
-        }
-        Object.entries(controllers).forEach(controller => body[controller[0]] = controller[1].getValue())
-        try {
-            fetch(request, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(body),
-            }).then(r => window.location.reload());
-        } catch (e) {
-            console.error(e);
-        }
+    let body = {
+        title: inputs["title"].value,
+        description: inputs["description"].value,
+        "task-end": inputs["task-end"].value
+    }
+    Object.entries(controllers).forEach(controller => body[controller[0]] = controller[1].getValue())
+    try {
+        fetch(request, {
+            method: form.data("task_id") ? "PUT" : "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+        }).then(r => window.location.reload());
+    } catch (e) {
+        console.error(e);
     }
 }
 

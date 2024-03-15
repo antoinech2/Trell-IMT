@@ -1,22 +1,33 @@
 from datetime import datetime
 
-import flask
 from flask import request, redirect
 from flask_login import login_required
 
 from app import app
 from src.database.database import db
-from src.database.models import Task
+from src.database.models import Task, User, Etiquette, Step
 
 
 @app.route('/new_task', methods=["POST"])
 @login_required
 def new_task_form():
-    form = flask.request.form
+    form = request.get_json()
     category_id = request.args.get('category_id')
     if form and category_id:
-        new_task = Task(category_id=category_id, name=form.get("title"), description=form.get("description"), date_expires = datetime.strptime(form.get('task-end'), "%Y-%m-%dT%H:%M") if form.get('task-end') else None)
+
+        date_expires = datetime.strptime(form.get('task-end'), "%Y-%m-%dT%H:%M") if form.get('task-end') else None
+
+        etiquettes = [Etiquette.query.filter_by(id=etiquette_id).first() for etiquette_id in form['etiquette']]
+
+        users = [User.query.filter_by(id=user_id).first() for user_id in form['collaborator']]
+
+        new_task = Task(category_id=category_id, name=form['title'], description=form['description'], date_expires = date_expires, etiquettes = etiquettes, users = users)
         db.session.add(new_task)
+        db.session.commit()
+
+        for subtask in form['subtask']:
+            new_step = Step(task_id=new_task.id, name=subtask["name"], status=subtask["value"])
+            db.session.add(new_step)
         db.session.commit()
 
     return redirect(request.referrer)
