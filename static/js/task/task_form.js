@@ -5,15 +5,13 @@ import {CollaboratorControl} from "./collab.js";
 
 $(function () {
     let form = $('#task_popup')
-    let subtask = new SubTasksControl()
-    let etiquette = new EtiquetteControl()
-    let collaborator = new CollaboratorControl()
+    let controllers = {subtask : new SubTasksControl(), etiquette : new EtiquetteControl(), collaborator : new CollaboratorControl()}
     $('.task').on('click', function () {
         if (form.hasClass('opened') && $(this).data("task_id") === form.data("task_id")) {
             closeForm()
         } else {
             form.data("task_id", $(this).data("task_id"))
-            return handleTaskForm($(this), false, subtask, etiquette, collaborator)
+            return handleTaskForm($(this), false, controllers)
         }
     });
     $('.new_task').on('click', function () {
@@ -21,18 +19,18 @@ $(function () {
             closeForm()
         } else {
             form.data("category_id", $(this).data("category_id"))
-            return handleTaskForm($(this), true, subtask, etiquette, collaborator)
+            return handleTaskForm($(this), true, controllers)
         }
     });
     $('.close').on('click', function () {
         return closeForm()
     });
     form.find("form").submit(function(e){
-        handleFormSubmit(e, form, subtask, etiquette, collaborator)
+        handleFormSubmit(e, form, controllers)
     })
 });
 
-function handleFormSubmit(e, form, subtask, etiquette, collaborator) {
+function handleFormSubmit(e, form, controllers) {
     let args = form.data("task_id") ? ("?task_id=" + form.data("task_id")) : ""
     try {
         fetch("/update_subtasks" + args, {
@@ -40,7 +38,7 @@ function handleFormSubmit(e, form, subtask, etiquette, collaborator) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(subtask.getValue.apply(subtask)),
+            body: JSON.stringify(controllers.subtask.getValue()),
 
         });
     } catch (e) {
@@ -52,7 +50,7 @@ function handleFormSubmit(e, form, subtask, etiquette, collaborator) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(etiquette.getValue()),
+            body: JSON.stringify(controllers.etiquette.getValue()),
 
         });
     } catch (e) {
@@ -64,7 +62,7 @@ function handleFormSubmit(e, form, subtask, etiquette, collaborator) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(collaborator.getValue()),
+            body: JSON.stringify(controllers.collaborator.getValue()),
 
         });
     } catch (e) {
@@ -82,7 +80,7 @@ function closeForm() {
     return false;
 }
 
-function handleTaskForm(button, new_form, subtask, etiquette, collaborator) {
+function handleTaskForm(button, new_form, controllers) {
     let form = $('#task_popup')
     let text_label = $('#task_form_label')
     let html_form = $("#new_task")
@@ -93,12 +91,8 @@ function handleTaskForm(button, new_form, subtask, etiquette, collaborator) {
         form.slideFadeToggle();
     }
 
-    subtask.setValue([])
-    etiquette.setValue([])
-    collaborator.setValue([])
+    Object.values(controllers).forEach(controller => controller.reset())
 
-    $("#etiquettes_list_form").empty()
-    $('#search_user').val("")
 
     if (new_form) {
         $("#delete_task").hide()
@@ -110,7 +104,6 @@ function handleTaskForm(button, new_form, subtask, etiquette, collaborator) {
 
         $("#task_form_submit").attr("value", "Add task")
         text_label.text("Add task to category " + category_name)
-        subtask.updateList()
     } else {
         $('#delete_task').attr("action", `/delete_task?task_id=${form.data("task_id")}`)
         $("#delete_task").show()
@@ -126,12 +119,12 @@ function handleTaskForm(button, new_form, subtask, etiquette, collaborator) {
         $("#task_form_submit").attr("value", "Edit task")
         text_label.text("Edit task " + task_name + " in category " + category_name)
 
-        initControllers(form.data("task_id"), subtask, etiquette, collaborator)
+        initControllers(form.data("task_id"), controllers)
     }
     return false;
 }
 
-function initControllers(task_id, subtask, etiquette, collaborator) {
+function initControllers(task_id, controllers) {
     try {
         fetch(`/get_subtasks?task_id=${task_id}`, {
             method: "GET",
@@ -140,7 +133,7 @@ function initControllers(task_id, subtask, etiquette, collaborator) {
             },
         }).then(r => r.json()).then(r => {
             for (let task of r) {
-                subtask.add(task)
+                controllers.subtask.add(task)
             }
         });
     } catch (e) {
@@ -155,7 +148,7 @@ function initControllers(task_id, subtask, etiquette, collaborator) {
             },
         }).then(r => r.json()).then(r => {
             for (let etiquette_task of r) {
-                etiquette.add(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
+                controllers.etiquette.add(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
             }
         });
     } catch (e) {
@@ -170,7 +163,7 @@ function initControllers(task_id, subtask, etiquette, collaborator) {
             },
         }).then(r => r.json()).then(r => {
             for (let collab of r) {
-                collaborator.add(collab.id)
+                controllers.collaborator.add(collab)
             }
         });
     } catch (e) {

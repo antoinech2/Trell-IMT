@@ -21,18 +21,15 @@ SubTasksControl.prototype.add = function ({name, value}) {
     let thisControl = this
 
     thisControl.subtasks.push({name, value})
-    let newSubtask = $('<div class="form-check subtask">' +
-        '<label class="form-check-label subtask_name d-inline-block"><input class="form-check-input subtask_input" form="unlink" type="checkbox" value=""></label>' +
-        '<span class="remove_subtask btn d-inline-block">X</span> <hr/></div>')
-    newSubtask.find("label").text(name)
+    let newSubtask = $(`<div class="form-check subtask"><label class="form-check-label subtask_name d-inline-block"><input class="form-check-input subtask_input" form="unlink" type="checkbox" value="">${name}</label><span class="remove_subtask btn d-inline-block">X</span> <hr/></div>`)
     newSubtask.find("input").attr("checked", value)
     $("#sub_task_list_form").append(newSubtask)
-    newSubtask.on('click', function () {
+    newSubtask.find(".remove_subtask").on('click', function () {
         thisControl.subtasks.splice(thisControl.subtasks.indexOf(thisControl.subtasks.find(subtask => subtask.name === name)), 1)
-        this.remove()
+        newSubtask.remove()
         thisControl.updateProgress()
     });
-    newSubtask.on("change", function () {
+    newSubtask.find("input").on("change", function () {
         thisControl.subtasks.find(subtask => subtask.name === name).value = this.checked
         thisControl.updateProgress()
     })
@@ -52,6 +49,7 @@ SubTasksControl.prototype.getValue = function () {
     return this.subtasks
 }
 
-SubTasksControl.prototype.setValue = function (value) {
-    this.subtasks = value
+SubTasksControl.prototype.reset = function () {
+    this.subtasks = []
+    $("#sub_task_list_form").empty()
 }
