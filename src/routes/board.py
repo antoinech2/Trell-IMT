@@ -9,7 +9,7 @@ from flask_login import login_required, current_user
 from src.database.database import db
 from src.database.models import Board, Category, Task, Step, Etiquette
 
-from src.helper.get_task import get_task
+from src.helper.get_task_display import get_task
 
 @app.route('/board/<board_id>')
 @login_required

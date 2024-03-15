@@ -6,7 +6,7 @@ from flask_login import login_required, current_user
 
 from src.database.models import Board, Category, Task, db
 
-from src.helper.get_task import get_task
+from src.helper.get_task_display import get_task
 
 
 @app.route('/board_developer', methods=["GET", "POST"])

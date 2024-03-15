@@ -112,45 +112,15 @@ function handleTaskForm(button, new_form, controllers) {
 
 function initControllers(task_id, controllers) {
     try {
-        fetch(`/get_subtasks?task_id=${task_id}`, {
+        fetch(`/get_task?task_id=${task_id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             },
         }).then(r => r.json()).then(r => {
-            for (let task of r) {
-                controllers.subtask.add(task)
-            }
-        });
-    } catch (e) {
-        console.error(e);
-    }
-
-    try {
-        fetch(`/get_etiquettes?task_id=${task_id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(r => r.json()).then(r => {
-            for (let etiquette_task of r) {
-                controllers.etiquette.add(etiquette_task.id, etiquette_task.name, etiquette_task.color, etiquette_task.description)
-            }
-        });
-    } catch (e) {
-        console.error(e);
-    }
-
-    try {
-        fetch(`/get_collaborators?task_id=${task_id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(r => r.json()).then(r => {
-            for (let collab of r) {
-                controllers.collaborator.add(collab)
-            }
+            Object.entries(controllers).forEach(controller => {
+                r[controller[0]].forEach(elem => controller[1].add(elem))
+            })
         });
     } catch (e) {
         console.error(e);

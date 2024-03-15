@@ -30,9 +30,7 @@ salt = bcrypt.gensalt()
 # Local imports
 import src.helper.login
 import src.helper.logout
-import src.helper.subtask
-import src.helper.etiquette
-import src.helper.collaborator
+import src.helper.get_task_info
 import src.helper.get_users
 
 # Routes
