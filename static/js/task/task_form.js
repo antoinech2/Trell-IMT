@@ -5,7 +5,11 @@ import {CollaboratorControl} from "./collab.js";
 
 $(function () {
     let form = $('#task_popup')
-    let controllers = {subtask : new SubTasksControl(), etiquette : new EtiquetteControl(), collaborator : new CollaboratorControl()}
+    let controllers = {
+        subtask: new SubTasksControl(),
+        etiquette: new EtiquetteControl(),
+        collaborator: new CollaboratorControl()
+    }
     $('.task').on('click', function () {
         if (form.hasClass('opened') && $(this).data("task_id") === form.data("task_id")) {
             closeForm()
@@ -25,50 +29,34 @@ $(function () {
     $('.close').on('click', function () {
         return closeForm()
     });
-    form.find("form").submit(function(e){
+    form.find("form").on("submit", function (e) {
         handleFormSubmit(e, form, controllers)
     })
 });
 
 function handleFormSubmit(e, form, controllers) {
-    let args = form.data("task_id") ? ("?task_id=" + form.data("task_id")) : ""
-    try {
-        fetch("/update_subtasks" + args, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(controllers.subtask.getValue()),
-
-        });
-    } catch (e) {
-        console.error(e);
+    e.preventDefault()
+    let request = e.target.action
+    let inputs = e.target.elements
+    if (form.data("task_id")) {
+        let body = {
+            title : inputs["title"].value,
+            description : inputs["description"].value,
+            "task-end" : inputs["task-end"].value
+        }
+        Object.entries(controllers).forEach(controller => body[controller[0]] = controller[1].getValue())
+        try {
+            fetch(request, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(body),
+            }).then(r => window.location.reload());
+        } catch (e) {
+            console.error(e);
+        }
     }
-    try {
-        fetch("/update_etiquettes" + args, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(controllers.etiquette.getValue()),
-
-        });
-    } catch (e) {
-        console.error(e);
-    }
-    try {
-        fetch("/update_collaborators" + args, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(controllers.collaborator.getValue()),
-
-        });
-    } catch (e) {
-        console.error(e);
-    }
-
 }
 
 function closeForm() {

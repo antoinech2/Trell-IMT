@@ -23,9 +23,9 @@ EtiquetteControl.prototype.add = function (etiquette_id, etiquette_name, etiquet
         let newEtiquette = $(`<span class="badge rounded-pill" data-bs-toggle="tooltip" title="${etiquette_description}" style="background-color:#${etiquette_color !== "None" ? etiquette_color : "000000"}">${etiquette_name}<span\
                 class="remove-badge remove_etiquette"> X</span> </span>`)
         $("#etiquettes_list_form").append(newEtiquette)
-        newEtiquette.find("remove_etiquette").on('click', function () {
+        newEtiquette.find(".remove_etiquette").on('click', function () {
             thisControl.etiquettes.splice(thisControl.etiquettes.indexOf(etiquette_id), 1)
-            this.remove()
+            newEtiquette.remove()
         })
     }
 }
