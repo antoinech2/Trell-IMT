@@ -87,7 +87,6 @@ class Task(db.Model):
     name = db.Column(db.String(), nullable=False)
     description = db.Column(db.String())
     date_expires = db.Column(db.DateTime, nullable=True)
-    priority = db.Column(db.Integer, nullable=True)
     etiquettes = db.relationship('Etiquette', backref='tasks', secondary=EtiquetteTask)
 
 
