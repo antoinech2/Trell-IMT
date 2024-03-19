@@ -34,7 +34,7 @@ def board_developer():
                                  task_name=task_name,
                                  importance=importance,
                                  states=states,
-                                 tasks_data=tasks, etiquette_data=etiquette_data)
+                                 tasks_data=tasks)
 
 def get_tasks_from_form(form):
     tasks_data = []

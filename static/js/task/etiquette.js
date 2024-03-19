@@ -4,16 +4,30 @@ export function EtiquetteControl() {
 
 EtiquetteControl.prototype.initialize = function (host, component) {
     let thisControl = this
+    this.etiquetteList = []
     this.etiquettes = []
 
-    $('.add_etiquette').on('click', function () {
+    $('.add_etiquette').on('click', async function () {
         const etiquette_id = $(this).data("etiquette_id")
-        const etiquette_name = $(this).text()
-        const etiquette_color = $(this).data("etiquette_color")
-        const etiquette_description = $(this).data("etiquette_description")
-        const etiquette_type = $(this).data("etiquette_type")
-        thisControl.add({id : etiquette_id, type : etiquette_type, name : etiquette_name, color : etiquette_color, description : etiquette_description})
+        thisControl.add((await thisControl.getEtiquetteList()).find(etiquette => etiquette.id == etiquette_id))
     });
+}
+
+EtiquetteControl.prototype.getEtiquetteList = async function () {
+    if (this.etiquetteList.length === 0) {
+        try {
+            return await fetch(`/get_etiquettes`, {
+                method: "GET",
+            }).then(r => r.json()).then(r => {
+                this.etiquetteList = r
+                return r
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    } else {
+        return this.etiquetteList
+    }
 }
 
 EtiquetteControl.prototype.add = function ({id : etiquette_id, type : etiquette_type, name : etiquette_name, color : etiquette_color, description : etiquette_description}) {
