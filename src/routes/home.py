@@ -3,6 +3,7 @@ import flask
 
 from app import app
 from src.database.models import *
+from src.routes.board_dev import board_developer
 
 
 @app.route('/')
@@ -10,11 +11,14 @@ def hello_world():  # put application's code here
     return flask.render_template("site_page.html.jinja2")
 
 
-@app.route('/home')
+@app.route('/home', methods=['GET'])
 @login_required
 def home_view():
-    return flask.render_template("project_manager/project_manager_page.html.jinja2",
-                                 user=current_user, boards = current_user.boards)
+    if current_user.type == UserType.Developer:
+        return flask.redirect("/board_developer")
+    else:
+        return flask.render_template("project_manager/project_manager_page.html.jinja2",
+                                    user=current_user, boards = current_user.boards)
 
 
 @app.route('/contact')
