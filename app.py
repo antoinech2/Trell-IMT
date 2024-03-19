@@ -37,7 +37,7 @@ import src.helper.get_users
 import src.routes.sign_in
 import src.routes.home
 import src.routes.sign_up
-import src.routes.board
+import src.routes.board_manager
 import src.routes.new_project
 import src.routes.board_dev
 

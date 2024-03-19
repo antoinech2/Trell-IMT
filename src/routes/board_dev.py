@@ -22,7 +22,7 @@ def board_developer():
     states = Etiquette.query.filter(Etiquette.type == "status").all()
     tasks = get_tasks_from_form(form)
 
-    return flask.render_template("developer/Board_developer.html.jinja2", user=current_user,
+    return flask.render_template("developer/board_developer.html.jinja2", user=current_user,
                                  form=form,
                                  project_name=project_name,
                                  task_name=task_name,
