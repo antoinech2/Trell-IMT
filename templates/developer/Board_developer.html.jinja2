@@ -3,7 +3,7 @@
 <form class="search-bar" action="{{ url_for('board_developer') }}" method="post" >
     <div class="field">
         <label for="project_name">Project name:</label>
-        <input list="projects" id="project_name" name="project_name" autocomplete="off" />
+        <input list="projects" id="project_name" name="project_name" autocomplete="off" value="{{ form.project_name }}"/>
         <datalist id="projects">
             {% for project in project_name %}
             <option value="{{ project }}">
@@ -13,7 +13,7 @@
 
     <div class="field">
         <label for="task_name">Task name:</label>
-        <input list="task" id="task_name" name="task_name" autocomplete="off" />
+        <input list="task" id="task_name" name="task_name" autocomplete="off" value="{{ form.task_name }}"/>
         <datalist id="task">
             {% for task in task_name %}
             <option value="{{ task }}">
@@ -23,9 +23,10 @@
 
     <div class="field">
         <label for="importance">Importance:</label>
-        <select id="importance" name="importance">
+        <select id="importance" name="importance" >
+            <option value="0">{{ none }}</option>
             {% for level in importance %}
-            <option value="{{ level }}">{{ level }}</option>
+            <option value="{{ level.id }}" {{ 'selected' if form.importance == level.id else ''}}>{{ level.label }}</option>
             {% endfor %}
         </select>
     </div>
@@ -33,15 +34,16 @@
     <div class="field">
         <label for="state">State:</label>
         <select id="state" name="state">
+            <option value="0">{{ none }}</option>
             {% for state in states %}
-            <option value="{{ state }}">{{ state }}</option>
+            <option value="{{ state.id }}" {{ 'selected' if form.state == state.id else ''}}>{{ state.label }}</option>
             {% endfor %}
         </select>
     </div>
 
     <div class="field">
         <label for="task_date">Due to:</label>
-        <input type="date" id="task_date" name="task_date" />
+        <input type="date" id="task_date" name="task_date" value="{{ form.task_date }}"/>
     </div>
 
     <button type="submit">Find</button>

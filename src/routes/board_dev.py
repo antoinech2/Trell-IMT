@@ -4,7 +4,7 @@ from sqlalchemy import and_
 from app import app
 from flask_login import login_required, current_user
 
-from src.database.models import Board, Category, Task, db, BoardUsers
+from src.database.models import Board, Category, Task, db, Etiquette, EtiquetteTask, User
 
 from src.helper.get_task_display import get_task
 
@@ -13,11 +13,15 @@ from src.helper.get_task_display import get_task
 @login_required
 def board_developer():
     form = flask.request.form
+    if form :
+        form.state = int(form.get('state'))
+        form.importance = int(form.get('importance'))
     project_name = [board.name for board in current_user.boards]
     task_name = [task.name for task in current_user.tasks]
-    importance = ["none", "importance1", "importance2"]
-    states = ["none", "state1", "state2", "state3"]
+    importance = Etiquette.query.filter(Etiquette.type == "priority").all()
+    states = Etiquette.query.filter(Etiquette.type == "status").all()
     tasks = get_tasks_from_form(form)
+
     return flask.render_template("developer/Board_developer.html.jinja2", user=current_user,
                                  form=form,
                                  project_name=project_name,
@@ -29,22 +33,31 @@ def board_developer():
 def get_tasks_from_form(form):
     tasks_data = []
 
-    conditions = []
-    if form.get("project_name"):
-        conditions.append(Board.name == form.get("project_name"))
-    if form.get("task_name"):
-        conditions.append(Task.name == form.get("task_name"))
+    conditions = [current_user.id == User.id]
+    if form:
+        if form.get("project_name"):
+            conditions.append(Board.name == form.get("project_name"))
+        if form.get("task_name"):
+            conditions.append(Task.name == form.get("task_name"))
+        if int(form.get("importance")) > 0:
+            conditions.append(Etiquette.id == form.get("importance"))
+        if int(form.get("state")) > 0:
+            conditions.append(Etiquette.id == form.get("state"))
+        if form.get("task_date"):
+            conditions.append(Task.date_expires < form.get("task_date"))
     print (conditions)
+
     query = db.session.query(Task) \
         .join(Category, Category.id == Task.category_id) \
-        .join(Board, Board.id == Category.board_id)
+        .join(Board, Board.id == Category.board_id) \
+        .outerjoin(Task.etiquettes) \
+        .outerjoin(Task.users)
 
-    if conditions:
-        query = query.filter(and_(*conditions))
+
+    query = query.filter(and_(*conditions))
 
     tasks = query.all()
 
     for task in tasks:
-        if current_user in task.users:
-            tasks_data.append(get_task(task))
+        tasks_data.append(get_task(task))
     return tasks_data
