@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Function to update the hided input with categories
     const updateCategoryList = () => {
         //select the category name and remove the 'X'
-        const categories = Array.from(document.querySelectorAll('.category'))
+        const categories = Array.from(document.querySelectorAll('.categoryCreate'))
             .map(elem => elem.textContent.replace(' X', '').trim());
         //link the catégories with ',' and update the hided input
         document.getElementById('category_list').value = categories.join('|');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (categoryName) {
             //create nex div for category
             const categoryDiv = document.createElement('div');
-            categoryDiv.className = 'category badge rounded-pill text-bg-primary';
+            categoryDiv.className = 'categoryCreate badge rounded-pill text-bg-primary';
             categoryDiv.innerHTML = `${categoryName} <span class="remove-category">X</span>`;
             //add this new div to the categories
             document.querySelector('#categories').appendChild(categoryDiv);
