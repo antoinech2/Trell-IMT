@@ -1,5 +1,8 @@
 {% set manager = false %}
 {% include 'components/header.html.jinja2' %}
+{% with etiquette=etiquette_data, user_type=user.type %}
+    {% include 'components/task_form.html.jinja2' %}
+{% endwith %}
 <link rel="stylesheet" href="{{ url_for("static", filename="css/dev.css") }}"/>
 <form class="search-bar" action="{{ url_for('board_developer') }}" method="post" >
     <div class="field">

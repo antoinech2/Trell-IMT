@@ -1,5 +1,5 @@
 <div class="container-popup row justify-content-center">
-    <div class="messagepop" id="task_popup">
+    <div class="messagepop" id="task_popup" data-user_type="{{ user_type.name }}">
         <h5 id="task_form_label"></h5>
         <form id="new_task">
             <div class="row mb-3">
@@ -7,7 +7,8 @@
                     <i class="bi bi-card-checklist icon"></i>
                     <label for="task_form_title">Task title</label>
                 </div>
-                <input type="text" class="form-control" size="30" name="title" id="task_form_title" required/>
+                <input type="text" class="form-control" size="30" name="title" id="task_form_title"
+                       required {{ "disabled" if user_type.name == "Developer" else "" }}/>
             </div>
             <div class="row mb-3">
                 <div class="d-flex ">
@@ -15,7 +16,7 @@
                     <label for="task_form_description">Description</label>
                 </div>
                 <textarea class="form-control" rows="3" name="description" id="task_form_description"
-                          cols="35"></textarea>
+                          cols="35" {{ "disabled" if user_type.name == "Developer" else "" }}></textarea>
             </div>
 
             <div class="row mb-3">
@@ -23,7 +24,8 @@
                     <i class="bi bi-calendar-plus icon"></i>
                     <label for="task_form_expires_on">End date</label>
                 </div>
-                <input type="datetime-local" class="form-control mb-3" id="task_form_expires_on" name="task-end"/>
+                <input type="datetime-local" class="form-control mb-3" id="task_form_expires_on"
+                       name="task-end" {{ "disabled" if user_type.name == "Developer" else "" }}/>
             </div>
             <hr/>
             <div class="row mb-3 mt-3">
@@ -69,13 +71,14 @@
             </div>
             <hr/>
 
+
             <div class="row mb-3 mt-3">
-            <div class="d-flex">
+                <div class="d-flex">
                     <i class="bi bi-bookmarks-fill"></i>
                     <h6>Etiquettes</h6>
                 </div>
-            <div id="etiquettes_list_form" class="container-etiquette">
-            </div>
+                <div id="etiquettes_list_form" class="container-etiquette">
+                </div>
                 <div class="dropup">
                     <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -83,29 +86,34 @@
                     </button>
                     <ul class="dropdown-menu">
                         {% for type, etiquettes in etiquette.items() %}
-                            <li>
-                                <a class="dropdown-item btn">
-                                    {{ type.capitalize() }} &raquo;
-                                </a>
-                                <ul class="dropdown-menu dropdown-submenu">
-                                    {% for sub_etiquette in etiquettes.values() %}
-                                        <li>
-                                            <a class="dropdown-item btn add_etiquette"
-                                               title="{{ sub_etiquette.description }}"
-                                               data-etiquette_id="{{ sub_etiquette.id }}"
-                                               data-etiquette_color="{{ sub_etiquette.color }}"
-                                               data-etiquette_description="{{ sub_etiquette.description }}">
-                                                {{ sub_etiquette.label }}
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
+                            {% if not (type == "priority" and user_type.name == "Developer") %}
+                                <li>
+                                    <a class="dropdown-item btn">
+                                        {{ type.capitalize() }} &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        {% for sub_etiquette in etiquettes.values() %}
+                                            <li>
+                                                <a class="dropdown-item btn add_etiquette"
+                                                   title="{{ sub_etiquette.description }}"
+                                                   data-etiquette_id="{{ sub_etiquette.id }}"
+                                                   data-etiquette_color="{{ sub_etiquette.color }}"
+                                                   data-etiquette_description="{{ sub_etiquette.description }}"
+                                                   data-etiquette_type= {{ sub_etiquette.type }}>
+                                                    {{ sub_etiquette.label }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
                         {% endfor %}
 
                     </ul>
                 </div>
+
             </div>
+
 
             <hr/>
             <div class="row mb-3 mt-3">
@@ -115,13 +123,15 @@
                 </div>
                 <ul id="collaborators">
                 </ul>
-                <div class="d-flex">
-                    <i class="bi bi-person-plus-fill"></i>
-                    <label for="search_user">Add collaborator</label>
-                </div>
-                <input type="search" id="search_user" name="search_user" class="form-control" autocomplete="off"/>
-                <ul id="user_list" class="list-group">
-                </ul>
+                {% if user_type.name != "Developer" %}
+                    <div class="d-flex">
+                        <i class="bi bi-person-plus-fill"></i>
+                        <label for="search_user">Add collaborator</label>
+                    </div>
+                    <input type="search" id="search_user" name="search_user" class="form-control" autocomplete="off"/>
+                    <ul id="user_list" class="list-group">
+                    </ul>
+                {% endif %}
             </div>
 
 

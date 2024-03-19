@@ -47,10 +47,11 @@ CollaboratorControl.prototype.add = async function (user) {
 
     if (user.id && !(thisControl.collaborators.includes(user.id))) {
         thisControl.collaborators.push(user.id);
-        let newCollaborator = $(`<span class="collaborator" >${user.first_name} ${user.last_name}<span\
-                class="remove-badge remove_collaborator"> X</span> </span>`)
+        const userTypeManager = ($("#task_popup").data("user_type") !== "Developer")
+        let newCollaborator = $(`<span class="collaborator" >${user.first_name} ${user.last_name}${userTypeManager ? '<span\
+                class="remove-badge remove_collaborator"> X</span>' : ''} </span>`)
         $("#collaborators").append(newCollaborator)
-        newCollaborator.on('click', function () {
+        newCollaborator.find(".remove_collaborator").on('click', function () {
             thisControl.collaborators.splice(thisControl.collaborators.indexOf(user.id), 1)
             this.remove()
         })

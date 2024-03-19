@@ -22,13 +22,19 @@ def board_developer():
     states = Etiquette.query.filter(Etiquette.type == "status").all()
     tasks = get_tasks_from_form(form)
 
+    etiquette_data = {}
+    for etiquette_type in db.session.query(Etiquette.type).distinct():
+        etiquette_data[etiquette_type[0]] = {data.__dict__["id"]: data.__dict__ for data in
+                                             Etiquette.query.filter_by(type=etiquette_type[0]).all()}
+
+
     return flask.render_template("developer/board_developer.html.jinja2", user=current_user,
                                  form=form,
                                  project_name=project_name,
                                  task_name=task_name,
                                  importance=importance,
                                  states=states,
-                                 tasks_data=tasks)
+                                 tasks_data=tasks, etiquette_data=etiquette_data)
 
 def get_tasks_from_form(form):
     tasks_data = []

@@ -1,5 +1,5 @@
 {% include 'components/header.html.jinja2' %}
-{% with etiquette=etiquette_data %}
+{% with etiquette=etiquette_data, user_type=user.type %}
     {% include 'components/task_form.html.jinja2' %}
 {% endwith %}
 {% with board_id=board.id %}
