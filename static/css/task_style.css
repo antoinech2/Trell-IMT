@@ -44,18 +44,21 @@ html,body{
 }
 
 #user-image {
-    background: #00B8DE;
     display: flex;
     list-style-type: none;
+
+    margin:2%;
+    padding-left:1%;
+
 }
 
 .small-image {
-  border: 1px white;
+  border: 1px solid black;
+    padding:4px;
   margin-right: 10px;
-  width: 20px;
-  height: 20px;
+    font-size:10pt;
   border-radius: 50%;
-  object-fit: cover;
+    background-color: #99CC33;
 }
 
 .categories-container {
