@@ -1,5 +1,6 @@
 import flask
 from flask import request, redirect
+from flask_login import login_required
 
 from app import app
 from src.database.database import db
@@ -7,6 +8,7 @@ from src.database.models import Category
 
 
 @app.route('/new_category', methods=["POST"])
+@login_required
 def new_category_form():
     form = flask.request.form
     board_id = request.args.get('board_id')

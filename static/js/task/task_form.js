@@ -32,6 +32,21 @@ $(function () {
     $("#new_task").on("submit", function (e) {
         handleFormSubmit(e, form, controllers)
     })
+    $("#comment_form").on("submit", function (e) {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        try {
+            fetch(e.target.action, {
+                method: "POST",
+                body: data,
+            }).then(r => r.json()).then(r => {
+                showComment(r)
+            });
+        } catch (e) {
+            console.error(e);
+        }
+        e.target.reset()
+    })
 });
 
 function handleFormSubmit(e, form, controllers) {
@@ -78,10 +93,11 @@ function handleTaskForm(button, new_form, controllers) {
     }
 
     Object.values(controllers).forEach(controller => controller.reset())
-
+    $("#comments").empty()
 
     if (new_form) {
         $("#delete_task").hide()
+        $("#comment_section").hide()
         html_form.attr("action", `/new_task?category_id=${form.data("category_id")}`)
 
         html_form.find("#task_form_title").attr("value", "")
@@ -94,6 +110,8 @@ function handleTaskForm(button, new_form, controllers) {
         $('#delete_task').attr("action", `/delete_task?task_id=${form.data("task_id")}`)
         $("#delete_task").show()
         html_form.attr("action", `/edit_task?task_id=${form.data("task_id")}`)
+        $("#comment_form").attr("action", `/new_comment?task_id=${form.data("task_id")}`)
+        $("#comment_section").show()
 
         let task_name = button.find(".task__title").text()
         let task_description = button.find(".task__description").text()
@@ -110,6 +128,11 @@ function handleTaskForm(button, new_form, controllers) {
     return false;
 }
 
+function showComment(data) {
+    let newComment = $(`<div><p>${data.title}</p><p>${data.content}</p><p>${data.author}</p><p title='${data.time}'>${data.time_message}</p></div>`)
+    $("#comments").append(newComment)
+}
+
 function initControllers(task_id, controllers) {
     try {
         fetch(`/get_task?task_id=${task_id}`, {
@@ -121,6 +144,7 @@ function initControllers(task_id, controllers) {
             Object.entries(controllers).forEach(controller => {
                 r[controller[0]].forEach(elem => controller[1].add(elem))
             })
+            r["comment"].forEach(com => showComment(com))
         });
     } catch (e) {
         console.error(e);

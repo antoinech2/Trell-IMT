@@ -130,14 +130,34 @@
                     </ul>
                 {% endif %}
             </div>
-
-
-            <div class="link">
-                <a class="close btn btn-outline-danger" href="/">Cancel</a>
-                <input type="submit" class="btn btn-outline-success button-right" value="Add task" name="commit"
-                       id="task_form_submit"/>
-            </div>
         </form>
+        <div id="comment_section">
+            <hr/>
+            <form method="post" id="comment_form" autocomplete="off">
+                <div class="link">
+                    <label>Comment title<input type="text" class="form-control" size="30"
+                                               name="title"/></label>
+                </div>
+                <label>Content
+                    <textarea required class="form-control" rows="3" name="content"
+                              cols="35"></textarea>
+                </label>
+                <input type="submit" class="btn btn-outline-success button-right" value="Add comment"
+                       name="commit_comment"/>
+                <hr/>
+            </form>
+            <div id="comments">
+
+            </div>
+        </div>
+
+        <hr/>
+        <div class="link">
+            <a class="close btn btn-outline-danger" href="/">Cancel</a>
+            <input type="submit" form="new_task" class="btn btn-outline-success button-right" value="Add task" name="commit"
+                   id="task_form_submit"/>
+        </div>
+
         <form id="delete_task" action="/delete_task" method="post">
             <button type="submit" name="delete" class="btn btn-danger">
                 <i class="bi bi-trash3"></i> Delete

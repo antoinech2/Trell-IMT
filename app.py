@@ -50,6 +50,7 @@ import src.form.delete_category
 import src.form.edit_category
 import src.form.edit_board
 import src.form.delete_board
+import src.form.new_comment
 
 if __name__ == '__main__':
     app.run()
