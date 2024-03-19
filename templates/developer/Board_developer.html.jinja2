@@ -1,9 +1,9 @@
 {% include 'components/header.html.jinja2' %}
 <link rel="stylesheet" href="{{ url_for("static", filename="css/dev.css") }}"/>
-<form class="search-bar" action="{{ url_for('board_developer') }}" method="post">
+<form class="search-bar" action="{{ url_for('board_developer') }}" method="post" >
     <div class="field">
         <label for="project_name">Project name:</label>
-        <input list="projects" id="project_name" name="project_name" />
+        <input list="projects" id="project_name" name="project_name" autocomplete="off" />
         <datalist id="projects">
             {% for project in project_name %}
             <option value="{{ project }}">
@@ -13,7 +13,7 @@
 
     <div class="field">
         <label for="task_name">Task name:</label>
-        <input list="task" id="task_name" name="task_name" />
+        <input list="task" id="task_name" name="task_name" autocomplete="off" />
         <datalist id="task">
             {% for task in task_name %}
             <option value="{{ task }}">
