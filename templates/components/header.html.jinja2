@@ -4,7 +4,9 @@
     <nav class="navigation-site">
         <ul>
             <li><a href="/home">Home</a></li>
+            {% if manager|default(true) %}
             <li><a href="/new_project">New project</a></li>
+            {% endif %}
             <li><a href="/contact">Contact</a></li>
         </ul>
     </nav>

@@ -23,5 +23,9 @@ def home_view():
 
 @app.route('/contact')
 def contact_view():
+    is_manager = True
+    if current_user.type == UserType.Developer:
+        is_manager = False
     return flask.render_template("contact.html.jinja2",
-                                 user=current_user)
+                                 user=current_user,
+                                 is_manager=is_manager)

@@ -1,3 +1,4 @@
+{% set manager = false %}
 {% include 'components/header.html.jinja2' %}
 <link rel="stylesheet" href="{{ url_for("static", filename="css/dev.css") }}"/>
 <form class="search-bar" action="{{ url_for('board_developer') }}" method="post" >
