@@ -9,14 +9,12 @@
         </ul>
     </nav>
 
-    <div class="col-2">
-
-        <a href="/profile" class="logo-connexion margin-logo-logout">
-            <img src="{{ url_for("static", filename="img/logo_user.jpg") }}" alt="Connexion">
-        </a>
+<div class="profile">
+        <i class="bi bi-person-circle"></i>
+        {{ user.first_name }} {{ user.last_name }}
         <a href="/logout" data-toggle="tooltip" title="Logout" class="bi bi-box-arrow-right logout-logo"></a>
+</div>
 
-    </div>
 </header>
 
 

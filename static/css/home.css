@@ -7,7 +7,7 @@
     max-height: 1cm;
 }
 
-.logo-site, .logo-connexion img {
+.logo-site {
     height: 30px;
 }
 
@@ -42,8 +42,9 @@
 .logout-logo {
     color : black;
     font-size : 20px;
+    padding:1cm;
 }
 
-.margin-logo-logout {
-    margin-right: 25px;
+.profile{
+    gap: 20px;
 }
