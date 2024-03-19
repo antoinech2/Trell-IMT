@@ -70,10 +70,16 @@
             <hr/>
 
             <div class="row mb-3 mt-3">
+            <div class="d-flex">
+                    <i class="bi bi-bookmarks-fill"></i>
+                    <h6>Etiquettes</h6>
+                </div>
+            <div id="etiquettes_list_form" class="container-etiquette">
+            </div>
                 <div class="dropup">
                     <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                        Add etiquettes
+                        <i class="bi bi-bookmark-plus-fill"></i> Add etiquettes
                     </button>
                     <ul class="dropdown-menu">
                         {% for type, etiquettes in etiquette.items() %}
@@ -101,8 +107,6 @@
                 </div>
             </div>
 
-            <div id="etiquettes_list_form" class="container-etiquette">
-            </div>
             <hr/>
             <div class="row mb-3 mt-3">
                 <div class="d-flex">
