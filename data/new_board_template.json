@@ -5,5 +5,24 @@
       "Front",
       "Back",
       "Com"
+    ],
+    "Development": [
+      "Design",
+      "Test",
+      "Front end",
+      "Back end",
+      "Git gestion"
+    ],
+    "Baking": [
+      "Shop",
+      "Prepare",
+      "Oven"
+    ],
+    "Parti": [
+      "Food",
+      "Drink",
+      "Musique",
+      "Installation",
+      "Cleaning"
     ]
 }
