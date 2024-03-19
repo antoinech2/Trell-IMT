@@ -47,7 +47,7 @@ CollaboratorControl.prototype.add = async function (user) {
 
     if (user.id && !(thisControl.collaborators.includes(user.id))) {
         thisControl.collaborators.push(user.id);
-        let newCollaborator = $(`<span class="badge" style="background-color:#000000">${user.first_name} ${user.last_name}<span\
+        let newCollaborator = $(`<span class="collaborator" >${user.first_name} ${user.last_name}<span\
                 class="remove-badge remove_collaborator"> X</span> </span>`)
         $("#collaborators").append(newCollaborator)
         newCollaborator.on('click', function () {

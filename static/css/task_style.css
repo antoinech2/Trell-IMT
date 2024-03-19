@@ -181,3 +181,12 @@ html,body{
 .subtask_input{
     margin-right:0.5cm;
 }
+
+.collaborator{
+    background-color: #99CC33;
+    margin:1%;
+    padding:2%;
+    color:black;
+    border-radius : 10px;
+
+}
