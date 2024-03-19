@@ -1,3 +1,5 @@
+import json
+
 from flask_login import login_required, current_user
 import flask
 
@@ -17,8 +19,10 @@ def home_view():
     if current_user.type == UserType.Developer:
         return flask.redirect("/board_developer")
     else:
+        with open('data/new_board_template.json') as json_file:
+            categories = json.load(json_file)
         return flask.render_template("project_manager/project_manager_page.html.jinja2",
-                                    user=current_user, boards = current_user.boards)
+                                    user=current_user, boards = current_user.boards, categories = categories)
 
 
 @app.route('/contact')
