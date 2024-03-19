@@ -13,7 +13,7 @@ CollaboratorControl.prototype.initialize = function (host, component) {
         if (inputValue.length >= 2) {
             let matchUsers = (await thisControl.getUserList()).filter(user => (user.first_name.toLowerCase() + " " + user.last_name.toLowerCase()).includes(inputValue.toLowerCase()))
             for (let user of matchUsers) {
-                let newUser = $(`<li class="add_collaborator">${user.first_name} ${user.last_name}</li>`)
+                let newUser = $(`<li class="add_collaborator list-group-item list-group-item-action">${user.first_name} ${user.last_name}</li>`)
                 $("#user_list").append(newUser)
                 newUser.on('click', function () {
                     thisControl.add(user)

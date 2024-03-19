@@ -5,7 +5,7 @@
             <div class="row mb-3">
                 <div class="d-flex ">
                     <i class="bi bi-card-checklist icon"></i>
-                    <label for="title">Task title</label>
+                    <label for="task_form_title">Task title</label>
                 </div>
                 <input type="text" class="form-control" size="30" name="title" id="task_form_title" required/>
             </div>
@@ -44,6 +44,12 @@
                         <div id="task_progress_form" class="progress-bar bg-success" style="width: 25%">25%</div>
                     </div>
                 </div>
+
+                <div class="d-flex mt-3">
+                    <i class="bi bi-list-task"></i>
+                    <h6> Subtasks : </h6>
+                </div>
+
                 <div id="sub_task_list_form"></div>
                 <div class="row mb-3">
                     <div class="d-flex mt-3">
@@ -62,15 +68,7 @@
                 </div>
             </div>
             <hr/>
-            <div class="row mb-3 mt-3">
-                <ul id="collaborators">
-                </ul>
-                <label for="search_user">Search users</label>
-                <input type="search" id="search_user" name="search_user" class="form-control" autocomplete="off"/>
-                <ul id="user_list">
-                </ul>
-            </div>
-            <hr/>
+
             <div class="row mb-3 mt-3">
                 <div class="dropup">
                     <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -86,7 +84,11 @@
                                 <ul class="dropdown-menu dropdown-submenu">
                                     {% for sub_etiquette in etiquettes.values() %}
                                         <li>
-                                            <a class="dropdown-item btn add_etiquette" title="{{ sub_etiquette.description }}" data-etiquette_id="{{ sub_etiquette.id }}" data-etiquette_color="{{ sub_etiquette.color }}" data-etiquette_description="{{ sub_etiquette.description }}">
+                                            <a class="dropdown-item btn add_etiquette"
+                                               title="{{ sub_etiquette.description }}"
+                                               data-etiquette_id="{{ sub_etiquette.id }}"
+                                               data-etiquette_color="{{ sub_etiquette.color }}"
+                                               data-etiquette_description="{{ sub_etiquette.description }}">
                                                 {{ sub_etiquette.label }}
                                             </a>
                                         </li>
@@ -100,6 +102,22 @@
             </div>
 
             <div id="etiquettes_list_form" class="container-etiquette">
+            </div>
+            <hr/>
+            <div class="row mb-3 mt-3">
+                <div class="d-flex">
+                    <i class="bi bi-people-fill"></i>
+                    <h6>Collaborators</h6>
+                </div>
+                <ul id="collaborators">
+                </ul>
+                <div class="d-flex">
+                    <i class="bi bi-person-plus-fill"></i>
+                    <label for="search_user">Add collaborator</label>
+                </div>
+                <input type="search" id="search_user" name="search_user" class="form-control" autocomplete="off"/>
+                <ul id="user_list" class="list-group">
+                </ul>
             </div>
 
 
