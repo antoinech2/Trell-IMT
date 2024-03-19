@@ -17,6 +17,8 @@ CollaboratorControl.prototype.initialize = function (host, component) {
                 $("#user_list").append(newUser)
                 newUser.on('click', function () {
                     thisControl.add(user)
+                    $('#search_user').val("")
+                    $("#user_list").empty()
                 })
             }
         }
