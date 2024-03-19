@@ -20,17 +20,19 @@ class TaskRelation(enum.Enum):
 
 
 BoardUsers = db.Table('BoardUsers',
-                      db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-                      db.Column('board_id', db.Integer, db.ForeignKey('board.id')))
+                      db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
+                      db.Column('board_id', db.Integer, db.ForeignKey('board.id'), nullable=False),
+                      db.PrimaryKeyConstraint('user_id', 'board_id'))
 
 EtiquetteTask = db.Table('EtiquetteTask',
-                         db.Column('task_id', db.Integer, db.ForeignKey('task.id')),
-                         db.Column('etiquette_id', db.Integer, db.ForeignKey('etiquette.id')))
+                         db.Column('task_id', db.Integer, db.ForeignKey('task.id'), nullable=False),
+                         db.Column('etiquette_id', db.Integer, db.ForeignKey('etiquette.id'), nullable=False),
+                         db.PrimaryKeyConstraint('task_id', 'etiquette_id'))
 
 UserTask = db.Table('UserTask',
-                    db.Column('task_id', db.Integer, db.ForeignKey('task.id')),
-                    db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-                    db.Column('association_type', db.Enum(TaskRelation)))
+                    db.Column('task_id', db.Integer, db.ForeignKey('task.id'), nullable=False),
+                    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
+                    db.PrimaryKeyConstraint('task_id', 'user_id'))
 
 
 class User(db.Model):
@@ -43,8 +45,8 @@ class User(db.Model):
     password = db.Column(db.String(), nullable=False)
     authenticated = db.Column(db.Boolean, default=False)
     language = db.Column(db.Enum(Language))
-    boards = db.relationship('Board', secondary=BoardUsers, backref='user')
-    tasks = db.relationship('Task', secondary=UserTask, backref='user')
+    boards = db.relationship('Board', secondary=BoardUsers, backref='users')
+    tasks = db.relationship('Task', secondary=UserTask, backref='users')
 
     def is_active(self):
         """True, as all users are active."""
@@ -62,12 +64,12 @@ class User(db.Model):
         """False, as anonymous users aren't supported."""
         return False
 
+
 class Board(db.Model):
     __tablename__: str = 'board'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(), nullable=False)
     description = db.Column(db.String())
-    users = db.relationship('User', secondary=BoardUsers, backref='board')
 
 
 class Category(db.Model):
@@ -86,8 +88,7 @@ class Task(db.Model):
     description = db.Column(db.String())
     date_expires = db.Column(db.DateTime, nullable=True)
     priority = db.Column(db.Integer, nullable=True)
-    etiquettes = db.relationship('Etiquette', backref='etiquettes', secondary=EtiquetteTask)
-    users = db.relationship('User', secondary=UserTask, backref='task')
+    etiquettes = db.relationship('Etiquette', backref='tasks', secondary=EtiquetteTask)
 
 
 class Etiquette(db.Model):
@@ -97,7 +98,6 @@ class Etiquette(db.Model):
     label = db.Column(db.String(), nullable=False)
     description = db.Column(db.String(), nullable=True)
     color = db.Column(db.String(), nullable=True)
-    tasks = db.relationship('Task', backref='tasks', secondary=EtiquetteTask)
 
 
 class Step(db.Model):
