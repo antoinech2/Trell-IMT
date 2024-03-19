@@ -1,28 +1,36 @@
 {
-    "Classic": [
-    ],
-    "Special": [
-      "Front",
-      "Back",
-      "Com"
-    ],
-    "Development": [
-      "Design",
-      "Test",
-      "Front end",
-      "Back end",
-      "Git gestion"
-    ],
-    "Baking": [
-      "Shop",
-      "Prepare",
-      "Oven"
-    ],
-    "Party": [
-      "Food",
-      "Drink",
-      "Musique",
-      "Installation",
-      "Cleaning"
-    ]
+  "Empty": [
+  ],
+  "Task managing": [
+    "To do",
+    "Work in progress",
+    "Done",
+    "Archived"
+  ],
+  "Project": [
+    "Features",
+    "Human resources",
+    "Communication",
+    "Budget",
+    "Management"
+  ],
+  "Development": [
+    "Design",
+    "Test",
+    "Front end",
+    "Back end",
+    "Git gestion"
+  ],
+  "Baking": [
+    "Shop",
+    "Prepare",
+    "Oven"
+  ],
+  "Party": [
+    "Food",
+    "Drink",
+    "Musique",
+    "Installation",
+    "Cleaning"
+  ]
 }
