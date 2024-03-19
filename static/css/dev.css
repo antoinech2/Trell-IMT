@@ -6,14 +6,6 @@
     --padding: 0.5rem;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--background-color);
-    color: var(--secondary-color);
-    margin: 0;
-    padding: 20px;
-}
-
 .search-bar {
     margin-top: 20px;
     display: flex;
