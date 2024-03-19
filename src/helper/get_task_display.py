@@ -14,11 +14,11 @@ def get_task(task):
         task_dict['progress'] = round(subtasks_done / (subtasks_done + subtasks_not_done) * 100)
     task_dict['subtasks_done'] = subtasks_done
     task_dict['subtasks_total'] = subtasks_done + subtasks_not_done
-    expired, message_data = compare_dates(task_dict["date_expires"])
-    task_dict["has_expired"] = expired
-    task_dict["expires_message"] = "Expired " if expired else "Expires "
-    task_dict["expires_message"] += message_data
 
     if task_dict["date_expires"]:
+        expired, message_data = compare_dates(task_dict["date_expires"])
+        task_dict["has_expired"] = expired
+        task_dict["expires_message"] = "Expired " if expired else "Expires "
+        task_dict["expires_message"] += message_data
         task_dict["date_expires"] = task_dict["date_expires"].strftime("%Y-%m-%dT%H:%M")
     return task_dict

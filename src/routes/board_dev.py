@@ -34,7 +34,7 @@ def board_developer():
                                  task_name=task_name,
                                  importance=importance,
                                  states=states,
-                                 tasks_data=tasks)
+                                 tasks_data=tasks, etiquette_data=etiquette_data)
 
 def get_tasks_from_form(form):
     tasks_data = []
@@ -51,7 +51,6 @@ def get_tasks_from_form(form):
             conditions.append(Etiquette.id == form.get("state"))
         if form.get("task_date"):
             conditions.append(Task.date_expires < form.get("task_date"))
-    print (conditions)
 
     query = db.session.query(Task) \
         .join(Category, Category.id == Task.category_id) \
