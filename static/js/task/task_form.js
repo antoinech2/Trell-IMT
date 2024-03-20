@@ -8,7 +8,7 @@ $(function () {
     let controllers = {
         subtask: new SubTasksControl(),
         etiquette: new EtiquetteControl(),
-        collaborator: new CollaboratorControl()
+        collaborator: new CollaboratorControl('#task_popup')
     }
     $('.task').on('click', function () {
         if (form.hasClass('opened') && $(this).data("task_id") === form.data("task_id")) {

@@ -1,24 +1,26 @@
-export function CollaboratorControl() {
-    this.initialize.apply(this)
+export function CollaboratorControl(form_parent) {
+    this.initialize(form_parent)
 }
 
-CollaboratorControl.prototype.initialize = function (host, component) {
+CollaboratorControl.prototype.initialize = function (form_parent) {
+
     let thisControl = this
     CollaboratorControl.userList = []
     this.collaborators = []
+    this.form_parent = $(form_parent)
 
-    $('#search_user').on('input', async function () {
+    this.form_parent.find('.search_user').on('input', async function () {
         let inputValue = $(this).val()
-        $("#user_list").empty()
+        thisControl.form_parent.find(".user_list").empty()
         if (inputValue.length >= 2) {
             let matchUsers = (await thisControl.getUserList()).filter(user => (user.first_name.toLowerCase() + " " + user.last_name.toLowerCase()).includes(inputValue.toLowerCase()))
             for (let user of matchUsers) {
                 let newUser = $(`<li class="add_collaborator list-group-item list-group-item-action">${user.first_name} ${user.last_name}</li>`)
-                $("#user_list").append(newUser)
+                thisControl.form_parent.find(".user_list").append(newUser)
                 newUser.on('click', function () {
                     thisControl.add(user)
-                    $('#search_user').val("")
-                    $("#user_list").empty()
+                    thisControl.form_parent.find('.search_user').val("")
+                    thisControl.form_parent.find(".user_list").empty()
                 })
             }
         }
@@ -50,10 +52,10 @@ CollaboratorControl.prototype.add = async function (user) {
         const userTypeManager = ($("#task_popup").data("user_type") !== "Developer")
         let newCollaborator = $(`<span class="collaborator" >${user.first_name} ${user.last_name}${userTypeManager ? '<span\
                 class="remove-badge remove_collaborator"> X</span>' : ''} </span>`)
-        $("#collaborators").append(newCollaborator)
+        thisControl.form_parent.find(".collaborators").append(newCollaborator)
         newCollaborator.find(".remove_collaborator").on('click', function () {
             thisControl.collaborators.splice(thisControl.collaborators.indexOf(user.id), 1)
-            this.remove()
+            newCollaborator.remove()
         })
     }
 }
@@ -64,6 +66,6 @@ CollaboratorControl.prototype.getValue = function () {
 
 CollaboratorControl.prototype.reset = function () {
     this.collaborators = []
-    $('#search_user').val("")
-    $("#collaborators").empty()
+    this.form_parent.find('.search_user').val("")
+    this.form_parent.find(".collaborators").empty()
 }

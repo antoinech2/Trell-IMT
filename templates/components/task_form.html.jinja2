@@ -118,15 +118,15 @@
                     <i class="bi bi-people-fill"></i>
                     <h6>Collaborators</h6>
                 </div>
-                <ul id="collaborators">
+                <ul id="collaborators" class="collaborators">
                 </ul>
                 {% if user_type.name != "Developer" %}
                     <div class="d-flex">
                         <i class="bi bi-person-plus-fill"></i>
                         <label for="search_user">Add collaborator</label>
                     </div>
-                    <input type="search" id="search_user" name="search_user" class="form-control" autocomplete="off"/>
-                    <ul id="user_list" class="list-group">
+                    <input type="search" id="search_user" name="search_user" class="form-control search_user" autocomplete="off"/>
+                    <ul class="list-group user_list">
                     </ul>
                 {% endif %}
             </div>
