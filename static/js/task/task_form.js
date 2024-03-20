@@ -1,7 +1,7 @@
 import {SubTasksControl} from "./subtask.js"
 import {EtiquetteControl} from "./etiquette.js"
 import {CollaboratorControl} from "./collab.js";
-
+import {initControllers} from "../utils.js"
 
 $(function () {
     let form = $('#task_popup')
@@ -123,34 +123,11 @@ function handleTaskForm(button, new_form, controllers) {
         $("#task_form_submit").attr("value", "Edit task")
         text_label.text("Edit task " + task_name + " in category " + category_name)
 
-        initControllers(form.data("task_id"), controllers)
+        initControllers(`/get_task?task_id=${form.data("task_id")}`, controllers)
     }
     return false;
 }
 
-function showComment(data) {
-    let newComment = $(`<div><p>${data.title}</p><p>${data.content}</p><p>${data.author}</p><p title='${data.time}'>${data.time_message}</p></div>`)
-    $("#comments").append(newComment)
-}
-
-function initControllers(task_id, controllers) {
-    try {
-        fetch(`/get_task?task_id=${task_id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(r => r.json()).then(r => {
-            Object.entries(controllers).forEach(controller => {
-                r[controller[0]].forEach(elem => controller[1].add(elem))
-            })
-            r["comment"].forEach(com => showComment(com))
-        });
-    } catch (e) {
-        console.error(e);
-    }
-
-}
 
 $.fn.slideFadeToggle = function (easing, callback) {
     return this.animate({opacity: 'toggle', height: 'toggle'}, 'fast', easing, callback);

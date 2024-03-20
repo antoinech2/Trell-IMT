@@ -33,6 +33,7 @@ import src.helper.logout
 import src.helper.get_task_info
 import src.helper.get_users
 import src.helper.get_etiquettes
+import src.helper.get_board_info
 
 # Routes
 import src.routes.sign_in

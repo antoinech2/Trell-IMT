@@ -1,4 +1,5 @@
 import {CollaboratorControl} from "./task/collab.js";
+import {initControllers} from "./utils.js"
 
 $(function () {
     let form = $('#board_popup')
@@ -22,6 +23,8 @@ $(function () {
             text_label.text("Edit board " + board_name)
             html_form.find("#board_form_title").attr("value", board_name)
             html_form.find("#board_form_description").text(board_description)
+            collaboratorControl.reset()
+            initControllers(`/get_board?board_id=${form.data("board_id")}`, {collaborator : collaboratorControl})
         }
         return false;
     });
