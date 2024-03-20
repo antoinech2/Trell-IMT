@@ -38,6 +38,6 @@ def edit_task_form():
             db.session.add(new_step)
         db.session.commit()
 
-        return 200
+        return "", 200
     else:
-        return 400
+        return "", 400
