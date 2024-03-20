@@ -4,7 +4,7 @@ export function CollaboratorControl() {
 
 CollaboratorControl.prototype.initialize = function (host, component) {
     let thisControl = this
-    this.userList = []
+    CollaboratorControl.userList = []
     this.collaborators = []
 
     $('#search_user').on('input', async function () {
@@ -26,19 +26,19 @@ CollaboratorControl.prototype.initialize = function (host, component) {
 }
 
 CollaboratorControl.prototype.getUserList = async function () {
-    if (this.userList.length === 0) {
+    if (CollaboratorControl.userList.length === 0) {
         try {
             return await fetch(`/get_users`, {
                 method: "GET",
             }).then(r => r.json()).then(r => {
-                this.userList = r
+                CollaboratorControl.userList = r
                 return r
             });
         } catch (e) {
             console.error(e);
         }
     } else {
-        return this.userList
+        return CollaboratorControl.userList
     }
 }
 
