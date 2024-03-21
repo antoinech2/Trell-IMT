@@ -1,0 +1,35 @@
+.board-title{
+    position:relative;
+    padding-left: 7%;
+    background-color: lightgrey;
+    height:1cm;
+    display:flex;
+    justify-content: space-between;
+
+
+
+}
+#board_name{
+    font-weight:bold;
+    margin-right: 1cm;
+}
+
+.drop-right{
+    position:absolute;
+    top:0;
+    right:0;
+
+}
+
+.board-users{
+
+}
+
+.user-bubble-board {
+  border: 1px solid black;
+    padding:4px;
+
+    font-size:10pt;
+  border-radius: 50%;
+    background-color: #99CC33;
+}

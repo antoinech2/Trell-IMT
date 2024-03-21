@@ -52,7 +52,7 @@ html,body{
 
 }
 
-.small-image {
+.user-buble {
   border: 1px solid black;
     padding:4px;
   margin-right: 10px;
@@ -120,16 +120,7 @@ html,body{
 
 }
 
-.board-title{
-    position:relative;
-    padding-left: 7%;
-    background-color: lightgrey;
-    height:1cm;
-}
-#board_name{
-    font-weight:bold;
-    margin-right: 1cm;
-}
+
 
 .description{
     font-size:small;
@@ -144,12 +135,6 @@ html,body{
 
 .head-category{
     position:relative
-}
-.drop-right{
-    position:absolute;
-    top:0;
-    right:0;
-
 }
 
 .progress-container{

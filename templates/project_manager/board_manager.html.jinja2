@@ -10,11 +10,26 @@
 
 <div id="board" data-id= {{ board.id }}>
     <div class="board-title">
+    <div>
         Board <span id="board_name">{{ board.name }}</span>
         {% if board.description %}
             <span class="description" id="board_description">{{ board.description }}</span>
         {% endif %}
-        <div class="dropdown drop-right">
+    </div>
+
+    <div class="board-users">
+        Board users
+
+        {% for user in board.users %}
+         <span class="user-bubble-board" data-toggle="tooltip" title="{{ user.first_name }} {{ user.last_name }}">{{ user.first_name[0] }}{{ user.last_name[0] }}</span>
+
+        {% endfor %}
+
+    </div>
+
+
+
+        <div class="dropdown">
             <button class="btn btn-outline dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                 Actions
