@@ -56,7 +56,7 @@
     {% for task in tasks_data %}
         <div class="col-xl-3 col-sm-6 col-12">
             <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
-                {% with task=task%}
+                {% with task=task, current_user = user%}
                     {% include "components/task.html.jinja2" %}
                 {% endwith %}
             </div>
