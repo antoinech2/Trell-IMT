@@ -86,6 +86,7 @@ CollaboratorControl.prototype.getValue = function () {
 
 CollaboratorControl.prototype.reset = function () {
     this.collaborators = []
+    this.form_parent.find(".user_list").empty()
     this.form_parent.find('.search_user').val("")
     this.form_parent.find(".collaborators").empty()
 }
