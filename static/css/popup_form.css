@@ -104,11 +104,6 @@ display: block;
     margin-bottom: 1rem;
 }
 
-.remove-badge{
-  color:white;
-  font-weight: bold;
-}
-
 .right-sign{
   position:absolute;
   right:0.5cm;
