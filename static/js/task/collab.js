@@ -71,7 +71,7 @@ CollaboratorControl.prototype.add = async function (user) {
         thisControl.collaborators.push(user.id);
         const canRemove = !(($("#task_popup").data("user_type") === "Developer") || (!this.getUserListParameter && $("#user_profile").data("id") == user.id))
         let newCollaborator = $(`<div class="collaborator" >${user.first_name} ${user.last_name}${canRemove ? '<span\
-                class="remove-badge remove_collaborator"> X</span>' : ''} </div>`)
+                class="remove_collaborator"> <i class="bi bi-x-lg"></i></span>' : ''} </div>`)
         thisControl.form_parent.find(".collaborators").append(newCollaborator)
         newCollaborator.find(".remove_collaborator").on('click', function () {
             thisControl.collaborators.splice(thisControl.collaborators.indexOf(user.id), 1)

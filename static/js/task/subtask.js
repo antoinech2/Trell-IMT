@@ -21,7 +21,7 @@ SubTasksControl.prototype.add = function ({name, value}) {
     let thisControl = this
 
     thisControl.subtasks.push({name, value})
-    let newSubtask = $(`<div class="form-check subtask"><label class="form-check-label subtask_name d-inline-block"><input class="form-check-input subtask_input" form="unlink" type="checkbox" value="">${name}</label><span class="remove_subtask btn d-inline-block">X</span> <hr/></div>`)
+    let newSubtask = $(`<div class="form-check subtask"><label class="form-check-label subtask_name d-inline-block"><input class="form-check-input subtask_input" form="unlink" type="checkbox" value="">${name}</label><span class="remove_subtask btn d-inline-block"><i class="bi bi-x-lg"></i></span> <hr/></div>`)
     newSubtask.find("input").attr("checked", value)
     $("#sub_task_list_form").append(newSubtask)
     newSubtask.find(".remove_subtask").on('click', function () {
