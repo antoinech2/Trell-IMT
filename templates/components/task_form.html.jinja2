@@ -32,11 +32,11 @@
                 <div class="progress-container">
                     <div class="row">
                         <div class="col-8">
-                            <i class="bi bi-bar-chart"></i>
+                            <i class="bi bi-bar-chart icon"></i>
                             <span> Tasks progression</span>
                         </div>
                         <div class="col-3">
-                            <i class="bi bi-clipboard-check"></i>
+                            <i class="bi bi-clipboard-check icon"></i>
                             <span id="task_done"></span>
                         </div>
 
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="d-flex mt-3">
-                    <i class="bi bi-list-task"></i>
+                    <i class="bi bi-list-task icon"></i>
                     <h6> Subtasks </h6>
                 </div>
 
@@ -74,7 +74,7 @@
 
             <div class="row mb-3 mt-3">
                 <div class="d-flex">
-                    <i class="bi bi-bookmarks-fill"></i>
+                    <i class="bi bi-bookmarks-fill icon "></i>
                     <h6>Etiquettes</h6>
                 </div>
                 <div id="etiquettes_list_form" class="container-etiquette">
@@ -82,7 +82,7 @@
                 <div class="dropup">
                     <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                        <i class="bi bi-bookmark-plus-fill"></i> Add etiquettes
+                        <i class="bi bi-bookmark-plus-fill icon "></i> Add etiquettes
                     </button>
                     <ul class="dropdown-menu">
                         {% for type, etiquettes in etiquette.items() %}
@@ -115,17 +115,18 @@
             <hr/>
             <div class="row mb-3 mt-3">
                 <div class="d-flex">
-                    <i class="bi bi-people-fill"></i>
+                    <i class="bi bi-people-fill icon "></i>
                     <h6>Collaborators</h6>
                 </div>
                 <ul id="collaborators" class="collaborators">
                 </ul>
                 {% if user_type.name != "Developer" %}
                     <div class="d-flex">
-                        <i class="bi bi-person-plus-fill"></i>
+                        <i class="bi bi-person-plus-fill icon"></i>
                         <label for="search_user">Add collaborator</label>
                     </div>
-                    <input type="search" id="search_user" name="search_user" class="form-control search_user" autocomplete="off"/>
+                    <input type="search" id="search_user" name="search_user" class="form-control search_user"
+                           autocomplete="off"/>
                     <ul class="list-group user_list">
                     </ul>
                 {% endif %}
@@ -134,7 +135,8 @@
 
         <div class="link">
             <a class="close btn btn-outline-danger" href="/">Cancel</a>
-            <input type="submit" form="new_task" class="btn btn-outline-success button-right" value="Add task" name="commit"
+            <input type="submit" form="new_task" class="btn btn-outline-success button-right" value="Add task"
+                   name="commit"
                    id="task_form_submit"/>
         </div>
 
@@ -145,48 +147,51 @@
         </form>
 
 
-   <div class="accordion accordion-flush row mt-3" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Add comment
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-          <div id="comment_section">
+        <div class="accordion accordion-flush row mt-3" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Add comment
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <div id="comment_section">
 
-            <form method="post" id="comment_form" autocomplete="off">
-                <div class="link">
-                    <label>Comment title<input type="text" class="form-control" size="30"
-                                               name="title"/></label>
+                            <form method="post" id="comment_form" autocomplete="off">
+                                <div class="link">
+                                    <label>Comment title<input type="text" class="form-control" size="30"
+                                                               name="title"/></label>
+                                </div>
+                                <label>Content
+                                    <textarea required class="form-control" rows="3" name="content"
+                                              cols="35"></textarea>
+                                </label>
+                                <input type="submit" class="btn btn-outline-success" value="Add comment"
+                                       name="commit_comment"/>
+
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
-                <label>Content
-                    <textarea required class="form-control" rows="3" name="content"
-                              cols="35"></textarea>
-                </label>
-                <input type="submit" class="btn btn-outline-success" value="Add comment"
-                       name="commit_comment"/>
+            </div>
 
-            </form>
-
-        </div> </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Comments <span class="badge rounded-pill text-bg-secondary number-comment">4</span>
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <div id="comments">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Comments <span class="badge rounded-pill text-bg-secondary number-comment">4</span>
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-         <div id="comments">
-         </div>
-    </div>
-  </div>
-   </div>
-</div>
-</div>
 </div>
