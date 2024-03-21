@@ -1,46 +1,50 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Function to update the hided input with categories
+$(document).ready(function() {
+    // Function to update the hidden input with categories
     const updateCategoryList = () => {
-        //select the category name and remove the 'X'
-        const categories = Array.from(document.querySelectorAll('.categoryCreate'))
-            .map(elem => elem.textContent.replace(' X', '').trim());
-        //link the catégories with ',' and update the hided input
-        document.getElementById('category_list').value = categories.join('|');
+        // Select the category name and remove the 'X'
+        const categories = $('.categoryCreate').map(function() {
+            return $(this).text().replace(' X', '').trim();
+        }).get();
+        // Join the categories with '|' and update the hidden input
+        $('#category_list').val(categories.join('|'));
     };
 
-    //add a listener for the add category button
-    document.querySelector('.category-add').addEventListener('click', function() {
-        //get the name of the category to add
-        const categoryName = document.querySelector('.form-name_category').value.trim();
+    // Add a listener for the add category button
+    $('.category-add').click(function() {
+        // Get the name of the category to add
+        const categoryName = $('.form-name_category').val().trim();
         if (categoryName) {
-            //create nex div for category
-            const categoryDiv = document.createElement('div');
-            categoryDiv.className = 'categoryCreate badge rounded-pill text-bg-primary';
-            categoryDiv.innerHTML = `${categoryName} <span class="remove-category">X</span>`;
-            //add this new div to the categories
-            document.querySelector('#categories').appendChild(categoryDiv);
-            // remove what's in category name input
-            document.querySelector('.form-name_category').value = '';
-            //add a suppression listener
-            addRemoveListener(categoryDiv.querySelector('.remove-category'));
-            //update the hided input
+            // Create new div for the category
+            const categoryDiv = $('<div></div>', {
+                class: 'categoryCreate badge rounded-pill text-bg-primary',
+                html: `${categoryName} <span class="remove-category">X</span>`
+            });
+            // Add this new div to the categories
+            $('#categories').append(categoryDiv);
+            // Clear the category name input
+            $('.form-name_category').val('');
+            // Add a removal listener
+            addRemoveListener(categoryDiv.find('.remove-category'));
+            // Update the hidden input
             updateCategoryList();
         }
     });
 
-    // add listener on the remove button
+    // Add listener on the remove button
     const addRemoveListener = (element) => {
-        element.addEventListener('click', function() {
-            // delete the category div
-            this.parentNode.remove();
-            //update the hided input
+        element.click(function() {
+            // Delete the category div
+            $(this).parent().remove();
+            // Update the hidden input
             updateCategoryList();
         });
     };
 
-    document.querySelectorAll('.remove-category').forEach(addRemoveListener);
+    $('.remove-category').each(function() {
+        addRemoveListener($(this));
+    });
 
-    //update the categories at launch
+    // Update the categories at launch
     updateCategoryList();
 });
 
