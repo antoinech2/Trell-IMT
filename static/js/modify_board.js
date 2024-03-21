@@ -7,15 +7,13 @@ $(function () {
     let collaboratorControl = new CollaboratorControl('#board_popup')
 
     $('.edit_board').on('click', function () {
-        if ($(this).data("board_id") === form.data("board_id")) {
+        if (form.hasClass('opened')) {
             form.removeClass('opened')
             form.slideFadeToggle()
             form.removeData("board_id")
         } else {
-            if (!form.hasClass('opened')) {
-                form.addClass('opened');
-                form.slideFadeToggle();
-            }
+            form.addClass('opened');
+            form.slideFadeToggle()
             form.data("board_id", $(this).data("board_id"))
             let html_form = form.find("form")
             let board_name = $("#board_name").text()
