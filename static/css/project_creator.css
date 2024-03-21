@@ -1,31 +1,48 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+html, body {
+    height: 100%; /* Make sure the body takes the full height of the viewport */
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .container {
     display: flex;
     justify-content: center;
-    height: 100%;
-    padding-bottom: 3%;
-
+    align-items: center; /* This centers children vertically */
+    min-height: 100%; /* Ensure the container is at least the height of the viewport */
+    padding: 3% 0; /* Top and bottom padding for some breathing room */
 }
 
-.sub-container{
-    height:100%;
-
+.sub-container {
+    width: 100%; /* Ensure the sub-container takes up full width of its parent */
+    max-width: 600px; /* Max width for the form */
 }
 
 .project-form {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack the header and content */
+    height: calc(100vh - 20px); /* Adjust the 20px to accommodate any margin*/
     max-width: 600px;
+    margin: 10px auto; /* centers the form while providing top and bottom space */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    overflow-y: auto; /* Enables vertical scrolling */
+}
+
+.form-content {
+    overflow-y: auto; /* Enables vertical scrolling */
+    flex-grow: 1; /* Allows this div to take up the remaining space */
+}
+
+@media (max-width: 768px) {
+    .project-form {
+        height: auto; /* On smaller screens, you might want to allow the form to grow */
+        margin: 10px;
+    }
+    .container {
+        padding: 1rem;
+    }
 }
 
 .form-header h1 {
@@ -35,7 +52,11 @@ body, html {
 }
 
 .form-section {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem; /* Increase bottom margin for more space between sections */
+}
+
+input[type="text"], textarea {
+    padding: 0.75rem; /* More padding for larger click area and better readability */
 }
 
 .form-section h3 {
@@ -48,7 +69,7 @@ label {
     margin-bottom: 0.5rem;
 }
 
-input[type="text"], textarea {
+#project_name, #description, textarea {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ddd;
@@ -84,19 +105,38 @@ input[type="text"], textarea {
 
 .add-category {
     display: flex;
-    gap: 0.5rem;
+    align-items: center; /* This aligns the button and input vertically */
+    gap: 0.5rem; /* This provides space between the button and input */
 }
 
-.btn {
-    padding: 0.5rem 1rem;
+input[type="text"], .btn, .form-name_category, textarea {
+    padding: 0.375rem 0.75rem; /* Adjust padding to suit your design */
+    font-size: 1rem; /* Ensure consistent font size */
+    line-height: 1.5; /* This affects the height of the input/button text line */
     border-radius: 4px;
-    border: none;
-    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+input[type="text"], .btn, .form-name_category {
+    height: 38px; /* Example fixed height */
+}
+
+.form-name_category {
+    height: auto;
+    padding: 0.375rem 0.75rem;
 }
 
 .category-add {
+    height: auto;
+    padding: 0.375rem 0.75rem;
     background-color: #007bff;
     color: white;
+}
+
+/* Button styles */
+.btn {
+    height: auto; /* Let the height be determined by padding and font size */
+    padding: 0.375rem 0.75rem; /* Same padding as input */
 }
 
 .create {
@@ -109,8 +149,17 @@ input[type="text"], textarea {
     color: white;
 }
 
-.btn:hover {
-    opacity: 0.9;
+/* Button hover styles */
+.category-add:hover {
+    background-color: #0069d9;
+}
+
+.create:hover {
+    background-color: #217a39;
+}
+
+.cancel:hover {
+    background-color: #5a6268;
 }
 
 .form-footer {
@@ -118,14 +167,3 @@ input[type="text"], textarea {
     justify-content: space-between;
     align-items: center;
 }
-
-@media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-
-    .project-form {
-        padding: 1rem;
-    }
-}
-

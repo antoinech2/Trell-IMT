@@ -8,6 +8,7 @@
                 <div class="form-header">
                     <h1>Create a New Project</h1>
                 </div>
+                <div class="form-content"> <!-- This div will be scrollable -->
                 {% if errors %}
                     <div class="error-container">
                         The following errors prevent us from accessing your request:
@@ -19,7 +20,7 @@
                     </div>
                 {% endif %}
                 <div class="form-section">
-                    <label for="project_name">Project Name</label>
+                    <h3>Project Name</h3>
                     <input type="text" id="project_name" name="project_name" placeholder="Enter project name"
                            value="{{ form.project_name }}" required>
                 </div>
@@ -52,6 +53,7 @@
                 <div class="form-footer">
                     <a href="{{ url_for('home_view') }}" class="btn cancel">Cancel</a>
                     <button type="submit" class="btn create">Create Project</button>
+                </div>
                 </div>
             </form>
         </div>
