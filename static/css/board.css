@@ -5,6 +5,7 @@
     height:1cm;
     display:flex;
     justify-content: space-between;
+    padding-top:0.2cm;
 
 
 
@@ -22,6 +23,7 @@
 }
 
 .board-users{
+    margin-right:15%;
 
 }
 
