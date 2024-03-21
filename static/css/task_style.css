@@ -188,5 +188,6 @@ html,body{
     padding:2%;
     color:black;
     border-radius : 10px;
+    display:inline-block;
 
 }
