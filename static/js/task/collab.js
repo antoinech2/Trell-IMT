@@ -13,7 +13,6 @@ CollaboratorControl.prototype.initialize = function (form_parent, userListParame
     const searchBar = this.form_parent.find('.search_user')
     searchBar.on('input', async function () {
         let inputValue = $(this).val()
-        thisControl.form_parent.find(".user_list").empty()
         let matchUsers = []
         if (inputValue.length >= 2) {
             matchUsers = (await thisControl.getUserList()).filter(user => (user.first_name.toLowerCase() + " " + user.last_name.toLowerCase()).includes(inputValue.toLowerCase()))
@@ -36,6 +35,7 @@ CollaboratorControl.prototype.initialize = function (form_parent, userListParame
 
 CollaboratorControl.prototype.showUserList = function (matchUsers) {
     let thisControl = this
+    thisControl.form_parent.find(".user_list").empty()
     for (let user of matchUsers) {
         let newUser = $(`<li class="add_collaborator list-group-item list-group-item-action">${user.first_name} ${user.last_name}</li>`)
         thisControl.form_parent.find(".user_list").append(newUser)
