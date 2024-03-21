@@ -7,7 +7,7 @@
 <form class="search-bar" action="{{ url_for('board_developer') }}" method="post" >
     <div class="field">
         <label for="project_name">Project name:</label>
-        <input list="projects" id="project_name" name="project_name" autocomplete="off" value="{{ form.project_name }}"/>
+        <input list="projects" id="project_name" class="form-control" name="project_name" autocomplete="off" value="{{ form.project_name }}"/>
         <datalist id="projects">
             {% for project in project_name %}
             <option value="{{ project }}">
@@ -17,7 +17,7 @@
 
     <div class="field">
         <label for="task_name">Task name:</label>
-        <input list="task" id="task_name" name="task_name" autocomplete="off" value="{{ form.task_name }}"/>
+        <input list="task" id="task_name" class="form-control" name="task_name" autocomplete="off" value="{{ form.task_name }}"/>
         <datalist id="task">
             {% for task in task_name %}
             <option value="{{ task }}">

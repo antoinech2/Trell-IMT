@@ -17,6 +17,6 @@ export function initControllers(request, controllers) {
 }
 
 export function showComment(data) {
-    let newComment = $(`<div><p>${data.title}</p><p>${data.content}</p><p>${data.author}</p><p title='${data.time}'>${data.time_message}</p></div>`)
+    let newComment = $(`<div class="comment"><strong>${data.title}</strong><em class="comment-right" title='${data.time}'>${data.time_message}</em><h6>${data.content}</h6><div><i class="bi bi-person-fill"></i>${data.author}</div></div>`)
     $("#comments").append(newComment)
 }

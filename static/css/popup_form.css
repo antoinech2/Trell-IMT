@@ -113,3 +113,22 @@ display: block;
   position:absolute;
   right:0.5cm;
 }
+
+.comment{
+    margin-bottom:0.5cm;
+    padding:2%;
+    border:solid 1px grey;
+    border-radius:10px;
+  position:relative;
+
+}
+
+.comment-right{
+  position:absolute;
+  right:0.2cm;
+}
+
+.number-comment{
+  position:absolute;
+  left:3cm;
+}
