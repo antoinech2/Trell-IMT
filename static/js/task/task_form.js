@@ -1,14 +1,14 @@
 import {SubTasksControl} from "./subtask.js"
 import {EtiquetteControl} from "./etiquette.js"
 import {CollaboratorControl} from "./collab.js";
-import {initControllers} from "../utils.js"
+import {initControllers, showComment} from "../utils.js"
 
 $(function () {
     let form = $('#task_popup')
     let controllers = {
         subtask: new SubTasksControl(),
         etiquette: new EtiquetteControl(),
-        collaborator: new CollaboratorControl('#task_popup')
+        collaborator: new CollaboratorControl('#task_popup', `?board_id=${$("#board").data("id")}`)
     }
     $('.task').on('click', function () {
         if (form.hasClass('opened') && $(this).data("task_id") === form.data("task_id")) {

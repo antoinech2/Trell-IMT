@@ -1,46 +1,66 @@
-export function CollaboratorControl(form_parent) {
-    this.initialize(form_parent)
+export function CollaboratorControl(...args) {
+    this.initialize(...args)
 }
 
-CollaboratorControl.prototype.initialize = function (form_parent) {
+CollaboratorControl.prototype.initialize = function (form_parent, userListParameter = "") {
 
     let thisControl = this
-    CollaboratorControl.userList = []
+    this.userList = []
     this.collaborators = []
     this.form_parent = $(form_parent)
+    this.getUserListParameter = userListParameter;
 
-    this.form_parent.find('.search_user').on('input', async function () {
+    const searchBar = this.form_parent.find('.search_user')
+    searchBar.on('input', async function () {
         let inputValue = $(this).val()
         thisControl.form_parent.find(".user_list").empty()
+        let matchUsers = []
         if (inputValue.length >= 2) {
-            let matchUsers = (await thisControl.getUserList()).filter(user => (user.first_name.toLowerCase() + " " + user.last_name.toLowerCase()).includes(inputValue.toLowerCase()))
-            for (let user of matchUsers) {
-                let newUser = $(`<li class="add_collaborator list-group-item list-group-item-action">${user.first_name} ${user.last_name}</li>`)
-                thisControl.form_parent.find(".user_list").append(newUser)
-                newUser.on('click', function () {
-                    thisControl.add(user)
-                    thisControl.form_parent.find('.search_user').val("")
-                    thisControl.form_parent.find(".user_list").empty()
-                })
-            }
+            matchUsers = (await thisControl.getUserList()).filter(user => (user.first_name.toLowerCase() + " " + user.last_name.toLowerCase()).includes(inputValue.toLowerCase()))
+        } else if (thisControl.getUserListParameter) {
+            matchUsers = (await thisControl.getUserList())
         }
+        thisControl.showUserList(matchUsers)
     });
+
+    searchBar.on('focus', async function () {
+        if (thisControl.getUserListParameter) {
+            thisControl.showUserList(await thisControl.getUserList())
+        }
+    })
+
+    searchBar.on('blur', async function () {
+        thisControl.form_parent.find(".user_list").empty()
+    })
+}
+
+CollaboratorControl.prototype.showUserList = function (matchUsers) {
+    let thisControl = this
+    for (let user of matchUsers) {
+        let newUser = $(`<li class="add_collaborator list-group-item list-group-item-action">${user.first_name} ${user.last_name}</li>`)
+        thisControl.form_parent.find(".user_list").append(newUser)
+        newUser.on('click', function () {
+            thisControl.add(user)
+            thisControl.form_parent.find('.search_user').val("")
+            thisControl.form_parent.find(".user_list").empty()
+        })
+    }
 }
 
 CollaboratorControl.prototype.getUserList = async function () {
-    if (CollaboratorControl.userList.length === 0) {
+    if (this.userList.length === 0) {
         try {
-            return await fetch(`/get_users`, {
+            return await fetch(`/get_users${this.getUserListParameter}`, {
                 method: "GET",
             }).then(r => r.json()).then(r => {
-                CollaboratorControl.userList = r
+                this.userList = r
                 return r
             });
         } catch (e) {
             console.error(e);
         }
     } else {
-        return CollaboratorControl.userList
+        return this.userList
     }
 }
 
