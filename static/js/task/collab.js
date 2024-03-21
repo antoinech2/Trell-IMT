@@ -29,9 +29,9 @@ CollaboratorControl.prototype.initialize = function (form_parent, userListParame
         }
     })
 
-    searchBar.on('blur', async function () {
+    /*searchBar.on('blur', async function () {
         thisControl.form_parent.find(".user_list").empty()
-    })
+    })*/
 }
 
 CollaboratorControl.prototype.showUserList = function (matchUsers) {
