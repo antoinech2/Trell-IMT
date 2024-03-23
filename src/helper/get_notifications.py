@@ -5,6 +5,12 @@ from src.database.models import Notification
 from src.helper.date import compare_dates
 
 
+@app.route('/get_notification_count', methods=['GET'])
+@login_required
+def get_notification_count():
+    return str(Notification.query.filter_by(user_id=current_user.id, read=False).count())
+
+
 @app.route('/get_notifications', methods=['GET'])
 @login_required
 def get_notifications():

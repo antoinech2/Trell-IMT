@@ -1,4 +1,4 @@
-$(function () {
+$(async function () {
     $("#notification_button").on('click', function () {
         try {
             fetch("/get_notifications").then(r => r.json()).then(r => {
@@ -10,6 +10,8 @@ $(function () {
         }
 
     })
+
+    $("#notification_number").text(await fetch("/get_notification_count").then(r => r.text()))
 })
 
 function showNotif(data) {
