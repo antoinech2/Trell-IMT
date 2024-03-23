@@ -1,10 +1,10 @@
 import flask
 from flask import request, redirect
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from app import app
 from src.database.database import db
-from src.database.models import Task, Step
+from src.database.models import Task, Step, Notification
 
 
 @app.route('/delete_task', methods=["POST"])
@@ -21,6 +21,14 @@ def remove_task_form():
 
 def delete_task(task):
     task.etiquettes = []
+
+    notifications = [Notification(user_id=user.id, title="Tâche supprimée",
+                                  content="La tâche '{}' a été supprimée par {}. Vous ne pouvez plus y accéder.".format(
+                                      task.name, current_user.first_name + " " + current_user.last_name))
+                     for user in task.users if user.id != current_user.id]
+
+    db.session.add_all(notifications)
+
     task.users = []
     db.session.commit()
     db.session.query(Step).filter_by(task_id=task.id).delete()
