@@ -30,8 +30,10 @@ def edit_task_form():
                               for user in new_users if (user.id != current_user.id and user not in task.users)])
         notifications.extend([Notification(user_id=user_notif.id, title="New collaborator for task",
                                            content="{} added {} as new collaborator for task '{}'".format(
-                                               current_user.first_name + " " + current_user.last_name, user.first_name + " " + user.last_name, task.name))
-                              for user in new_users if (user.id != current_user.id and user not in task.users) for user_notif in new_users])
+                                               current_user.first_name + " " + current_user.last_name,
+                                               user.first_name + " " + user.last_name, task.name))
+                              for user in new_users if (user.id != current_user.id and user not in task.users) for
+                              user_notif in new_users if user_notif in task.users])
 
         # Removed collaborators
         notifications.extend([Notification(user_id=user.id, title="Task unassigned",
@@ -40,8 +42,10 @@ def edit_task_form():
                               for user in task.users if (user.id != current_user.id and user not in new_users)])
         notifications.extend([Notification(user_id=user_notif.id, title="Collaborator removed from task",
                                            content="{} removed {} from collaborators of task '{}'".format(
-                                               current_user.first_name + " " + current_user.last_name, user.first_name + " " + user.last_name, task.name))
-                              for user in task.users if (user.id != current_user.id and user not in new_users) for user_notif in new_users])
+                                               current_user.first_name + " " + current_user.last_name,
+                                               user.first_name + " " + user.last_name, task.name))
+                              for user in task.users if (user.id != current_user.id and user not in new_users) for
+                              user_notif in task.users if user_notif in new_users])
 
         task.users = new_users
 
@@ -69,14 +73,23 @@ def edit_task_form():
 
         new_etiquettes = [Etiquette.query.filter_by(id=etiquette_id).first() for etiquette_id in form['etiquette']]
 
-        notifications.extend(*[add_notification(task, "New etiquette to task", "Etiquette '{}' was added to task '{}' by {}".format(
-                etiquette.label, task.name, current_user.first_name + " " + current_user.last_name)) for etiquette in new_etiquettes if etiquette not in task.etiquettes])
+        for etiquette in new_etiquettes:
+            if etiquette not in task.etiquettes:
+                notifications.extend(
+                    add_notification(task, "New etiquette to task",
+                                     "Etiquette '{}' was added to task '{}' by {}".format(
+                                         etiquette.label, task.name,
+                                         current_user.first_name + " " + current_user.last_name))
+                )
 
-        notifications.extend(*[add_notification(task, "Etiquette removed from task", "Etiquette '{}' was removed from task '{}' by {}".format(
-                etiquette.label, task.name, current_user.first_name + " " + current_user.last_name)) for etiquette in task.etiquettes if etiquette not in new_etiquettes])
+        for etiquette in task.etiquettes:
+            if etiquette not in new_etiquettes:
+                notifications.extend(add_notification(task, "Etiquette removed from task",
+                                                      "Etiquette '{}' was removed from task '{}' by {}".format(
+                                                          etiquette.label, task.name,
+                                                          current_user.first_name + " " + current_user.last_name)))
 
         task.etiquettes = new_etiquettes
-
 
         db.session.add(task)
         db.session.commit()
