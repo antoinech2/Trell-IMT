@@ -2,11 +2,11 @@ from datetime import datetime
 
 import flask
 from flask import request, redirect
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from app import app
 from src.database.database import db
-from src.database.models import Task, Step, Etiquette, User
+from src.database.models import Task, Step, Etiquette, User, Notification
 
 
 @app.route('/edit_task', methods=["PUT"])
@@ -28,6 +28,11 @@ def edit_task_form():
 
         task.users = [User.query.filter_by(id=user_id).first() for user_id in form['collaborator']]
 
+        notifications = [Notification(user_id=user_id, title="Tâche mise à jour",
+                                      content="La tâche '{}' a été mise à jour par {}".format(task.name, current_user.first_name + " " + current_user.last_name))
+                         for user_id in form['collaborator'] if user_id != current_user.id]
+
+        db.session.add_all(notifications)
         db.session.add(task)
         db.session.commit()
 
