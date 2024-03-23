@@ -1,4 +1,5 @@
 import enum
+from datetime import datetime
 
 from src.database.database import db
 
@@ -116,3 +117,13 @@ class Commentary(db.Model):
     title = db.Column(db.String(), nullable=False)
     content = db.Column(db.String())
     date_created = db.Column(db.DateTime)
+
+
+class Notification(db.Model):
+    __tablename__: str = 'notification'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    title = db.Column(db.String(), nullable=False)
+    content = db.Column(db.String(), nullable=True)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    read = db.Column(db.Boolean, default=False, nullable=False)
