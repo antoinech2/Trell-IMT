@@ -48,3 +48,22 @@
 .profile{
     gap: 20px;
 }
+
+.accordion-collapse {
+    position: absolute; /* an absolute position to avoid other elements */
+    z-index: 1050; /* to be in the foreground */
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+}
+
+.comment-right {
+    color: #000;
+    right : 30;
+    z-index: 1055;
+}
+
+

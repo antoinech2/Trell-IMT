@@ -10,6 +10,10 @@ $(async function () {
         }
 
     })
+    // Hide notifications when the mouse leaves the notification panel area
+    $("#flush-collapseTwo").on('mouseleave', function () {
+        $(this).collapse('hide');
+    });
 
     $("#notification_number").text(await fetch("/get_notification_count").then(r => r.text()))
 })
