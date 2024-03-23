@@ -125,7 +125,7 @@ class Notification(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     title = db.Column(db.String(), nullable=False)
     content = db.Column(db.String(), nullable=True)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    date_created = db.Column(db.DateTime, default=datetime.now)
     read = db.Column(db.Boolean, default=False, nullable=False)
 
     def as_dict(self):
