@@ -1,8 +1,18 @@
-$(document).ready(function() {
+import {CollaboratorControl} from "./task/collab.js";
+
+$(function () {
+    let form = $('#new_project_form')
+    let text_label = $('#board-form-label')
+    let collaboratorControl = new CollaboratorControl('#new_project_form')
+    //add listener for new users
+    form.on("submit",function (e) {
+        handleFormSubmit(e, collaboratorControl)
+    })
+
     // Function to update the hidden input with categories
     const updateCategoryList = () => {
         // Select the category name and remove the 'X'
-        const categories = $('.categoryCreate').map(function() {
+        const categories = $('.categoryCreate').map(function () {
             return $(this).text().replace(' X', '').trim();
         }).get();
         // Join the categories with '|' and update the hidden input
@@ -10,7 +20,7 @@ $(document).ready(function() {
     };
 
     // Add a listener for the add category button
-    $('.category-add').click(function() {
+    $('.category-add').click(function () {
         // Get the name of the category to add
         const categoryName = $('.form-name_category').val().trim();
         if (categoryName) {
@@ -32,7 +42,7 @@ $(document).ready(function() {
 
     // Add listener on the remove button
     const addRemoveListener = (element) => {
-        element.click(function() {
+        element.click(function () {
             // Delete the category div
             $(this).parent().remove();
             // Update the hidden input
@@ -40,7 +50,7 @@ $(document).ready(function() {
         });
     };
 
-    $('.remove-category').each(function() {
+    $('.remove-category').each(function () {
         addRemoveListener($(this));
     });
 
@@ -48,3 +58,28 @@ $(document).ready(function() {
     updateCategoryList();
 });
 
+function handleFormSubmit(e, controller) {
+    e.preventDefault()
+    let request = e.target.action
+    let inputs = e.target.elements
+    let body = {
+        project_name: inputs["project_name"].value,
+        description: inputs["description"].value,
+        category_list: inputs["category_list"].value,
+        collaborators: controller.getValue()
+    }
+    try {
+        fetch(request, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+        }).then(function (html) {
+            // Convert the HTML string into a document object
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');})
+    } catch (e) {
+        console.error(e);
+    }
+}

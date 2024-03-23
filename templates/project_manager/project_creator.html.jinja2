@@ -1,10 +1,10 @@
 {% include 'components/super_header.html.jinja2' %}
-<script src="../../static/js/project_creator.js"></script>
+<script src="../../static/js/project_creator.js" type="module"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/project_creator.css') }}"/>
 <div class="container">
     <div class="sub-container">
         <div class="project-form">
-            <form action="{{ url_for('new_project_form') }}" method="post">
+            <form action="{{ url_for('new_project_form') }}" method="post" id="new_project_form">
                 <div class="form-header">
                     <h1>Create a New Project</h1>
                 </div>
@@ -48,16 +48,25 @@
                 <input type="hidden" name="category_list" id="category_list" value="">
                 <div class="form-section">
                     <h3>Add Collaborators</h3>
-                    <!-- Collaborators input section would go here -->
+                    </div>
+                    <ul id="collaborators" class="collaborators">
+                    </ul>
+                    <div class="d-flex">
+                        <i class="bi bi-person-plus-fill"></i>
+                        <label for="search_user">Add collaborator</label>
+                    </div>
+                    <input type="search" id="search_user" name="search_user" class="form-control search_user"
+                           autocomplete="off"/>
+                    <ul class="list-group user_list">
+                    </ul>
                 </div>
                 <div class="form-footer">
                     <a href="{{ url_for('home_view') }}" class="btn cancel">Cancel</a>
                     <button type="submit" class="btn create">Create Project</button>
                 </div>
-                </div>
             </form>
         </div>
+        </div>
     </div>
-</div>
 </body>
 </html>
