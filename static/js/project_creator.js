@@ -1,11 +1,13 @@
 import {CollaboratorControl} from "./task/collab.js";
 
-$(function () {
+$(initScript)
+
+function initScript() {
     let form = $('#new_project_form')
     let text_label = $('#board-form-label')
     let collaboratorControl = new CollaboratorControl('#new_project_form')
     //add listener for new users
-    form.on("submit",function (e) {
+    form.on("submit", function (e) {
         handleFormSubmit(e, collaboratorControl)
     })
 
@@ -56,7 +58,7 @@ $(function () {
 
     // Update the categories at launch
     updateCategoryList();
-});
+};
 
 function handleFormSubmit(e, controller) {
     e.preventDefault()
@@ -75,10 +77,15 @@ function handleFormSubmit(e, controller) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(body),
-        }).then(function (html) {
+        }).then(response => response.text()).then(function (html) {
             // Convert the HTML string into a document object
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(html, 'text/html');})
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(html, 'text/html');
+            document.body.innerHTML = doc.body.innerHTML;
+            initScript()
+
+        })
+
     } catch (e) {
         console.error(e);
     }
