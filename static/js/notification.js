@@ -2,7 +2,8 @@ $(async function () {
     $("#notification_button").on('click', function () {
         try {
             fetch("/get_notifications").then(r => r.json()).then(r => {
-                $("#notifications").empty()
+                $("#read_notifications").empty()
+                $("#unread_notifications").empty()
                 r.forEach(notif => showNotif(notif))
             });
         } catch (e) {
