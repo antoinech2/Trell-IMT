@@ -6,7 +6,7 @@ from flask_login import login_required, current_user
 
 from app import app
 from src.database.database import db
-from src.database.models import Commentary
+from src.database.models import Commentary, Notification, Task
 from src.helper.date import compare_dates
 
 
@@ -18,6 +18,15 @@ def new_comment_form():
     comment = {}
     if form and task_id:
         new_comment = Commentary(task_id=task_id, user_id = current_user.id, title=form.get("title"), content=form.get("content"), date_created = datetime.now())
+
+        task = Task.query.filter_by(id=task_id).first()
+
+        notifications = [Notification(user_id=user.id, title="Comment added",
+                                      content="New comment by {} on task '{}' : '{}'".format(current_user.first_name + " " + current_user.last_name, task.name, new_comment.content[:100] + "..."))
+                         for user in task.users if user.id != current_user.id]
+
+        db.session.add_all(notifications)
+
         db.session.add(new_comment)
         db.session.commit()
         comment = {"title": new_comment.title,
