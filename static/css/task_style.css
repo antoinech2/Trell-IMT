@@ -180,3 +180,9 @@ html,body{
 .me{
     background-color: #d99216
 }
+
+.comment h6 {
+    word-wrap: break-word;
+    max-height: 30px;
+    overflow-y: auto;
+}
