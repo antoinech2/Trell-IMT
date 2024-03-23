@@ -17,8 +17,8 @@ def delete_board_form():
         board = Board.query.filter_by(id=board_id).first()
         for category in Category.query.filter_by(board_id = board_id).all():
             delete_category(category.id)
-        notifications = [Notification(user_id=user.id, title="Projet supprimé",
-                                      content="Le projet '{}' a été supprimé par {}. Vous ne pouvez plus y accéder.".format(board.name, current_user.first_name + " " + current_user.last_name))
+        notifications = [Notification(user_id=user.id, title="Project deleted",
+                                      content="Project '{}' was deleted by {}. You can't access t anymore.".format(board.name, current_user.first_name + " " + current_user.last_name))
                          for user in board.users if user.id != current_user.id]
 
         db.session.add_all(notifications)

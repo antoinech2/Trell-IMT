@@ -17,12 +17,12 @@ def edit_board_form():
         board.name = form['title']
         board.description = form['description']
         new_users = db.session.query(User).filter(User.id.in_(form['collaborators'])).all()
-        notifications = [Notification(user_id=user.id, title="Nouveau projet partagé",
-                                      content="{} vous a ajouté à un nouveau projet '{}'".format(
+        notifications = [Notification(user_id=user.id, title="New shared project",
+                                      content="{} added you to the project '{}'".format(
                                           current_user.first_name + " " + current_user.last_name, board.name))
                          for user in new_users if (user.id != current_user.id and user not in board.users)]
-        notifications.extend([Notification(user_id=user.id, title="Accès au projet révoqué",
-                                      content="{} vous a supprimé des collaborateurs du projet '{}'".format(
+        notifications.extend([Notification(user_id=user.id, title="Acess to project revoked",
+                                      content="{} removed you from collaborators of project '{}'".format(
                                           current_user.first_name + " " + current_user.last_name, board.name))
                          for user in board.users if (user.id != current_user.id and user not in new_users)])
 
