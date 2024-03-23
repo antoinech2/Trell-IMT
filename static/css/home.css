@@ -63,34 +63,34 @@
     right: 20px;
 }
 
-.notification {
+.notification-header {
     padding: 10px;
     border-bottom: 1px solid #f0f0f0;
     transition: background-color 0.2s;
 }
 
-.notification:last-child {
+.notification-header:last-child {
     border-bottom: none;
 }
 
-.notification:hover {
+.notification-header:hover {
     background-color: #f8f8f8;
 }
 
-.notification strong {
+.notification-header strong {
     display: block;
     color: #333;
     font-size: 14px;
 }
 
-.notification em {
+.notification-header em {
     display: block;
     color: #666;
     font-size: 12px;
     margin-top: 5px;
 }
 
-.notification h6 {
+.notification-header h6 {
     font-size: 13px;
     color: #555;
     margin-top: 5px;

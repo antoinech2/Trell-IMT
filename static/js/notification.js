@@ -13,7 +13,7 @@ $(async function () {
 
     })
     // Hide notifications when the mouse leaves the notification panel area
-    $("#flush-collapseTwo").on('mouseleave', function () {
+    $("#flush-collapseTwo-header").on('mouseleave', function () {
         $(this).collapse('hide');
     });
 
@@ -22,7 +22,7 @@ $(async function () {
 
 function showNotif(data) {
     let notificationBadge = $("#notification_number")
-    let newNotif = $(`<div class="notification"><strong>${data.title}</strong><em class="comment-right" title='${data.time}'>${data.time_message}</em><h6>${data.content}</h6><button class="mark_read"></button></div>`)
+    let newNotif = $(`<div class="notification-header"><strong>${data.title}</strong><em class="comment-right" title='${data.time}'>${data.time_message}</em><h6>${data.content}</h6><button class="mark_read"></button></div>`)
     if (data.read){
         newNotif.find(".mark_read").text("Mark as unread")
         $("#read_notifications").append(newNotif)
