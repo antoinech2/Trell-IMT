@@ -127,3 +127,6 @@ class Notification(db.Model):
     content = db.Column(db.String(), nullable=True)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     read = db.Column(db.Boolean, default=False, nullable=False)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
