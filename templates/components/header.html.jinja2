@@ -1,21 +1,36 @@
 {% include 'components/super_header.html.jinja2' %}
+<script src="{{ url_for("static", filename="js/notification.js") }}"></script>
+
 <header class="site-header">
     <a href="/"><img src="{{ url_for("static", filename="img/logo.jpg") }}" alt="Logo du site" class="logo-site"></a>
     <nav class="navigation-site">
         <ul>
             <li><a href="/home">Home</a></li>
             {% if manager|default(true) %}
-            <li><a href="/new_project">New board</a></li>
+                <li><a href="/new_project">New board</a></li>
             {% endif %}
             <li><a href="/contact">Contact</a></li>
         </ul>
     </nav>
 
-<div class="profile" id="user_profile" data-id="{{ user.id }}">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button id="notification_button" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                Notifs <span class="badge rounded-pill text-bg-secondary number-comment" id="notification_number">0</span>
+            </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div id="notifications" class="accordion-body">
+            </div>
+        </div>
+    </div>
+
+    <div class="profile" id="user_profile" data-id="{{ user.id }}">
         <i class="bi bi-person-circle"></i>
         {{ user.first_name }} {{ user.last_name }}
         <a href="/logout" data-toggle="tooltip" title="Logout" class="bi bi-box-arrow-right logout-logo"></a>
-</div>
+    </div>
 
 </header>
 

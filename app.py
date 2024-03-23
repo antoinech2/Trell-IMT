@@ -16,12 +16,12 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = "TrellIMTAdmin47935"
 
 # Database initialisation
-db.init_app(app)  # (1) flask prend en compte la base de donnee
+db.init_app(app)
 migrate = Migrate(app, db)
 
 event.listen(Etiquette.__table__, "after_create", insert_initial_values)
 
-with app.test_request_context():  # (2) bloc exécuté à l'initialisation de Flask
+with app.test_request_context():
     init_database()
 
 # Encryption salt
@@ -34,6 +34,7 @@ import src.helper.get_task_info
 import src.helper.get_users
 import src.helper.get_etiquettes
 import src.helper.get_board_info
+import src.helper.get_notifications
 
 # Routes
 import src.routes.sign_in
@@ -43,6 +44,7 @@ import src.routes.board_manager
 import src.routes.new_project
 import src.routes.board_dev
 
+# Forms control
 import src.form.new_task
 import src.form.new_category
 import src.form.edit_task
