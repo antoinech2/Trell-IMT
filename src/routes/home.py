@@ -1,35 +1,37 @@
 import json
-
 from flask_login import login_required, current_user
 import flask
-
 from app import app
 from src.database.models import *
-from src.routes.board_dev import board_developer
 
-
+# Define a route for the root URL ('/') of the application.
 @app.route('/')
-def hello_world():  # put application's code here
+def hello_world():
     return flask.render_template("site_page.html.jinja2")
-
 
 @app.route('/home', methods=['GET'])
 @login_required
 def home_view():
+    # Check if the currently logged-in user is a developer.
     if current_user.type == UserType.Developer:
+        # If the user is a developer, redirect them to a developer-specific page.
         return flask.redirect("/board_developer")
     else:
+        # If the user is not a developer, load a JSON file containing board categories.
         with open('data/new_board_template.json') as json_file:
             categories = json.load(json_file)
+        # Render a template for project managers, passing in the user, their boards, and the loaded categories.
         return flask.render_template("project_manager/project_manager_page.html.jinja2",
-                                    user=current_user, boards = current_user.boards, categories = categories)
+                                     user=current_user, boards=current_user.boards, categories=categories)
 
-
+# Define a route for '/contact'.
 @app.route('/contact')
 def contact_view():
-    is_manager = True
+    is_manager = True  # Assume the user is a manager by default.
+    # Check if the currently logged-in user is a developer.
     if current_user.type == UserType.Developer:
-        is_manager = False
+        is_manager = False  # If the user is a developer, set is_manager to False.
+    # Render the contact page template, passing in the current user and whether they are a manager.
     return flask.render_template("contact.html.jinja2",
                                  user=current_user,
                                  is_manager=is_manager)
