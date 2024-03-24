@@ -52,7 +52,7 @@
 
     <button type="submit">Find</button>
 </form>
-<div class="row">
+<div class="row" id="task_containeur">
     {% for task in tasks_data %}
         <div class="col-xl-3 col-sm-6 col-12">
             <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
