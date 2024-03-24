@@ -15,7 +15,11 @@
     </nav>
 
 
-    <div class="accordion-item">
+
+    <div class="profile" id="user_profile" data-id="{{ user.id }}">
+        <i class="bi bi-person-circle"></i>
+        {{ user.first_name }} {{ user.last_name }}
+        <div class="accordion-item ">
         <h2 class="accordion-header">
             <button id="notification_button" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#flush-collapseTwo-header" aria-expanded="false"
@@ -49,12 +53,10 @@
             </div>
         </div>
     </div>
+        </div>
 
-    <div class="profile" id="user_profile" data-id="{{ user.id }}">
-        <i class="bi bi-person-circle"></i>
-        {{ user.first_name }} {{ user.last_name }}
+
         <a href="/logout" data-toggle="tooltip" title="Logout" class="bi bi-box-arrow-right logout-logo"></a>
-    </div>
 
 </header>
 
