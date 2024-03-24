@@ -107,8 +107,12 @@ function handleTaskForm(button, new_form, controllers) {
         $("#task_form_submit").attr("value", "Add task")
         text_label.text("Add task to category " + category_name)
     } else {
-        $('#delete_task').attr("action", `/delete_task?task_id=${form.data("task_id")}`)
-        $("#delete_task").show()
+        if ($("#task_popup").data("user_type") === "Developer") {
+            $("#delete_task").hide()
+        } else {
+            $('#delete_task').attr("action", `/delete_task?task_id=${form.data("task_id")}`)
+            $("#delete_task").show()
+        }
         html_form.attr("action", `/edit_task?task_id=${form.data("task_id")}`)
         $("#comment_form").attr("action", `/new_comment?task_id=${form.data("task_id")}`)
         $("#comment_section").show()
