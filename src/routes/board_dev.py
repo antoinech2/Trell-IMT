@@ -5,6 +5,7 @@ from flask_login import login_required, current_user
 from src.database.models import Board, Category, Task, db, Etiquette, User
 from src.helper.get_task_display import get_task
 
+
 @app.route('/board_developer', methods=["GET", "POST"])
 @login_required  # Require the user to be logged in to access this route.
 def board_developer():

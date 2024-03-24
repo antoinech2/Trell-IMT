@@ -1,4 +1,3 @@
-import flask
 from flask import request, redirect
 from flask_login import login_required, current_user
 
@@ -22,9 +21,9 @@ def edit_board_form():
                                           current_user.first_name + " " + current_user.last_name, board.name))
                          for user in new_users if (user.id != current_user.id and user not in board.users)]
         notifications.extend([Notification(user_id=user.id, title="Acess to project revoked",
-                                      content="{} removed you from collaborators of project '{}'".format(
-                                          current_user.first_name + " " + current_user.last_name, board.name))
-                         for user in board.users if (user.id != current_user.id and user not in new_users)])
+                                           content="{} removed you from collaborators of project '{}'".format(
+                                               current_user.first_name + " " + current_user.last_name, board.name))
+                              for user in board.users if (user.id != current_user.id and user not in new_users)])
 
         db.session.add_all(notifications)
         board.users = new_users

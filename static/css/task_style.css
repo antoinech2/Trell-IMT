@@ -43,7 +43,7 @@ html,body{
     border-bottom-left-radius: 16px;
 }
 
-#user-image {
+.user-image {
     display: flex;
     list-style-type: none;
 

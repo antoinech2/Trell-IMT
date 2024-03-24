@@ -9,47 +9,49 @@
                     <h1>Create a New Project</h1>
                 </div>
                 <div class="form-content"> <!-- This div will be scrollable -->
-                {% if errors %}
-                    <div class="error-container">
-                        The following errors prevent us from accessing your request:
-                        <ul>
-                            {% for error in errors %}
-                                <li>{{ error }}</li>
+                    {% if errors %}
+                        <div class="error-container">
+                            The following errors prevent us from accessing your request:
+                            <ul>
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <div class="form-section">
+                        <h3>Project Name</h3>
+                        <input type="text" id="project_name" name="project_name" placeholder="Enter project name"
+                               value="{{ form.project_name }}" required>
+                    </div>
+                    <div class="form-section">
+                        <h3>Add a Description</h3>
+                        <textarea rows="6" name="description" id="description"
+                                  placeholder="Describe your project"></textarea>
+                    </div>
+                    <div class="form-section">
+                        <h3>Add Categories</h3>
+                        <h6>Enter the name and clic "add a category" to add a new category at the beginning of your
+                            project.
+                            Categories name will appear below.
+                        </h6>
+                        <div class="categories" id="categories">
+                            {% for category in template_list_category %}
+                                <span class="categoryCreate badge rounded-pill text-bg-primary">{{ category }} <span
+                                        class="remove-category">X</span></span>
                             {% endfor %}
-                        </ul>
+                        </div>
+                        <div class="add-category">
+                            <input type="text" id="category_name" class="form-name_category" name="category_name"
+                                   placeholder="Category name">
+                            <button type="button" class="category-add btn">+ Add a Category</button>
+                        </div>
                     </div>
-                {% endif %}
-                <div class="form-section">
-                    <h3>Project Name</h3>
-                    <input type="text" id="project_name" name="project_name" placeholder="Enter project name"
-                           value="{{ form.project_name }}" required>
-                </div>
-                <div class="form-section">
-                    <h3>Add a Description</h3>
-                    <textarea rows="6" name="description" id="description"
-                              placeholder="Describe your project"></textarea>
-                </div>
-                <div class="form-section">
-                    <h3>Add Categories</h3>
-                    <h7>Enter the name and clic "add a category" to add a new category at the beginning of your project.
-                        Categories name will appear below.
-                    </h7>
-                    <div class="categories" id="categories">
-                        {% for category in template_list_category %}
-                            <span class="categoryCreate badge rounded-pill text-bg-primary" >{{ category }} <span class="remove-category">X</span></span>
-                        {% endfor %}
+                    <input type="hidden" name="category_list" id="category_list" value="">
+                    <div class="form-section">
+                        <h3>Add Collaborators</h3>
                     </div>
-                    <div class="add-category">
-                        <input type="text" id="category_name" class="form-name_category" name="category_name"
-                               placeholder="Category name">
-                        <button type="button" class="category-add btn">+ Add a Category</button>
-                    </div>
-                </div>
-                <input type="hidden" name="category_list" id="category_list" value="">
-                <div class="form-section">
-                    <h3>Add Collaborators</h3>
-                    </div>
-                    <ul id="collaborators" class="collaborators">
+                    <ul class="collaborators">
                     </ul>
                     <div class="d-flex">
                         <i class="bi bi-person-plus-fill"></i>
@@ -66,7 +68,7 @@
                 </div>
             </form>
         </div>
-        </div>
     </div>
+</div>
 </body>
 </html>

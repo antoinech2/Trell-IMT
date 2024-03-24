@@ -77,7 +77,7 @@ hr{
   margin:auto;
 }
 
-dropdown-menu li {
+.dropdown-menu li {
 position: relative;
 }
 .dropdown-menu .dropdown-submenu {

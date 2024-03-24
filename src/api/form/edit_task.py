@@ -59,7 +59,8 @@ def edit_task_form():
                                                           datetime.strptime(form.get('task-end'), "%d/%m/%Y %H:%M"))))
             elif task.date_expires != new_date:
                 notifications.extend(add_notification(task, "Deadline changed",
-                                                      "Deadline of task '{}' was changed by {}. New deadline is {}".format(
+                                                      "Deadline of task '{}' was changed by {}.\
+                                                       New deadline is {}".format(
                                                           task.name,
                                                           current_user.first_name + " " + current_user.last_name,
                                                           datetime.strptime(form.get('task-end'), "%d/%m/%Y %H:%M"))))

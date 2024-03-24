@@ -21,6 +21,7 @@ def get_notifications():
     notifs = Notification.query.filter_by(user_id=current_user.id).order_by(desc(Notification.date_created)).all()
     return [parse_notif(notif) for notif in notifs]
 
+
 @app.route('/notification_read', methods=['PUT'])
 @login_required
 def set_notification_read():
@@ -36,5 +37,5 @@ def set_notification_read():
 
 def parse_notif(notif):
     return {"time_message": compare_dates(notif.date_created)[1],
-     "time": notif.date_created.strftime("%d/%m/%Y %H:%M"),
-     **notif.as_dict()}
+            "time": notif.date_created.strftime("%d/%m/%Y %H:%M"),
+            **notif.as_dict()}

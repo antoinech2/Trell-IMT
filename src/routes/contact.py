@@ -3,7 +3,6 @@ import flask
 from flask_login import current_user
 
 from app import app
-from src.database.models import UserType
 
 
 @app.route('/contact')

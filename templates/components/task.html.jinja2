@@ -3,11 +3,12 @@
         <h6 class="task__title">{{ task.name }}</h6>
     </div>
     <div class="description">
-    <div class="etiquette">
-        {% for etiquette in task.etiquettes %}
-        <span class="badge rounded-pill" data-bs-toggle="tooltip" title="{{etiquette.description}}" style="background-color:#{{etiquette.color if etiquette.color else "000000"}}">{{etiquette.label}}</span>
-        {% endfor %}
-    </div>
+        <div class="etiquette">
+            {% for etiquette in task.etiquettes %}
+                <span class="badge rounded-pill" data-bs-toggle="tooltip" title="{{ etiquette.description }}"
+                      style="background-color:#{{ etiquette.color if etiquette.color else "000000" }}">{{ etiquette.label }}</span>
+            {% endfor %}
+        </div>
         <p class="task__description">{{ task.description }}</p>
     </div>
     <div class="expire_container row">
@@ -19,7 +20,7 @@
             {% endif %}
             {% if not task.has_expired %}
                 <div class="col-9">
-                <i class="bi bi-calendar2-check time_ok"></i><span> {{ task.expires_message }}</span>
+                    <i class="bi bi-calendar2-check time_ok"></i><span> {{ task.expires_message }}</span>
                 </div>
             {% endif %}
         {% endif %}
@@ -39,9 +40,11 @@
         </div>
     {% endif %}
     <div class="working-team">
-        <ul id="user-image">
+        <ul class="user-image">
             {% for user in task.users %}
-                <li><span class="user-buble {{'me' if user.id == current_user.id }}" data-toggle="tooltip" title="{{ user.first_name }} {{ user.last_name }}">{{ user.first_name[0] }}{{ user.last_name[0] }}</span></li>
+                <li><span class="user-buble {{ 'me' if user.id == current_user.id }}" data-toggle="tooltip"
+                          title="{{ user.first_name }} {{ user.last_name }}">{{ user.first_name[0] }}{{ user.last_name[0] }}</span>
+                </li>
             {% endfor %}
         </ul>
     </div>

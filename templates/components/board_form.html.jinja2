@@ -3,33 +3,36 @@
     <h5 id="board-form-label"> Edit board </h5>
     <form method="post" id="edit_board" action="/edit_board?board_id={{ board_id }}">
         <div class="row mb-3">
-            <div class="d-flex"><i class="bi bi-card-checklist icon"></i> <label for="board_form_title"> Board title </label>
-</div>
+            <div class="d-flex"><i class="bi bi-card-checklist icon"></i> <label for="board_form_title"> Board
+                title </label>
+            </div>
             <input
-                class="form-control"
-                type="text"
-                size="30"
-                name="title"
-                id="board_form_title"
-                required/></div>
+                    class="form-control"
+                    type="text"
+                    size="30"
+                    name="title"
+                    id="board_form_title"
+                    required></div>
         <div class="row mb-3">
             <div class="d-flex"><i class="bi bi-file-earmark-richtext icon"></i> <label for="board_form_description">
-            Description </label>
-            </div><textarea
-                class="form-control" rows="6" name="description" id="board_form_description" cols="35"></textarea></div>
+                Description </label>
+            </div>
+            <textarea
+                    class="form-control" rows="6" name="description" id="board_form_description" cols="35"></textarea>
+        </div>
         <div class="row mb-3 mt-3">
             <div class="d-flex">
                 <i class="bi bi-people-fill icon"></i>
                 <h6>Collaborators</h6>
             </div>
-            <ul id="collaborators" class="collaborators">
+            <ul class="collaborators">
             </ul>
             <div class="d-flex">
                 <i class="bi bi-person-plus-fill icon"></i>
                 <label for="search_user">Add collaborator</label>
             </div>
             <input type="search" id="search_user" name="search_user" class="form-control search_user"
-                   autocomplete="off"/>
+                   autocomplete="off">
             <ul class="list-group user_list">
             </ul>
         </div>
@@ -37,7 +40,7 @@
                                                                                                        class="btn btn-outline-success button-right"
                                                                                                        value="Edit board"
                                                                                                        name="commit"
-                                                                                                       id="board_form_submit"/>
+                                                                                                       id="board_form_submit">
         </div>
     </form>
 </div>

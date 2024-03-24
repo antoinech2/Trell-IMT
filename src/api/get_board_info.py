@@ -1,4 +1,3 @@
-
 import json
 
 from flask import request
@@ -16,7 +15,6 @@ def get_board():
     if board_id:
         collaborator = [{"id": user.id,
                          "first_name": user.first_name,
-                         "last_name" : user.last_name}
+                         "last_name": user.last_name}
                         for user in Board.query.filter_by(id=board_id).first().users]
         return json.dumps({"collaborator": collaborator})
-

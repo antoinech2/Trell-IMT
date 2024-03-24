@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import flask
 from flask import abort
 
@@ -7,7 +5,7 @@ from app import app
 from flask_login import login_required, current_user
 
 from src.database.database import db
-from src.database.models import Board, Category, Task, Step, Etiquette
+from src.database.models import Board, Category, Task, Etiquette
 
 from src.helper.get_task_display import get_task
 
@@ -15,8 +13,8 @@ from src.helper.get_task_display import get_task
 @app.route('/board/<board_id>')
 @login_required
 def board(board_id):
-    board = Board.query.filter_by(id=board_id).first()
-    if board not in current_user.boards:
+    cur_board = Board.query.filter_by(id=board_id).first()
+    if cur_board not in current_user.boards:
         abort(401, description="You don't have access to this board.")
 
     etiquette_data = {}
@@ -33,4 +31,4 @@ def board(board_id):
         for task in tasks:
             tasks_data[-1]['tasks'].append(get_task(task))
     return flask.render_template("project_manager/board_manager.html.jinja2", tasks_data=tasks_data, user=current_user,
-                                 board=board, etiquette_data=etiquette_data)
+                                 board=cur_board, etiquette_data=etiquette_data)

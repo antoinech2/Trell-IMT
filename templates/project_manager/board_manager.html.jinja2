@@ -10,23 +10,23 @@
 
 <div id="board" data-id= {{ board.id }}>
     <div class="board-title">
-    <div>
-        Board <span id="board_name">{{ board.name }}</span>
-        {% if board.description %}
-            <span class="description" id="board_description">{{ board.description }}</span>
-        {% endif %}
-    </div>
+        <div>
+            Board <span id="board_name">{{ board.name }}</span>
+            {% if board.description %}
+                <span class="description" id="board_description">{{ board.description }}</span>
+            {% endif %}
+        </div>
 
-    <div class="board-users">
-        Board users
+        <div class="board-users">
+            Board users
 
-        {% for user_loop in board.users %}
-         <span class="user-bubble-board {{'me' if user_loop.id == user.id }}" data-toggle="tooltip" title="{{ user_loop.first_name }} {{ user_loop.last_name }}">{{ user_loop.first_name[0] }}{{ user_loop.last_name[0] }}</span>
+            {% for user_loop in board.users %}
+                <span class="user-bubble-board {{ 'me' if user_loop.id == user.id }}" data-toggle="tooltip"
+                      title="{{ user_loop.first_name }} {{ user_loop.last_name }}">{{ user_loop.first_name[0] }}{{ user_loop.last_name[0] }}</span>
 
-        {% endfor %}
+            {% endfor %}
 
-    </div>
-
+        </div>
 
 
         <div class="dropdown drop-right">
@@ -77,7 +77,7 @@
                 <div class="category-content">
                     {% for task in category.tasks %}
                         <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
-                            {% with task=task, current_user = user%}
+                            {% with task=task, current_user = user %}
                                 {% include "components/task.html.jinja2" %}
                             {% endwith %}
                         </div>

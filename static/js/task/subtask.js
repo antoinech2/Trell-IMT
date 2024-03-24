@@ -2,7 +2,7 @@ export function SubTasksControl() {
     this.initialize.apply(this)
 }
 
-SubTasksControl.prototype.initialize = function (host, component) {
+SubTasksControl.prototype.initialize = function () {
     let thisControl = this
     this.subtasks = []
 

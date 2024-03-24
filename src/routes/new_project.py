@@ -5,6 +5,7 @@ from flask import request
 from app import app
 from src.database.models import *
 
+
 @app.route('/new_project', methods=["GET", "POST"])
 @login_required  # Ensure that the user must be logged in to access this route.
 def new_project_form():
@@ -50,16 +51,16 @@ def new_project_form():
     else:
         # If the form is not valid, potentially use a template for the form based on a request argument.
         board_template = request.args.get('template')
-        list = []
+        list_category = []
         if board_template:
             # Load a template from a file if specified.
             with open('data/new_board_template.json', 'r') as f:
                 data = json.load(f)
-            list = data[board_template]
+            list_category = data[board_template]
 
         # Return the form template, including any form data and errors that were identified.
         return flask.render_template("project_manager/project_creator.html.jinja2", user=current_user, form=form,
-                                     errors=errors, template_list_category=list)
+                                     errors=errors, template_list_category=list_category)
 
 
 # Define a function to validate the form data.

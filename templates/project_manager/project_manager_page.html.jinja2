@@ -12,7 +12,8 @@
                         <li class="roll"><a href="#">Find a template</a>
                             <ul class="under">
                                 {% for category_name in categories.keys() %}
-                                <li><a class="template_choice" href="/new_project?template={{ category_name }}">{{ category_name }}</a></li>
+                                    <li><a class="template_choice"
+                                           href="/new_project?template={{ category_name }}">{{ category_name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>

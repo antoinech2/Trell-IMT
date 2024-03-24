@@ -7,6 +7,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'sign_in_view'
 
+
 @login_manager.user_loader
 def user_loader(user_id):
     """Given *user_id*, return the associated User object.

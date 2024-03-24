@@ -49,7 +49,8 @@ class User(db.Model):
     boards = db.relationship('Board', secondary=BoardUsers, backref='users')
     tasks = db.relationship('Task', secondary=UserTask, backref='users')
 
-    def is_active(self):
+    @staticmethod
+    def is_active():
         """True, as all users are active."""
         return True
 
@@ -61,7 +62,8 @@ class User(db.Model):
         """Return True if the user is authenticated."""
         return self.authenticated
 
-    def is_anonymous(self):
+    @staticmethod
+    def is_anonymous():
         """False, as anonymous users aren't supported."""
         return False
 

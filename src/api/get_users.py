@@ -12,7 +12,8 @@ from src.helper.workload import calculate_workload
 def get_users():
     board_id = request.args.get('board_id')
     if board_id:
-        users = Board.query.filter_by(id = board_id).first().users
+        users = Board.query.filter_by(id=board_id).first().users
     else:
         users = User.query.all()
-    return [{"id": user.id, "first_name": user.first_name, "last_name" : user.last_name, "workload" : calculate_workload(user)} for user in users]
+    return [{"id": user.id, "first_name": user.first_name, "last_name": user.last_name,
+             "workload": calculate_workload(user)} for user in users]

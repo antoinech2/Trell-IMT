@@ -2,7 +2,7 @@ export function EtiquetteControl() {
     this.initialize.apply(this)
 }
 
-EtiquetteControl.prototype.initialize = function (host, component) {
+EtiquetteControl.prototype.initialize = function () {
     let thisControl = this
     this.etiquetteList = []
     this.etiquettes = []

@@ -4,7 +4,6 @@ $(initScript)
 
 function initScript() {
     let form = $('#new_project_form')
-    let text_label = $('#board-form-label')
     let collaboratorControl = new CollaboratorControl('#new_project_form')
     //add listener for new users
     form.on("submit", function (e) {
@@ -58,7 +57,7 @@ function initScript() {
 
     // Update the categories at launch
     updateCategoryList();
-};
+}
 
 function handleFormSubmit(e, controller) {
     e.preventDefault()

@@ -4,10 +4,12 @@ import flask
 from app import app
 from src.database.models import *
 
+
 # Define a route for the root URL ('/') of the application.
 @app.route('/')
 def hello_world():
     return flask.render_template("site_page.html.jinja2")
+
 
 @app.route('/home', methods=['GET'])
 @login_required
