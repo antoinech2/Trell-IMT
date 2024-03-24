@@ -2,20 +2,20 @@ nav ul{
     list-style-type: none;
 }
 
-nav ul li{
+.all-boards li{
     float: left;
     width: 25%;
     text-align: center;
     position: relative;
 }
 
-nav ul::after{
+.all-boards nav ul::after{
     content: "";
     display: table;
     clear: both;
 }
 
-nav a{
+.all-boards nav a{
     display: block;
     text-decoration: none;
     color: black;
@@ -36,7 +36,7 @@ nav a{
     z-index: 1000;
 }
 
-nav > ul li:hover .under{
+.all-boards nav > ul li:hover .under{
     display: block;
 }
 
@@ -65,12 +65,6 @@ nav > ul li:hover .under{
     font-size: 12px;
 }
 
-nav ul li{
-    float: left;
-    width: 25%;
-    text-align: center;
-    position: relative;
-}
 
 .selection_menu{
     display: flex;
@@ -88,12 +82,12 @@ nav ul li{
     margin: 15px;
 }
 
-h2 {
+.all-boards h2 {
     color : #00B8DE;
     margin: 10px;
 }
 
-h6 {
+.all-boards h6 {
     margin : 20px;
 }
 
