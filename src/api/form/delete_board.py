@@ -5,7 +5,7 @@ from flask_login import login_required, current_user
 from app import app
 from src.database.database import db
 from src.database.models import Board, Category, Notification
-from src.form.delete_category import delete_category
+from src.api.form.delete_category import delete_category
 
 
 @app.route('/delete_board', methods=["POST"])

@@ -5,7 +5,7 @@ from flask_login import login_required
 from app import app
 from src.database.database import db
 from src.database.models import Category, Task
-from src.form.delete_task import delete_task
+from src.api.form.delete_task import delete_task
 
 
 @app.route('/delete_category', methods=["POST"])

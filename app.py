@@ -27,14 +27,8 @@ with app.test_request_context():
 # Encryption salt
 salt = bcrypt.gensalt()
 
-# Local imports
+# Login import
 import src.helper.login
-import src.helper.logout
-import src.helper.get_task_info
-import src.helper.get_users
-import src.helper.get_etiquettes
-import src.helper.get_board_info
-import src.helper.notifications
 
 # Routes
 import src.routes.sign_in
@@ -44,16 +38,24 @@ import src.routes.board_manager
 import src.routes.new_project
 import src.routes.board_dev
 
+## API import
+import src.api.logout
+import src.api.get_task_info
+import src.api.get_users
+import src.api.get_etiquettes
+import src.api.get_board_info
+import src.api.notifications
+
 # Forms control
-import src.form.new_task
-import src.form.new_category
-import src.form.edit_task
-import src.form.delete_task
-import src.form.delete_category
-import src.form.edit_category
-import src.form.edit_board
-import src.form.delete_board
-import src.form.new_comment
+import src.api.form.new_task
+import src.api.form.new_category
+import src.api.form.edit_task
+import src.api.form.delete_task
+import src.api.form.delete_category
+import src.api.form.edit_category
+import src.api.form.edit_board
+import src.api.form.delete_board
+import src.api.form.new_comment
 
 if __name__ == '__main__':
     app.run()
