@@ -2,6 +2,14 @@
 TAF DCL
 UE WEB
 
+# Objectives 
+
+The project proposed this year consists of developing a dynamic web application for
+tracking projects and tasks, inspired by tools like Trello. This application will be designed
+to facilitate collaboration between team members on projects
+development, by offering an intuitive platform to organize, track, and manage the work of
+efficient manner.
+
 # Project Setup :
 
 This section guides you through the process of getting your development environment set up for Trell'IMT.
@@ -151,15 +159,15 @@ new_project.py, sign_in.py, sign_up.py: Handle project creation and user authent
 ### /static
 This directory serves all static content, such as CSS, JavaScript, and image files.
 
-#### /css
+#### /static/css
 Contains CSS files that define the styling for the application.
 
 auth.css, board.css, dev.css, home.css: Style sheets for authentication forms, board view, developer tools, and the home page, among others.
-#### /img
+#### /static/img
 Stores image files used within the application.
 
 logo.jpg, logo_site_page.jpg: Logos and branding-related images.
-#### /js
+#### /static/js
 Includes JavaScript files that add interactivity to the application.
 
 collab.js, etiquette.js, subtasks.js, task_form.js: Scripts that manage collaboration features, etiquettes, subtasks, and task forms.
@@ -167,17 +175,17 @@ add_category.js, delete_board.js, modify_board.js, modify_category.js, project_c
 ### /templates
 Holds Jinja2 templates which define the HTML structure for rendering views.
 
-#### /components
+#### /templates/components
 Reusable components that are included across various templates.
 
 board_form.html.jinja2, category_form.html.jinja2: Templates for forms used in board and category management.  
 header.html.jinja2, super_header.html.jinja2: Header templates for standard and extended navigation.  
 task_form.html.jinja2, warning_delete.html.jinja2: Templates for task-related forms and deletion warnings.  
-#### /developer
+#### /templates/developer
 Templates specific to the developer view.
 
 board_developer.html.jinja2: The developer's board view template.
-#### /project_manager
+#### /templates/project_manager
 Templates for project management views.
 
 # Contributors :
