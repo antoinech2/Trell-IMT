@@ -30,7 +30,7 @@ EtiquetteControl.prototype.getEtiquetteList = async function () {
     }
 }
 
-EtiquetteControl.prototype.add = function ({id : etiquette_id, type : etiquette_type, name : etiquette_name, color : etiquette_color, description : etiquette_description}) {
+EtiquetteControl.prototype.add = function ({id : etiquette_id, type : etiquette_type, label : etiquette_name, color : etiquette_color, description : etiquette_description}) {
     let thisControl = this
     const canRemove = !($("#task_popup").data("user_type") === "Developer" && etiquette_type === "priority")
 

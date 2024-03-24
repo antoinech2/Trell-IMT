@@ -15,19 +15,9 @@ from src.helper.date import compare_dates
 def get_collaborators():
     task_id = request.args.get('task_id')
     if task_id:
-        collaborator = [{"id": user.id,
-                         "first_name": user.first_name,
-                         "last_name": user.last_name}
-                        for user in Task.query.filter_by(id=task_id).first().users]
-        etiquette = [{"id": etiquette.id,
-                      "name": etiquette.label,
-                      "description": etiquette.description,
-                      "type": etiquette.type,
-                      "color": etiquette.color}
-                     for etiquette in Task.query.filter_by(id=task_id).first().etiquettes]
-        subtask = [{"name": step.name,
-                    "value": step.status}
-                   for step in Step.query.filter_by(task_id=task_id).all()]
+        collaborator = [user.as_dict() for user in Task.query.filter_by(id=task_id).first().users]
+        etiquette = [etiquette.as_dict() for etiquette in Task.query.filter_by(id=task_id).first().etiquettes]
+        subtask = [step.as_dict() for step in Step.query.filter_by(task_id=task_id).all()]
         comment = [{"title": comment.title,
                     "content": comment.content,
                     "author": user.first_name + " " + user.last_name,

@@ -13,8 +13,5 @@ from src.database.models import Board
 def get_board():
     board_id = request.args.get('board_id')
     if board_id:
-        collaborator = [{"id": user.id,
-                         "first_name": user.first_name,
-                         "last_name": user.last_name}
-                        for user in Board.query.filter_by(id=board_id).first().users]
+        collaborator = [user.as_dict() for user in Board.query.filter_by(id=board_id).first().users]
         return json.dumps({"collaborator": collaborator})

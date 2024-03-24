@@ -15,5 +15,5 @@ def get_users():
         users = Board.query.filter_by(id=board_id).first().users
     else:
         users = User.query.all()
-    return [{"id": user.id, "first_name": user.first_name, "last_name": user.last_name,
+    return [{**user.as_dict(),
              "workload": calculate_workload(user)} for user in users]

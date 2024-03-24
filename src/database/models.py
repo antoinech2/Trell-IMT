@@ -49,6 +49,9 @@ class User(db.Model):
     boards = db.relationship('Board', secondary=BoardUsers, backref='users')
     tasks = db.relationship('Task', secondary=UserTask, backref='users')
 
+    def as_dict(self):
+        return {c: getattr(self, c) for c in ["id", "first_name", "last_name"]}
+
     @staticmethod
     def is_active():
         """True, as all users are active."""
@@ -101,6 +104,9 @@ class Etiquette(db.Model):
     description = db.Column(db.String(), nullable=True)
     color = db.Column(db.String(), nullable=True)
 
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class Step(db.Model):
     __tablename__: str = 'step'
@@ -108,7 +114,9 @@ class Step(db.Model):
     task_id = db.Column(db.Integer, db.ForeignKey('task.id'))
     status = db.Column(db.Boolean, nullable=False, default=False)
     name = db.Column(db.String(), nullable=False)
-    description = db.Column(db.String())
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 class Commentary(db.Model):
@@ -119,6 +127,9 @@ class Commentary(db.Model):
     title = db.Column(db.String(), nullable=False)
     content = db.Column(db.String())
     date_created = db.Column(db.DateTime)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 class Notification(db.Model):
