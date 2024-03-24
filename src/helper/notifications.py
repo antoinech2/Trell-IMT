@@ -19,10 +19,7 @@ def get_notification_count():
 @login_required
 def get_notifications():
     notifs = Notification.query.filter_by(user_id=current_user.id).order_by(desc(Notification.date_created)).all()
-    return [{"time_message": compare_dates(notif.__dict__["date_created"])[1],
-             "time": notif.__dict__["date_created"].strftime("%d/%m/%Y %H:%M"),
-             **notif.as_dict()}
-            for notif in notifs]
+    return [parse_notif(notif) for notif in notifs]
 
 @app.route('/notification_read', methods=['PUT'])
 @login_required
@@ -34,4 +31,10 @@ def set_notification_read():
         notif.read = not (unread == "true")
         db.session.add(notif)
         db.session.commit()
-        return notif.as_dict()
+        return parse_notif(notif)
+
+
+def parse_notif(notif):
+    return {"time_message": compare_dates(notif.date_created)[1],
+     "time": notif.date_created.strftime("%d/%m/%Y %H:%M"),
+     **notif.as_dict()}
