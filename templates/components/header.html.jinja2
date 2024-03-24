@@ -6,8 +6,9 @@
     <nav class="navigation-site">
         <ul>
             <li><a href="/home">Home</a></li>
-            {% if manager|default(true) %}
+            {% if user.type.name == "ProjectManager" %}
                 <li><a href="/new_project">New board</a></li>
+                <li><a href="/board_developer">Developer view</a></li>
             {% endif %}
             <li><a href="/contact">Contact</a></li>
         </ul>
