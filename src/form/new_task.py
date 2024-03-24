@@ -1,11 +1,11 @@
 from datetime import datetime
 
 from flask import request, redirect
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from app import app
 from src.database.database import db
-from src.database.models import Task, User, Etiquette, Step
+from src.database.models import Task, User, Etiquette, Step, Notification
 
 
 @app.route('/new_task', methods=["POST"])
@@ -22,6 +22,13 @@ def new_task_form():
         users = [User.query.filter_by(id=user_id).first() for user_id in form['collaborator']]
 
         new_task = Task(category_id=category_id, name=form['title'], description=form['description'], date_expires = date_expires, etiquettes = etiquettes, users = users)
+
+        notifications = [Notification(user_id=user.id, title="New task assigned",
+                                      content="{} created the task '{}' and assigned it to you".format(current_user.first_name + " " + current_user.last_name, new_task.name))
+                         for user in new_task.users if user.id != current_user.id]
+
+        db.session.add_all(notifications)
+
         db.session.add(new_task)
         db.session.commit()
 
