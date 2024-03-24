@@ -1,0 +1,36 @@
+section {
+    margin: 20px;
+    background-color: #ffffff;
+    border-bottom: 2px solid grey;
+}
+
+h2 {
+    color: #005a87;
+}
+
+h3 {
+    color: #007baa;
+}
+
+p {
+    margin: 10px 0;
+}
+
+a {
+    color: #007baa;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #333;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
