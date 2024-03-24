@@ -37,6 +37,7 @@ import src.routes.sign_up
 import src.routes.board_manager
 import src.routes.new_project
 import src.routes.board_dev
+import src.routes.contact
 
 ## API import
 import src.api.logout
