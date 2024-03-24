@@ -135,3 +135,10 @@ display: block;
 .remove_subtask{
   color:red;
 }
+
+.workload{
+  position:absolute;
+  right:0.2cm;
+  font-size: 8pt;
+  font-style: italic;
+}

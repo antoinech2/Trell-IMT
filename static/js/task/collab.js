@@ -37,7 +37,7 @@ CollaboratorControl.prototype.showUserList = function (matchUsers) {
     let thisControl = this
     thisControl.form_parent.find(".user_list").empty()
     for (let user of matchUsers) {
-        let newUser = $(`<li class="add_collaborator list-group-item list-group-item-action">${user.first_name} ${user.last_name} Working on ${user.workload} tasks</li>`)
+        let newUser = $(`<li class="add_collaborator list-group-item list-group-item-action">${user.first_name} ${user.last_name} <span class="workload">Working on ${user.workload} tasks</span></li>`)
         thisControl.form_parent.find(".user_list").append(newUser)
         newUser.on('click', function () {
             thisControl.add(user)
