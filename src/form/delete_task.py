@@ -22,8 +22,8 @@ def remove_task_form():
 def delete_task(task):
     task.etiquettes = []
 
-    notifications = [Notification(user_id=user.id, title="Tâche supprimée",
-                                  content="La tâche '{}' a été supprimée par {}. Vous ne pouvez plus y accéder.".format(
+    notifications = [Notification(user_id=user.id, title="Tâche deleted",
+                                  content="Task '{}' was deleted by {}. You can't access it anymore.".format(
                                       task.name, current_user.first_name + " " + current_user.last_name))
                      for user in task.users if user.id != current_user.id]
 
