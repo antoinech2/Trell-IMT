@@ -23,15 +23,3 @@ def home_view():
         # Render a template for project managers, passing in the user, their boards, and the loaded categories.
         return flask.render_template("project_manager/project_manager_page.html.jinja2",
                                      user=current_user, boards=current_user.boards, categories=categories)
-
-# Define a route for '/contact'.
-@app.route('/contact')
-def contact_view():
-    is_manager = True  # Assume the user is a manager by default.
-    # Check if the currently logged-in user is a developer.
-    if current_user.type == UserType.Developer:
-        is_manager = False  # If the user is a developer, set is_manager to False.
-    # Render the contact page template, passing in the current user and whether they are a manager.
-    return flask.render_template("contact.html.jinja2",
-                                 user=current_user,
-                                 is_manager=is_manager)
