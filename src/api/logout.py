@@ -9,9 +9,12 @@ from src.database.models import *
 @login_required
 def logout():
     """Logout the current user."""
+    # Update user in database
     user = current_user
     user.authenticated = False
     db.session.add(user)
     db.session.commit()
     logout_user()
+
+    # Return to application welcome page
     return redirect("/")

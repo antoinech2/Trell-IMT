@@ -3,6 +3,9 @@ from src.database.models import Etiquette
 
 
 def insert_initial_values():
+    """Add default values to the database"""
+
+    # Add default etiquettes to database at creation
     db.session.add(Etiquette(type="priority", label="Critical", description="Most important task", color="f50a0a"))
     db.session.add(Etiquette(type="priority", label="High", description="Import task", color="f5830a"))
     db.session.add(Etiquette(type="priority", label="Medium", description="Quite important task", color="cfb300"))

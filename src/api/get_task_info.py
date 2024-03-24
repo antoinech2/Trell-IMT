@@ -1,6 +1,6 @@
 import json
 
-from flask import request
+from flask import request, abort
 
 from app import app
 from flask_login import login_required
@@ -13,11 +13,23 @@ from src.helper.date import compare_dates
 @app.route('/get_task', methods=['GET'])
 @login_required
 def get_collaborators():
+    """Retrieve task information from database
+
+    Get task complex information : collaborators, etiquettes, subtasks, comments
+
+    Request arguments :
+    - int : task_id - The id of the task
+
+    Request response :
+    JSON object with task information and comments
+    """
     task_id = request.args.get('task_id')
     if task_id:
         collaborator = [user.as_dict() for user in Task.query.filter_by(id=task_id).first().users]
         etiquette = [etiquette.as_dict() for etiquette in Task.query.filter_by(id=task_id).first().etiquettes]
         subtask = [step.as_dict() for step in Step.query.filter_by(task_id=task_id).all()]
+
+        # Get comments by joining table comment and user to get author name
         comment = [{"title": comment.title,
                     "content": comment.content,
                     "author": user.first_name + " " + user.last_name,
@@ -28,3 +40,5 @@ def get_collaborators():
                        Commentary.task_id == task_id).all()]
         return json.dumps(
             {"collaborator": collaborator, "etiquette": etiquette, "subtask": subtask, "comment": comment})
+    else:
+        abort(400)

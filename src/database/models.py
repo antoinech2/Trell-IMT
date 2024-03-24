@@ -5,31 +5,37 @@ from src.database.database import db
 
 
 class UserType(enum.Enum):
+    """Represents the user type."""
+    # Project manager have full access to boards and tasks.
     ProjectManager = 1
+    # Developer can only see and interact with assigned task
     Developer = 2
 
 
 class Language(enum.Enum):
+    """Represents the user application language
+
+    TODO : implement localization
+    """
     French = 1
     English = 2
 
-
-class TaskRelation(enum.Enum):
-    Manager = 1
-    Reviewer = 2
-    Assignee = 3
-
-
+# Many to Many relation between Boards and Users
+# Store access permissions of users to boards (managers or developers)
 BoardUsers = db.Table('BoardUsers',
                       db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
                       db.Column('board_id', db.Integer, db.ForeignKey('board.id'), nullable=False),
                       db.PrimaryKeyConstraint('user_id', 'board_id'))
 
+# Many to Many relation between Etiquette and Task
+# Store etiquettes of tasks
 EtiquetteTask = db.Table('EtiquetteTask',
                          db.Column('task_id', db.Integer, db.ForeignKey('task.id'), nullable=False),
                          db.Column('etiquette_id', db.Integer, db.ForeignKey('etiquette.id'), nullable=False),
                          db.PrimaryKeyConstraint('task_id', 'etiquette_id'))
 
+# Many to Many relation between User and Task
+# Store collaborators of tasks
 UserTask = db.Table('UserTask',
                     db.Column('task_id', db.Integer, db.ForeignKey('task.id'), nullable=False),
                     db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
