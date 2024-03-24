@@ -111,5 +111,12 @@
     background-color: #0056b3; /* darken button when hover */
 }
 
+.accord-read{
+    padding:3%;
+    background-color:#f0f0f0 ;
+}
 
+#notification_number{
+    font-size: 7pt;
+}
 
