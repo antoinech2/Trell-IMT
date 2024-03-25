@@ -116,6 +116,8 @@ function handleTaskForm(button, new_form, controllers) {
         html_form.attr("action", `/edit_task?task_id=${form.data("task_id")}`)
         $("#comment_form").attr("action", `/new_comment?task_id=${form.data("task_id")}`)
         $("#comment_section").show()
+        $("#comment_number").text("0")
+
 
         let task_name = button.find(".task__title").text()
         let task_description = button.find(".task__description").text()
