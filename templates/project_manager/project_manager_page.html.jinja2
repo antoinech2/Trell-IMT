@@ -1,18 +1,21 @@
-{% include 'components/header.html.jinja2' %}
+{% include 'components/header.html.jinja2' %} <!-- The header of the site -->
 
-<link rel="stylesheet" href="{{ url_for("static", filename="css/home_manager.css") }}"/>
+<link rel="stylesheet" href="{{ url_for("static", filename="css/home_manager.css") }}"/> <!-- CSS file to styling the home manager page -->
+
 <div class="all-boards">
     <div class="creating-project">
-        <h2>Create a new project</h2>
+        <h2>Create a new project</h2> <!-- Section heading for creating a new project -->
         <div class="find_menu">
             <h6>Buy some time with a Trell-IMT template</h6>
             <div class="find">
                 <nav>
                     <ul>
-                        <li class="roll"><a href="#">Find a template</a>
+                        <li class="roll"><a href="#">Find a template</a> <!-- Dropdown menu for finding a project template -->
                             <ul class="under">
+                                <!-- Dynamically generates list items for each project category available as templates -->
                                 {% for category_name in categories.keys() %}
-                                    <li><a class="template_choice"
+                                    <li><a class="template_choice">
+                                           <!-- use html request with arg to generate page with the right template -->
                                            href="/new_project?template={{ category_name }}">{{ category_name }}</a></li>
                                 {% endfor %}
                             </ul>
@@ -22,19 +25,22 @@
             </div>
         </div>
         <div class="access my projects">
-            <h2>Access to an existing project</h2>
+            <h2>Access to an existing project</h2> <!-- Section heading for accessing existing projects -->
             <div class="find_menu">
-                <h6>Continue a recent project or find another one</h6>
+                <h6>Continue a recent project or find another one</h6> <!-- Subheading  -->
             </div>
             <div class="selection_menu">
+                <!-- Loop through each board available to the user and create a button for access -->
                 {% for board in boards %}
+                    <!-- use html request to go to the right board page -->
                     <button onclick="window.location.href='/board/{{ board.id }}'"
                             class="access_project_button col-xl-3 col-sm-6 col-12">
                         <div class="card">
                             <div class="card_header">
-                                {{ board.name }}
+                                {{ board.name }} <!-- Displays the name of the board -->
                             </div>
                             <div class="card_body">
+                                <!-- Optionally displays the description of the board if it exists -->
                                 {% if board.description %}
                                     {{ board.description }}
                                 {% endif %}
