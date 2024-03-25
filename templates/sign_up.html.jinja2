@@ -1,12 +1,16 @@
 {% extends "log.html.jinja2" %}
 {% set title = "Sign Up" %}
 {% block body %}
+
+    <!--Page title-->
     <div class="row mb-4">
         <div class="col-12 center_sign">
             <h1>Sign up</h1>
         </div>
     </div>
 
+
+    <!--Display if there are errors -->
     {% if errors %}
         <div class="error-container">
             The following errors prevent us from accessing your request :
@@ -18,35 +22,40 @@
         </div>
     {% endif %}
 
+    <!--First name field-->
     <form action="{{ url_for("sign_up_view") }}" method="post">
         <div class="row mb-4">
-            <label class="col-4 col-for-label">First Name</label>
+            <label for="firstname" class="col-4 col-for-label">First Name</label>
             <div class="col-8">
-                <input type="text" class="form-control" name="first_name" placeholder="first name"
+                <input type="text" id="firstname" class="form-control" name="first_name" placeholder="first name"
                        value="{{ form.first_name }}" required>
             </div>
         </div>
 
+        <!--Last name field-->
         <div class="row mb-4">
-            <label class="col-4 col-for-label">Last Name</label>
+            <label for="lastname" class="col-4 col-for-label">Last Name</label>
             <div class="col-8">
-                <input type="text" class="form-control" name="last_name" placeholder="last name"
+                <input type="text" id="lastname" class="form-control" name="last_name" placeholder="last name"
                        value="{{ form.last_name }}" required>
             </div>
         </div>
 
+        <!--Email field-->
         <div class="row mb-4">
-            <label class="col-4 col-for-label">Email</label>
+            <label for="email" class="col-4 col-for-label">Email</label>
             <div class="col-8">
-                <input type="email" class="form-control" name="email" placeholder="email" value="{{ form.email }}"
+                <input id="email" type="email" class="form-control" name="email" placeholder="email"
+                       value="{{ form.email }}"
                        required>
             </div>
         </div>
 
+        <!--Password field-->
         <div class="row mb-4">
-            <label class="col-4 col-for-label">Password</label>
+            <label for="pass" class="col-4 col-for-label">Password</label>
             <div class="col-8">
-                <input type="password" class="form-control" name="password" placeholder="password" required>
+                <input id="pass" type="password" class="form-control" name="password" placeholder="password" required>
             </div>
             <div class="indication-password"> Password must :
                 <ul>
@@ -59,14 +68,17 @@
             </div>
         </div>
 
+        <!--Password confirmation field-->
         <div class="row mb-4">
-            <label class="col-4 col-for-label">Confirm password</label>
+            <label for="confirm" class="col-4 col-for-label">Confirm password</label>
             <div class="col-8">
-                <input type="password" class="form-control" name="confirmpassword" placeholder="confirm password"
+                <input id="confirm" type="password" class="form-control" name="confirmpassword"
+                       placeholder="confirm password"
                        required>
             </div>
         </div>
 
+        <!--Usertype field-->
         <div class="row mb-4">
             <label class="col-4 col-for-label">User Type</label>
             <div class="col-8">
@@ -87,7 +99,11 @@
                 </div>
             </div>
         </div>
+
+        <!--Return to sign in if user already has account-->
         <a href="{{ url_for("sign_in_view") }}"> If you have already an account, log in here </a>
+
+        <!--Sign up button-->
         <div class="row mb-4 justify-content-end">
             <div class="col-3">
                 <button type="submit" class="btn btn-primary "> Sign up</button>

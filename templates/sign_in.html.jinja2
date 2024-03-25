@@ -23,24 +23,26 @@
 
     <form action="{{ url_for("sign_in_view") }}" method="post">
 
-    <!--Email field ( required)-->
+        <!--Email field ( required)-->
         <div class="row mb-4">
             <label for="email" class="col-4 col-for-label">Email</label>
             <div class="col-8">
-                <input id="email" type="email" class="form-control" name="email" placeholder="email" value="{{ form.email }}"
+                <input id="email" type="email" class="form-control" name="email" placeholder="email"
+                       value="{{ form.email }}"
                        required>
             </div>
         </div>
 
-<!--Password field ( required)-->
+        <!--Password field ( required)-->
         <div class="row mb-4">
             <label for="password" class="col-4 col-for-label">Password</label>
             <div class="col-8">
-                <input id="password" type="password" class="form-control" name="password" placeholder="password" required>
+                <input id="password" type="password" class="form-control" name="password" placeholder="password"
+                       required>
             </div>
         </div>
 
-<!--Remember me box-->
+        <!--Remember me box-->
         <div class="form-check form-switch form-check-reverse">
             <input class="form-check-input" type="checkbox" id="rememberCheckbox" name="remember" checked value="true">
             <label class="form-check-label" for="rememberCheckbox">Remember me ?</label>
