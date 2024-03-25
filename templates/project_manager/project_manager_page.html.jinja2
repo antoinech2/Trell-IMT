@@ -14,9 +14,8 @@
                             <ul class="under">
                                 <!-- Dynamically generates list items for each project category available as templates -->
                                 {% for category_name in categories.keys() %}
-                                    <li><a class="template_choice">
-                                           <!-- use html request with arg to generate page with the right template -->
-                                           href="/new_project?template={{ category_name }}">{{ category_name }}</a></li>
+                                    <!-- use html request with arg to generate page with the right template -->
+                                    <li><a class="template_choice" href="/new_project?template={{ category_name }}">{{ category_name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>
