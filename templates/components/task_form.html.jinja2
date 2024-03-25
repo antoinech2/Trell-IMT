@@ -104,7 +104,7 @@
                     <h6>Etiquettes</h6>
                 </div>
 
-            <!--Display etiquettes chosen-->
+                <!--Add etiquettes-->
                 <div id="etiquettes_list_form" class="container-etiquette">
                 </div>
                 <div class="dropup">
@@ -114,6 +114,8 @@
                     </button>
                     <ul class="dropdown-menu">
                         {% for type, etiquettes in etiquette.items() %}
+
+                            <!-- Can't add a priority if the user is a developer-->
                             {% if not (type == "priority" and user_type.name == "Developer") %}
                                 <li>
                                     <a class="dropdown-item btn">
@@ -136,18 +138,21 @@
 
                     </ul>
                 </div>
-
             </div>
-
-
             <hr>
+
+            <!--Collaborators field-->
             <div class="row mb-3 mt-3">
                 <div class="d-flex">
                     <i class="bi bi-people-fill icon "></i>
                     <h6>Collaborators</h6>
                 </div>
+
+                <!--Display the collaborators of the task-->
                 <ul class="collaborators">
                 </ul>
+
+                <!--Only a manager can add and delete collaborators-->
                 {% if user_type.name != "Developer" %}
                     <div class="d-flex">
                         <i class="bi bi-person-plus-fill icon"></i>
@@ -161,6 +166,7 @@
             </div>
         </form>
 
+        <!--Close and commit the modifications-->
         <div class="link">
             <a class="close btn btn-outline-danger" href="/">Close</a>
             <input type="submit" form="new_task" class="btn btn-outline-success button-right" value="Add task"
@@ -168,14 +174,17 @@
                    id="task_form_submit">
         </div>
 
+        <!--Button to delete the task-->
         <form id="delete_task" action="/delete_task" method="post">
             <button type="submit" name="delete" class="btn btn-danger">
                 <i class="bi bi-trash3"></i> Delete
             </button>
         </form>
 
-
+        <!--Comment field-->
         <div class="accordion accordion-flush row mt-3" id="accordionTask">
+
+            <!--First accordion item to add a comment-->
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -198,20 +207,19 @@
                                 </label>
                                 <input type="submit" class="btn btn-outline-success" value="Add comment"
                                        name="commit_comment">
-
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!--Second accordion item to see comments-->
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                         Comments <span class="badge rounded-pill text-bg-secondary number-comment"
-                                       id="comment_number">0</span>
+                                       id="comment_number"></span>
                     </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionTask">
