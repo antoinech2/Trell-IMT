@@ -1,34 +1,42 @@
-{% include 'components/header.html.jinja2' %}
+{% include 'components/header.html.jinja2' %} <!-- Includes the header -->
+
+<!-- import task form but only for dev view. It depends on the user type and we don't show all etiquettes -->
 {% with etiquette=etiquette_data, user_type=user.type %}
     {% include 'components/task_form.html.jinja2' %}
 {% endwith %}
+
 <link rel="stylesheet" href="{{ url_for("static", filename="css/dev.css") }}">
+
+<!-- Form for searching tasks with various criteria -->
 <form class="search-bar" action="{{ url_for('board_developer') }}" method="post">
+    <!-- project name part for research -->
     <div class="field">
         <label for="project_name">Project name:</label>
         <input list="projects" id="project_name" class="form-control" name="project_name" autocomplete="off"
                value="{{ form.project_name }}">
-        <datalist id="projects">
+        <datalist id="projects"> <!-- Provides a datalist for project names -->
             {% for project in project_name %}
                 <option value="{{ project }}">
             {% endfor %}
         </datalist>
     </div>
 
+    <!-- task name part for research -->
     <div class="field">
         <label for="task_name">Task name:</label>
         <input list="task" id="task_name" class="form-control" name="task_name" autocomplete="off"
                value="{{ form.task_name }}">
-        <datalist id="task">
+        <datalist id="task"> <!-- Provides a datalist for task names -->
             {% for task in task_name %}
                 <option value="{{ task }}">
             {% endfor %}
         </datalist>
     </div>
 
+    <!-- task importance part for research -->
     <div class="field">
         <label for="importance">Importance:</label>
-        <select id="importance" name="importance">
+        <select id="importance" name="importance"> <!-- Dropdown for selecting task importance -->
             <option value="0">{{ none }}</option>
             {% for level in importance %}
                 <option value="{{ level.id }}" {{ 'selected' if form.importance == level.id else '' }}>{{ level.label }}</option>
@@ -36,9 +44,10 @@
         </select>
     </div>
 
+    <!-- task state part for research -->
     <div class="field">
         <label for="state">State:</label>
-        <select id="state" name="state">
+        <select id="state" name="state"> <!-- Dropdown for selecting task state/status -->
             <option value="0">{{ none }}</option>
             {% for state in states %}
                 <option value="{{ state.id }}" {{ 'selected' if form.state == state.id else '' }}>{{ state.label }}</option>
@@ -46,19 +55,22 @@
         </select>
     </div>
 
+    <!-- task date part for research -->
     <div class="field">
         <label for="task_date">Due to:</label>
-        <input type="date" id="task_date" name="task_date" value="{{ form.task_date }}">
+        <input type="date" id="task_date" name="task_date" value="{{ form.task_date }}"> <!-- Input for selecting a due date for the task -->
     </div>
 
-    <button type="submit">Find</button>
+    <button type="submit">Find</button> <!-- Submit button for the form -->
 </form>
+
+<!-- Container for displaying tasks -->
 <div class="row" id="task_container">
     {% for task in tasks_data %}
         <div class="col-xl-3 col-sm-6 col-12">
             <div class="task" data-task_id="{{ task.id }}" data-date_expires="{{ task.date_expires }}">
                 {% with task=task, current_user = user %}
-                    {% include "components/task.html.jinja2" %}
+                    {% include "components/task.html.jinja2" %} <!-- Includes the task component for each task with context variables -->
                 {% endwith %}
             </div>
         </div>
