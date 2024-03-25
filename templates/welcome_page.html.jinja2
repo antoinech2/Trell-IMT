@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Trell'IMT first page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome_page.css') }}">
+    <title>Trell'IMT first page</title> <!-- The title of the webpage -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome_page.css') }}"> <!-- Link to the CSS file for styling the welcome page -->
 </head>
 <body>
 <header>
     <nav>
         <ul>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/home">Access your personal space</a></li>
-            <li><a href="/sign_up" class="signup-button">Sign Up for Free</a></li>
+            <!-- Navigation links for users -->
+            <li><a href="/contact">Contact</a></li> <!-- Link to the contact page -->
+            <li><a href="/home">Access your personal space</a></li> <!-- Link to the user's personal home page or login page -->
+            <li><a href="/sign_up" class="signup-button">Sign Up for Free</a></li> <!-- Link for new users to sign up, highlighted with a class -->
         </ul>
     </nav>
 </header>
 
 <main>
+    <!-- Main content area -->
     <div class="page_title">
-        <h1>A new tool for your projects !!!</h1>
-        <p>When you're on a hard task, you need to organise. That's why Trell'IMT is the right tool for you.</p>
-        <a href="/sign_up" class="signup-button">Sign Up for Free</a>
+        <h1>A new tool for your projects !!!</h1> <!-- Main heading -->
+        <p>When you're on a hard task, you need to organise. That's why Trell'IMT is the right tool for you.</p> <!-- Brief description of the tool's -->
+        <a href="/sign_up" class="signup-button">Sign Up for Free</a> <!-- Link for new users to sign up -->
     </div>
 </main>
 </body>
