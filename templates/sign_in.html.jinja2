@@ -1,12 +1,15 @@
 {% extends "log.html.jinja2" %}
 {% set title = "Log In" %}
 {% block body %}
+
+    <!--Page title-->
     <div class="row mb-4">
         <div class="col-12 center_sign">
             <h1>Log in</h1>
         </div>
     </div>
 
+    <!--Display if there are errors during the log (wrong password...)-->
     {% if errors %}
         <div class="error-container">
             The following errors prevent us from accessing your request :
@@ -18,29 +21,35 @@
         </div>
     {% endif %}
 
-
     <form action="{{ url_for("sign_in_view") }}" method="post">
+
+    <!--Email field ( required)-->
         <div class="row mb-4">
-            <label class="col-4 col-for-label">Email</label>
+            <label for="email" class="col-4 col-for-label">Email</label>
             <div class="col-8">
-                <input type="email" class="form-control" name="email" placeholder="email" value="{{ form.email }}"
+                <input id="email" type="email" class="form-control" name="email" placeholder="email" value="{{ form.email }}"
                        required>
             </div>
         </div>
 
+<!--Password field ( required)-->
         <div class="row mb-4">
-            <label class="col-4 col-for-label">Password</label>
+            <label for="password" class="col-4 col-for-label">Password</label>
             <div class="col-8">
-                <input type="password" class="form-control" name="password" placeholder="password" required>
+                <input id="password" type="password" class="form-control" name="password" placeholder="password" required>
             </div>
         </div>
 
-
+<!--Remember me box-->
         <div class="form-check form-switch form-check-reverse">
             <input class="form-check-input" type="checkbox" id="rememberCheckbox" name="remember" checked value="true">
             <label class="form-check-label" for="rememberCheckbox">Remember me ?</label>
         </div>
+
+        <!--Return to sign up if user doesn't have account-->
         <a href="{{ url_for("sign_up_view") }}"> If you don't have an account, please register now </a>
+
+        <!--Log in button-->
         <div class="row mb-4 justify-content-end">
             <div class="col-3">
                 <button type="submit" class="btn btn-primary "> Log in</button>
