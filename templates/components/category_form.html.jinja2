@@ -1,8 +1,15 @@
+<!--Template to generate the form to add and modify a category-->
+
 <script src="{{ url_for("static", filename="js/add_category.js") }}"></script>
 <script src="{{ url_for("static", filename="js/modify_category.js") }}"></script>
+
+<!--Popup with the form desired ( modification or addition)-->
+
 <div class="messagepop" id="category_popup">
-    <h5 id="category-form-label"> Add category to board</h5>
+    <h5 id="category-form-label"></h5>
     <form method="post" id="new_category" action="">
+
+        <!--Category title field-->
         <div class="row mb-3">
             <div class="d-flex"><i class="bi bi-card-checklist icon"></i> <label for="category_form_title"> Category
                 title </label>
@@ -13,6 +20,8 @@
                    name="title"
                    id="category_form_title"
                    required></div>
+
+        <!--Description field-->
         <div class="row mb-3">
             <div class="d-flex"><i class="bi bi-file-earmark-richtext icon"></i> <label for="category_form_description">
                 Description </label>
@@ -20,11 +29,13 @@
             <textarea
                     class="form-control" rows="6" name="description" id="category_form_description"
                     cols="35"></textarea></div>
-        <div class="link"><a class="close_category_form btn btn-outline-danger" href="/">Cancel</a><input type="submit"
-                                                                                                          class="btn btn-outline-success button-right"
-                                                                                                          value="Add task"
-                                                                                                          name="commit"
-                                                                                                          id="category_form_submit">
+
+        <!--Buttons to cancel the modifications or to commit it and close the form-->
+        <div class="link"><a class="close_category_form btn btn-outline-danger" href="/">Close</a><input type="submit"
+                                                                                                         class="btn btn-outline-success button-right"
+                                                                                                         value="Add task"
+                                                                                                         name="commit"
+                                                                                                         id="category_form_submit">
         </div>
     </form>
 </div>
