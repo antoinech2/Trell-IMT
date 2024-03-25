@@ -39,7 +39,7 @@ def get_notifications():
 @app.route('/notification_read', methods=['PUT'])
 @login_required
 def set_notification_read():
-    """Change the 'readed' state of a notification
+    """Change the 'read' state of a notification
 
     Mark a notification as read or unread
 

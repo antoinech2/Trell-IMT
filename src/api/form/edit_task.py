@@ -92,6 +92,7 @@ def edit_task_form():
                     task.name, current_user.first_name + " " + current_user.last_name)))
 
         # Etiquettes
+        # TODO : improve with in_
         new_etiquettes = [Etiquette.query.filter_by(id=etiquette_id).first() for etiquette_id in form['etiquette']]
 
         # Notify users for new etiquette

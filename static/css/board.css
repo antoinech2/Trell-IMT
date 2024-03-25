@@ -1,41 +1,41 @@
-.board-title{
-    position:relative;
+.board-title {
+    position: relative;
     padding-left: 7%;
     background-color: lightgrey;
-    height:1cm;
-    display:flex;
+    height: 1cm;
+    display: flex;
     justify-content: space-between;
-    padding-top:0.2cm;
-
+    padding-top: 0.2cm;
 
 
 }
-#board_name{
-    font-weight:bold;
+
+#board_name {
+    font-weight: bold;
     margin-right: 1cm;
 }
 
-.drop-right{
-    position:absolute;
-    top:0;
-    right:0;
+.drop-right {
+    position: absolute;
+    top: 0;
+    right: 0;
 
 }
 
-.board-users{
-    margin-right:15%;
+.board-users {
+    margin-right: 15%;
 
 }
 
 .user-bubble-board {
-  border: 1px solid black;
-    padding:4px;
+    border: 1px solid black;
+    padding: 4px;
 
-    font-size:10pt;
-  border-radius: 50%;
+    font-size: 10pt;
+    border-radius: 50%;
     background-color: #99CC33;
 }
 
-.me{
+.me {
     background-color: #d99216
 }

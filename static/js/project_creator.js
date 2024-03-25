@@ -26,10 +26,7 @@ function initScript() {
         const categoryName = $('.form-name_category').val().trim();
         if (categoryName) {
             // Create new div for the category
-            const categoryDiv = $('<div></div>', {
-                class: 'categoryCreate badge rounded-pill text-bg-primary',
-                html: `${categoryName} <span class="remove-category">X</span>`
-            });
+            const categoryDiv = $('<div class="categoryCreate badge rounded-pill text-bg-primary">${categoryName} <span class="remove-category">X</span></div>');
             // Add this new div to the categories
             $('#categories').append(categoryDiv);
             // Clear the category name input

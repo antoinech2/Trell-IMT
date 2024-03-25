@@ -1,33 +1,33 @@
-nav ul{
+nav ul {
     list-style-type: none;
 }
 
-.all-boards li{
+.all-boards li {
     float: left;
     width: 25%;
     text-align: center;
     position: relative;
 }
 
-.all-boards nav ul::after{
+.all-boards nav ul::after {
     content: "";
     display: table;
     clear: both;
 }
 
-.all-boards nav a{
+.all-boards nav a {
     display: block;
     text-decoration: none;
     color: black;
     padding: 10px 0px;
 }
 
-.template_choice:hover{
+.template_choice:hover {
     color: orange;
     border-bottom: 2px solid gold;
 }
 
-.under{
+.under {
     display: none;
     box-shadow: 0px 1px 2px #CCC;
     background-color: white;
@@ -36,37 +36,37 @@ nav ul{
     z-index: 1000;
 }
 
-.all-boards nav > ul li:hover .under{
+.all-boards nav > ul li:hover .under {
     display: block;
 }
 
-.under li{
+.under li {
     float: none;
     width: 100%;
     text-align: left;
 }
 
-.under a{
+.under a {
     padding: 10px;
     border-bottom: none;
 
 }
 
-.under a:hover{
+.under a:hover {
     border-bottom: none;
 }
 
-.roll{
+.roll {
     border: 1px solid black;
 }
 
-.roll > a::after{
-    content:" ▼";
+.roll > a::after {
+    content: " ▼";
     font-size: 12px;
 }
 
 
-.selection_menu{
+.selection_menu {
     display: flex;
     background-color: #99CC33;
     padding-top: 5px;
@@ -75,29 +75,29 @@ nav ul{
     overflow-x: auto;
 }
 
-.access_project_button{
-    border : 2px solid #00B8DE;
+.access_project_button {
+    border: 2px solid #00B8DE;
     height: 125px;
-    width : 20%;
+    width: 20%;
     margin: 15px;
 }
 
 .all-boards h2 {
-    color : #00B8DE;
+    color: #00B8DE;
     margin: 10px;
 }
 
 .all-boards h6 {
-    margin : 20px;
+    margin: 20px;
 }
 
 .access_project_button {
     display: block;
-    width : 20%;
+    width: 20%;
     text-align: left;
     background-color: white;
-    border : 2px solid #00B8DE;
-     overflow: hidden;
+    border: 2px solid #00B8DE;
+    overflow: hidden;
     height: 125px;
     cursor: pointer;
     padding: 20px;
@@ -112,7 +112,7 @@ nav ul{
     flex-direction: column;
     justify-content: start;
     background-color: white;
-    border : 1px white;
+    border: 1px white;
     box-shadow: none;
     overflow: hidden;
 }

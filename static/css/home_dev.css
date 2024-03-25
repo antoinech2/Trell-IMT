@@ -48,10 +48,6 @@
     transition: background-color 0.3s ease;
 }
 
-.search-bar button:hover {
-    background-color: darken(var(--primary-color), 10%);
-}
-
 .search-bar label {
     margin-bottom: 5px;
     font-weight: bold;

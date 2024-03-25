@@ -30,6 +30,7 @@ def new_task_form():
         # Convert date in database format if defined
         date_expires = datetime.strptime(form.get('task-end'), "%Y-%m-%dT%H:%M") if form.get('task-end') else None
 
+        # TODO
         etiquettes = [Etiquette.query.filter_by(id=etiquette_id).first() for etiquette_id in form['etiquette']]
 
         users = [User.query.filter_by(id=user_id).first() for user_id in form['collaborator']]

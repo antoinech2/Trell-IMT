@@ -48,6 +48,6 @@ def new_comment_form():
                    "author": current_user.first_name + " " + current_user.last_name,
                    "time_message": compare_dates(new_comment.date_created)[1],
                    "time": new_comment.date_created.strftime("%d/%m/%Y %H:%M")}
-        return comment, 303
+        return comment
     else:
         return abort(400)

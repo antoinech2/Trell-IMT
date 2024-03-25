@@ -1,6 +1,6 @@
-html,body{
-    height:100%;
-    margin:0;
+html, body {
+    height: 100%;
+    margin: 0;
     display: flex;
     flex-flow: column;
 }
@@ -28,8 +28,8 @@ html,body{
 }
 
 .description {
-    margin-left:0.5cm;
-    margin-right:0.5cm;
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
 }
 
 .task__description {
@@ -48,17 +48,17 @@ html,body{
     display: flex;
     list-style-type: none;
 
-    margin:2%;
-    padding-left:1%;
+    margin: 2%;
+    padding-left: 1%;
 
 }
 
 .user-buble {
-  border: 1px solid black;
-    padding:4px;
-  margin-right: 10px;
-    font-size:10pt;
-  border-radius: 50%;
+    border: 1px solid black;
+    padding: 4px;
+    margin-right: 10px;
+    font-size: 10pt;
+    border-radius: 50%;
     background-color: #99CC33;
 }
 
@@ -71,114 +71,113 @@ html,body{
 
 }
 
-.category{
+.category {
     background-color: #333333;
-    border-radius : 20px;
-    margin:0.5%;
-    padding:1% ;
+    border-radius: 20px;
+    margin: 0.5%;
+    padding: 1%;
     width: 8cm;
-    height:auto;
+    height: auto;
     flex-shrink: 0;
-    display:flex;
+    display: flex;
     flex-flow: column;
 
 }
 
-.container-title-description-category{
-    margin-right:1.3cm;
+.container-title-description-category {
+    margin-right: 1.3cm;
     overflow: hidden;
 }
 
-.category-title{
-    color:white;
+.category-title {
+    color: white;
     font-weight: bold;
 
 }
 
-.category-content{
+.category-content {
     overflow-y: auto;
     max-height: 85%;
 
 }
 
-.task-add{
-    color:white;
+.task-add {
+    color: white;
     flex: 0 1 40px;
     margin-top: 2%;
 }
 
-.add-container{
-    margin:0.5%;
-    padding:1% ;
+.add-container {
+    margin: 0.5%;
+    padding: 1%;
     width: 23%;
     flex-shrink: 0;
 
 
 }
 
-.category-add{
-    width:100%;
+.category-add {
+    width: 100%;
 
 }
 
 
-
-.description{
-    font-size:small;
-    font-weight:normal;
+.description {
+    font-size: small;
+    font-weight: normal;
 }
 
-.description-title{
-    font-size:small;
-    font-weight:normal;
-    color:white;
+.description-title {
+    font-size: small;
+    font-weight: normal;
+    color: white;
 }
 
-.head-category{
-    position:relative
+.head-category {
+    position: relative
 }
 
-.progress-container{
-    margin:1%;
+.progress-container {
+    margin: 1%;
 }
 
-.expire_container{
-    margin:1%;
+.expire_container {
+    margin: 1%;
 }
 
-.late{
-    color:red
+.late {
+    color: red
 }
 
-.time_ok{
-    color:green;
+.time_ok {
+    color: green;
 }
 
-.task_done{
-    font-size:10pt;
+.task_done {
+    font-size: 10pt;
 }
 
-.etiquette{
-    margin-top:1%;
-    margin-bottom:1%;
+.etiquette {
+    margin-top: 1%;
+    margin-bottom: 1%;
 
 }
 
-.subtask_input{
-    margin-right:0.5cm;
+.subtask_input {
+    margin-right: 0.5cm;
 }
 
-.collaborator{
+.collaborator {
     background-color: #99CC33;
-    margin:1%;
-    padding:2%;
-    color:black;
-    border-radius : 10px;
-    display:inline-block;
+    margin: 1%;
+    padding: 2%;
+    color: black;
+    border-radius: 10px;
+    display: inline-block;
 
 }
 
-.me{
+.me {
     background-color: #d99216
 }
 

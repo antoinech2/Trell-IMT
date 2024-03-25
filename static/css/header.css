@@ -16,7 +16,7 @@
     list-style: none;
     display: flex;
     gap: 20px;
-    margin-top:0.5cm;
+    margin-top: 0.5cm;
 }
 
 .navigation-site a {
@@ -35,19 +35,20 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
 .logo-connexion {
     text-decoration: none;
 }
 
 .logout-logo {
-    color : black;
-    font-size : 20px;
-    padding:1cm;
+    color: black;
+    font-size: 20px;
+    padding: 1cm;
 }
 
-.profile{
-   display:flex;
-    gap:10px;
+.profile {
+    display: flex;
+    gap: 10px;
 }
 
 .accordion-collapse-header {
@@ -57,7 +58,7 @@
     max-height: 400px;
     overflow-y: auto;
     background-color: #fff;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     border: none;
     top: 60px;
@@ -112,11 +113,11 @@
     background-color: #0056b3; /* darken button when hover */
 }
 
-.accord-read{
-    padding:3%;
+.accord-read {
+    padding: 3%;
 }
 
-#notification_number{
+#notification_number {
     font-size: 6pt;
 }
 

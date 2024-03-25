@@ -66,15 +66,13 @@ def get_tasks_from_form(form):
             conditions.append(Task.date_expires < form.get("task_date"))
 
     # Build the query based on the conditions.
-    query = db.session.query(Task) \
+    tasks = db.session.query(Task) \
         .join(Category, Category.id == Task.category_id) \
         .join(Board, Board.id == Category.board_id) \
         .outerjoin(Task.etiquettes) \
         .outerjoin(Task.users) \
-        .filter(and_(*conditions))
+        .filter(and_(*conditions)).all()
 
-    # Execute the query to get filtered tasks.
-    tasks = query.all()
 
     # Use the helper function 'get_task' to format each task for display.
     for task in tasks:

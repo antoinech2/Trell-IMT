@@ -1,101 +1,106 @@
 a.selected {
-  background-color:#1F75CC;
-  color:white;
-  z-index:100;
+    background-color: #1F75CC;
+    color: white;
+    z-index: 100;
 }
 
-.container-popup{
-  display:flex;
+.container-popup {
+    display: flex;
 }
 
 .messagepop {
-  background-color:#FFFFFF;
-  border:1px solid #999999;
-  cursor:default;
-  margin-top: 15px;
-  position:fixed;
-  top: 50%;
-  max-height: 90%;
-  display:none;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
-  text-align:left;
-  width:394px;
-  z-index:50;
-  padding: 25px 25px 20px;
-  overflow-y: auto;
+    background-color: #FFFFFF;
+    border: 1px solid #999999;
+    cursor: default;
+    margin-top: 15px;
+    position: fixed;
+    top: 50%;
+    max-height: 90%;
+    display: none;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    text-align: left;
+    width: 394px;
+    z-index: 50;
+    padding: 25px 25px 20px;
+    overflow-y: auto;
 }
 
 label {
-  display: block;
-  margin-bottom: 3px;
-  padding-left: 15px;
-  text-indent: -15px;
+    display: block;
+    margin-bottom: 3px;
+    padding-left: 15px;
+    text-indent: -15px;
 }
 
 .messagepop p, .messagepop.div {
-  border-bottom: 1px solid #EFEFEF;
-  margin: 8px 0;
-  padding-bottom: 8px;
+    border-bottom: 1px solid #EFEFEF;
+    margin: 8px 0;
+    padding-bottom: 8px;
 }
 
-.button-right{
-  position: absolute;
-  right: 0.8cm;
+.button-right {
+    position: absolute;
+    right: 0.8cm;
 }
 
-.link{
-  padding:1%;
-}
-#task_form_label{
-  margin-right:2cm;
-}
-#delete_task{
-  position:absolute;
-  top:1%;
-  right:1%;
+.link {
+    padding: 1%;
 }
 
-.icon{
-  margin-right:0.5cm;
+#task_form_label {
+    margin-right: 2cm;
 }
 
-.remove_subtask{
-  font-size:10pt;
-  margin-left: 1%;
-  padding:1.5%;
-  position :absolute;
-  right:0.5cm;
-  color:red;
-  font-weight:bold;
+#delete_task {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+}
+
+.icon {
+    margin-right: 0.5cm;
+}
+
+.remove_subtask {
+    font-size: 10pt;
+    margin-left: 1%;
+    padding: 1.5%;
+    position: absolute;
+    right: 0.5cm;
+    color: red;
+    font-weight: bold;
 
 }
 
-hr{
-  margin:auto;
+hr {
+    margin: auto;
 }
 
 .dropdown-menu li {
-position: relative;
-}
-.dropdown-menu .dropdown-submenu {
-display: none;
-position: absolute;
-left: 100%;
-top: -7px;
-}
-.dropdown-menu .dropdown-submenu-left {
-right: 100%;
-left: auto;
-}
-.dropdown-menu > li:hover > .dropdown-submenu {
-display: block;
+    position: relative;
 }
 
-.container-etiquette{
-     display: flex;
+.dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+}
+
+.dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    left: auto;
+}
+
+.dropdown-menu > li:hover > .dropdown-submenu {
+    display: block;
+}
+
+.container-etiquette {
+    display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.5rem;
@@ -104,41 +109,41 @@ display: block;
     margin-bottom: 1rem;
 }
 
-.right-sign{
-  position:absolute;
-  right:0.5cm;
+.right-sign {
+    position: absolute;
+    right: 0.5cm;
 }
 
-.comment{
-    margin-bottom:0.5cm;
-    padding:2%;
-    border:solid 1px grey;
-    border-radius:10px;
-  position:relative;
+.comment {
+    margin-bottom: 0.5cm;
+    padding: 2%;
+    border: solid 1px grey;
+    border-radius: 10px;
+    position: relative;
 
 }
 
-.comment-right{
-  position:absolute;
-  right:0.2cm;
+.comment-right {
+    position: absolute;
+    right: 0.2cm;
 }
 
-.number-comment{
-  position:absolute;
-  left:3cm;
+.number-comment {
+    position: absolute;
+    left: 3cm;
 }
 
-.remove_collaborator{
-  color:red;
+.remove_collaborator {
+    color: red;
 }
 
-.remove_subtask{
-  color:red;
+.remove_subtask {
+    color: red;
 }
 
-.workload{
-  position:absolute;
-  right:0.2cm;
-  font-size: 8pt;
-  font-style: italic;
+.workload {
+    position: absolute;
+    right: 0.2cm;
+    font-size: 8pt;
+    font-style: italic;
 }
