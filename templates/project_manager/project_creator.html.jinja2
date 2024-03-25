@@ -1,14 +1,20 @@
-{% include 'components/super_header.html.jinja2' %}
-<script src="../../static/js/project_creator.js" type="module"></script>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/project_creator.css') }}"/>
+{% include 'components/super_header.html.jinja2' %} <!-- Includes the super header -->
+
+<script src="../../static/js/project_creator.js" type="module"></script> <!-- JavaScript file for handling project creation logic -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/project_creator.css') }}"/> <!-- Links a CSS file specific to the project creation page -->
+
 <div class="container">
     <div class="sub-container">
+        <!-- Main form for creating a new project -->
         <div class="project-form">
             <form action="{{ url_for('new_project_form') }}" method="post" id="new_project_form">
+                <!-- Form header with a title -->
                 <div class="form-header">
                     <h1>Create a New Project</h1>
                 </div>
-                <div class="form-content"> <!-- This div will be scrollable -->
+                <!-- Form content including inputs for project details -->
+                <div class="form-content"> <!-- This div is scrollable -->
+                    <!-- Error message container for displaying form validation errors -->
                     {% if errors %}
                         <div class="error-container">
                             The following errors prevent us from accessing your request:
@@ -19,28 +25,30 @@
                             </ul>
                         </div>
                     {% endif %}
+                    <!-- Input for the project's name -->
                     <div class="form-section">
                         <h3>Project Name</h3>
                         <input type="text" id="project_name" name="project_name" placeholder="Enter project name"
                                value="{{ form.project_name }}" required>
                     </div>
+                    <!-- Textarea for adding a project description -->
                     <div class="form-section">
                         <h3>Add a Description</h3>
                         <textarea rows="6" name="description" id="description"
                                   placeholder="Describe your project"></textarea>
                     </div>
+                    <!-- Section for adding categories to the project -->
                     <div class="form-section">
                         <h3>Add Categories</h3>
-                        <h6>Enter the name and clic "add a category" to add a new category at the beginning of your
-                            project.
-                            Categories name will appear below.
-                        </h6>
+                        <h6>Enter the name and click "add a category" to add a new category at the beginning of your project. Categories names will appear below.</h6>
                         <div class="categories" id="categories">
+                            <!-- Loop through each category and show it -->
                             {% for category in template_list_category %}
                                 <span class="categoryCreate badge rounded-pill text-bg-primary">{{ category }} <span
                                         class="remove-category">X</span></span>
                             {% endfor %}
                         </div>
+                        <!-- Button for adding a new category -->
                         <div class="add-category">
                             <input type="text" id="category_name" class="form-name_category" name="category_name"
                                    placeholder="Category name">
@@ -48,11 +56,14 @@
                         </div>
                     </div>
                     <input type="hidden" name="category_list" id="category_list" value="">
+                    <!-- Section for adding collaborators to the project -->
                     <div class="form-section">
                         <h3>Add Collaborators</h3>
                     </div>
                     <ul class="collaborators">
+                        <!-- List of collaborators will be dynamically add -->
                     </ul>
+                    <!-- Search input for adding collaborators -->
                     <div class="d-flex">
                         <i class="bi bi-person-plus-fill"></i>
                         <label for="search_user">Add collaborator</label>
@@ -60,8 +71,10 @@
                     <input type="search" id="search_user" name="search_user" class="form-control search_user"
                            autocomplete="off"/>
                     <ul class="list-group user_list">
+                        <!-- Search results for users to add as collaborators will be dynamically add -->
                     </ul>
                 </div>
+                <!-- Form footer with cancel and submit buttons -->
                 <div class="form-footer">
                     <a href="{{ url_for('home_view') }}" class="btn cancel">Cancel</a>
                     <button type="submit" class="btn create">Create Project</button>
