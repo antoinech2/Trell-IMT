@@ -9,9 +9,13 @@ from src.database.models import *
 
 @app.route('/sign_up', methods=["GET", "POST"])
 def sign_up_view():
+    """Create account page"""
     form = flask.request.form
     valid_form, errors = validate_sign_up_form(form)
+
+    # Check for form validation
     if valid_form:
+        # Create new user and commit
         new_user = User(email=form.get("email"), password=bcrypt.hashpw(form.get("password").encode('utf-8'), salt),
                         first_name=form.get("first_name"), last_name=form.get("last_name"), type=form.get("user_type"))
         db.session.add(new_user)
@@ -22,6 +26,10 @@ def sign_up_view():
 
 
 def validate_sign_up_form(form):
+    """Sign up form validation
+
+    :return (boolean, string[]) : Is form valid, error list
+    """
     result = True
     errors = []
 

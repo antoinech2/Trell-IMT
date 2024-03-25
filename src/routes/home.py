@@ -14,6 +14,7 @@ def hello_world():
 @app.route('/home', methods=['GET'])
 @login_required
 def home_view():
+    """Home page"""
     # Check if the currently logged-in user is a developer.
     if current_user.type == UserType.Developer:
         # If the user is a developer, redirect them to a developer-specific page.

@@ -9,6 +9,7 @@ from src.database.models import *
 @app.route('/new_project', methods=["GET", "POST"])
 @login_required  # Ensure that the user must be logged in to access this route.
 def new_project_form():
+    """Page to create new board"""
     valid_form = False
     form = {}
     errors = []
@@ -18,7 +19,7 @@ def new_project_form():
         # Get the JSON data sent with the request
         form = request.get_json()
         # Validate the form data and store the result (True/False) and any error messages.
-        valid_form, errors = validate_sign_up_form(form)
+        valid_form, errors = validate_new_project_form(form)
 
     # If the form is valid, proceed to create a new project.
     if valid_form:
@@ -64,7 +65,11 @@ def new_project_form():
 
 
 # Define a function to validate the form data.
-def validate_sign_up_form(form):
+def validate_new_project_form(form):
+    """New project form validation
+
+    :return (boolean, string[]) : Is form valid, error list
+    """
     result = True
     errors = []
 

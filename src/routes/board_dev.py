@@ -9,6 +9,7 @@ from src.helper.get_task_display import get_task
 @app.route('/board_developer', methods=["GET", "POST"])
 @login_required  # Require the user to be logged in to access this route.
 def board_developer():
+    """Main developer view"""
     form = flask.request.form  # Access form data sent with the request.
 
     # If there's form data, process it by converting relevant fields to integers.
@@ -47,6 +48,7 @@ def board_developer():
 
 # Define a function to filter tasks based on form data.
 def get_tasks_from_form(form):
+    """Filter task list given parameters from HTML form"""
     tasks_data = []
 
     # Start building a list of conditions based on the form data for filtering tasks.
