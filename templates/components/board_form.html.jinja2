@@ -1,7 +1,14 @@
+<!--Template to generate the form to modify a board-->
+
 <script src="{{ url_for("static", filename="js/modify_board.js") }}" type='module'></script>
+
+<!--Popup with the modification form-->
+
 <div class="messagepop" id="board_popup">
-    <h5 id="board-form-label"> Edit board </h5>
+    <h5 id="board-form-label"></h5>
     <form method="post" id="edit_board" action="/edit_board?board_id={{ board_id }}">
+
+        <!--Board title field-->
         <div class="row mb-3">
             <div class="d-flex"><i class="bi bi-card-checklist icon"></i> <label for="board_form_title"> Board
                 title </label>
@@ -13,6 +20,8 @@
                     name="title"
                     id="board_form_title"
                     required></div>
+
+        <!--Description field-->
         <div class="row mb-3">
             <div class="d-flex"><i class="bi bi-file-earmark-richtext icon"></i> <label for="board_form_description">
                 Description </label>
@@ -20,6 +29,8 @@
             <textarea
                     class="form-control" rows="6" name="description" id="board_form_description" cols="35"></textarea>
         </div>
+
+        <!--Field to show collaborators of the whole board-->
         <div class="row mb-3 mt-3">
             <div class="d-flex">
                 <i class="bi bi-people-fill icon"></i>
@@ -27,6 +38,8 @@
             </div>
             <ul class="collaborators">
             </ul>
+
+            <!--Field to add collaborators to the whole board-->
             <div class="d-flex">
                 <i class="bi bi-person-plus-fill icon"></i>
                 <label for="search_user">Add collaborator</label>
@@ -36,7 +49,9 @@
             <ul class="list-group user_list">
             </ul>
         </div>
-        <div class="link"><a class="close_board_form btn btn-outline-danger" href="/">Cancel</a><input type="submit"
+
+        <!--Buttons to cancel the modifications or to commit it and close the form-->
+        <div class="link"><a class="close_board_form btn btn-outline-danger" href="/">Close</a><input type="submit"
                                                                                                        class="btn btn-outline-success button-right"
                                                                                                        value="Edit board"
                                                                                                        name="commit"
