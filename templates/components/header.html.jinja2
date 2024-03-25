@@ -1,11 +1,15 @@
 {% include 'components/super_header.html.jinja2' %}
 <script src="{{ url_for("static", filename="js/notification.js") }}"></script>
 
+<!-- header from the site, on top of every page -->
 <header class="site-header">
+    <!-- IMT logo for top left corner-->
     <a href="/"><img src="{{ url_for("static", filename="img/logo.jpg") }}" alt="Logo du site" class="logo-site"></a>
+    <!-- navigations button to travel across the site -->
     <nav class="navigation-site">
         <ul>
             <li><a href="/home">Home</a></li>
+            <!-- these pages are only for manager, we have to check before -->
             {% if user.type.name == "ProjectManager" %}
                 <li><a href="/new_project">New board</a></li>
                 <li><a href="/board_developer">Developer view</a></li>
@@ -15,12 +19,13 @@
     </nav>
 
 
-
+    <!-- user logo and name -->
     <div class="profile" id="user_profile" data-id="{{ user.id }}">
         <i class="bi bi-person-circle"></i>
         {{ user.first_name }} {{ user.last_name }}
         <div class="accordion-item ">
         <h2 class="accordion-header">
+            <!-- button for notifications that trigger the collapseTwo menu -->
             <button id="notification_button" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#flush-collapseTwo-header" aria-expanded="false"
                     aria-controls="flush-collapseTwo-header">
@@ -29,7 +34,9 @@
                     id="notification_number"></span>
             </button>
         </h2>
+        <!-- menu that pop to show the notifications -->
         <div id="flush-collapseTwo-header" class="accordion-collapse-header collapse">
+            <!-- unread notifications panel, with a title and notifications under-->
             <h6 class=" accord-read">
                 <i class="bi bi-envelope icon"></i> Notifications Unread
             </h6>
@@ -38,11 +45,13 @@
 
             <div class="accordion-item">
                 <h2 class="accordion-header">
+                    <!-- a button to show old notifications and collapse readNotifs -->
                     <button class="accordion-button collapsed accord-read" type="button" data-bs-toggle="collapse"
                             data-bs-target="#readNotifs" aria-expanded="false" aria-controls="readNotifs">
                         <i class="bi bi-envelope-open icon"></i> Notifications Read
                     </button>
                 </h2>
+                <!-- the panel that shows read notifications -->
                 <div id="readNotifs" class="accordion-collapse collapse ">
                     <div class="accordion-body ">
                         <div id="read_notifications" class="accordion-body">
@@ -55,7 +64,7 @@
     </div>
         </div>
 
-
+        <!-- logout logo button -->
         <a href="/logout" data-toggle="tooltip" title="Logout" class="bi bi-box-arrow-right logout-logo"></a>
 
 </header>
