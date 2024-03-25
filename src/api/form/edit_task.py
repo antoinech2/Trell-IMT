@@ -126,7 +126,7 @@ def edit_task_form():
 
         # Create new subtasks
         for subtask in form['subtask']:
-            new_step = Step(task_id=task_id, name=subtask["name"], status=subtask["value"])
+            new_step = Step(task_id=task_id, name=subtask["name"], status=subtask["status"])
             db.session.add(new_step)
         db.session.add_all(notifications)
         db.session.commit()

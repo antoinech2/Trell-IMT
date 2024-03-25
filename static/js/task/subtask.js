@@ -21,7 +21,7 @@ SubTasksControl.prototype.initialize = function () {
         $('#new_subtask_input').val("");
         // Check if name input is filled
         if (subtaskName) {
-            thisControl.add({ name: subtaskName, value: false });
+            thisControl.add({ name: subtaskName, status: false });
         }
     });
 
@@ -33,15 +33,14 @@ SubTasksControl.prototype.initialize = function () {
  * Adds a subtask to the list.
  * @param {Object} subtask - Subtask object to be added.
  */
-SubTasksControl.prototype.add = function ({ name, value }) {
+SubTasksControl.prototype.add = function ({ name, status }) {
     let thisControl = this;
 
     // Add subtask to list
-    thisControl.subtasks.push({ name, value });
+    thisControl.subtasks.push({ name, status });
 
     // Create new subtask HTML element and display
-    let newSubtask = $(`<div class="form-check subtask"><label class="form-check-label subtask_name d-inline-block"><input class="form-check-input subtask_input" form="unlink" type="checkbox" value="">${name}</label><span class="remove_subtask btn d-inline-block"><i class="bi bi-x-lg"></i></span> <hr/></div>`);
-    newSubtask.find("input").attr("checked", value);
+    let newSubtask = $(`<div class="form-check subtask"><label class="form-check-label subtask_name d-inline-block"><input class="form-check-input subtask_input" ${status ? "checked" : ""} form="unlink" type="checkbox" value="">${name}</label><span class="remove_subtask btn d-inline-block"><i class="bi bi-x-lg"></i></span> <hr/></div>`);
     $("#sub_task_list_form").append(newSubtask);
 
     // Create listener attached to remove button of subtask element to remove subtask from list
@@ -57,7 +56,7 @@ SubTasksControl.prototype.add = function ({ name, value }) {
     // Create listener attached to checkbox of subtask element to toggle 'done' status of subtask
     newSubtask.find("input").on("change", function () {
         // Update internal state of subtask
-        thisControl.subtasks.find(subtask => subtask.name === name).value = this.checked;
+        thisControl.subtasks.find(subtask => subtask.name === name).status = this.checked;
 
         // Update progress bar
         thisControl.updateProgress();
@@ -72,8 +71,8 @@ SubTasksControl.prototype.add = function ({ name, value }) {
  */
 SubTasksControl.prototype.updateProgress = function () {
     // Calculate number of done and undone subtasks
-    let done_tasks = this.subtasks.filter(e => e.value == "1").length;
-    let not_done_tasks = this.subtasks.filter(e => e.value == "0").length;
+    let done_tasks = this.subtasks.filter(e => e.status == "1").length;
+    let not_done_tasks = this.subtasks.filter(e => e.status == "0").length;
     let progress = done_tasks + not_done_tasks > 0 ? Math.round(done_tasks / (done_tasks + not_done_tasks) * 100) : 0;
 
     // Update bar text and advancement
@@ -97,4 +96,5 @@ SubTasksControl.prototype.reset = function () {
     // Clear subtask list and display
     this.subtasks = [];
     $("#sub_task_list_form").empty();
+    this.updateProgress()
 }

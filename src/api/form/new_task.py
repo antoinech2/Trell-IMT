@@ -52,7 +52,7 @@ def new_task_form():
 
         # Create all subtasks
         for subtask in form['subtask']:
-            new_step = Step(task_id=new_task.id, name=subtask["name"], status=subtask["value"])
+            new_step = Step(task_id=new_task.id, name=subtask["name"], status=subtask["status"])
             db.session.add(new_step)
         db.session.commit()
 

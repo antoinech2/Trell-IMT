@@ -40,6 +40,7 @@ def delete_category(category_id):
     """
     cat = Category.query.filter_by(id=category_id).first()
     db.session.delete(cat)
+    db.session.commit()
 
     # Delete all task in category
     for task in Task.query.filter_by(category_id=category_id).all():

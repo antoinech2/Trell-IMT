@@ -97,7 +97,7 @@ function handleTaskForm(button, new_form, controllers) {
 
     if (new_form) {
         $("#delete_task").hide()
-        $("#comment_section").hide()
+        $("#accordionTask").hide()
         html_form.attr("action", `/new_task?category_id=${form.data("category_id")}`)
 
         html_form.find("#task_form_title").attr("value", "")
@@ -115,7 +115,7 @@ function handleTaskForm(button, new_form, controllers) {
         }
         html_form.attr("action", `/edit_task?task_id=${form.data("task_id")}`)
         $("#comment_form").attr("action", `/new_comment?task_id=${form.data("task_id")}`)
-        $("#comment_section").show()
+        $("#accordionTask").show()
         $("#comment_number").text("0")
 
 

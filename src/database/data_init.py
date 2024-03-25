@@ -2,7 +2,7 @@ from src.database.database import db
 from src.database.models import Etiquette
 
 
-def insert_initial_values():
+def insert_initial_values(*args, **kwargs):
     """Add default values to the database"""
 
     # Add default etiquettes to database at creation
