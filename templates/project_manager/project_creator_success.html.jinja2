@@ -1,11 +1,18 @@
-{% include 'components/super_header.html.jinja2' %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}"/>
+{% include 'components/super_header.html.jinja2' %} <!-- Includes the super header -->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}"/> <!-- CSS file for styling -->
+
+<!-- Success message container -->
 <div class="success">
+    <!-- Success icon using Bootstrap Icons -->
     <i class="bi bi-check-circle icon-green-large"></i>
+    <!-- Success title -->
     <h1>Success !</h1>
+    <!-- Success messages describing the action completed successfully -->
     <p> You have created a project successfully.</p>
     <p> Now you can start working!.</p>
 
+    <!-- Button to continue to the project board -->
     <div>
         <a href="/board/{{ board_id }}" class="btn btn-success"> Continue </a>
     </div>
