@@ -1,3 +1,4 @@
+<!--Template used when a user sign un successfully-->
 
 {% include 'components/header.html.jinja2' %}
 <link rel="stylesheet" href="{{ url_for("static", filename="css/auth.css") }}">
@@ -8,8 +9,9 @@
     <p> You have sign up an account successfully.</p>
     <p> Now you can start with Trell'Imt.</p>
 
+    <!--Link to log in-->
     <div>
-        <a href="{{ url_for("sign_in_view") }}" class="btn btn-success"> Continue and sign in </a>
+        <a href="{{ url_for("sign_in_view") }}" class="btn btn-success"> Continue and log in </a>
     </div>
 </div>
 
